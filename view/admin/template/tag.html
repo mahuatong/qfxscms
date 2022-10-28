@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{$meta_title}-清风小说CMS</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__ADMIN__/css/admin.css"></head>
+<body>
+  <div class="layui-card layui-card-open">
+    <div class="layui-card-body">
+      <div class="layui-form-item">
+        <label class="layui-form-label">标签类别：</label>
+        <div class="layui-input-block">
+          <input type="button" class="layui-btn layui-btn-primary" value="分类" onclick="showex('nav')">
+          <input type="button" class="layui-btn layui-btn-primary" value="幻灯" onclick="showex('slider')">
+          <input type="button" class="layui-btn layui-btn-primary" value="小说" onclick="showex('novel')">
+          <input type="button" class="layui-btn layui-btn-primary" value="章节列表" onclick="showex('chapter')">
+          <input type="button" class="layui-btn layui-btn-primary" value="文章" onclick="showex('news')">
+          <input type="button" class="layui-btn layui-btn-primary" value="小说筛选" onclick="showex('filter')">
+          <input type="button" class="layui-btn layui-btn-primary" value="评论" onclick="showex('comment')">
+          <input type="button" class="layui-btn layui-btn-primary" value="友情链接" onclick="showex('link')">
+        </div>
+      </div>
+      <div class="layui-form">
+        <div class="layui-form-item" id="tag_nav">
+          <label class="layui-form-label">模型：</label>
+          <div class="layui-input-inline">
+              <select id="type_nav"><option value="">全部</option><option value="0">小说</option><option value="1">文章</option><option value="2">独立模版</option><option value="3">外链</option></select>
+          </div>
+          <label class="layui-form-label">分类：</label>
+          <div class="layui-input-inline">
+              <select id="cid_nav"><option value="">全部</option><option value="1,2,3">自定义ID</option></select>
+          </div>
+          <label class="layui-form-label">排序：</label>
+          <div class="layui-input-inline">
+              <select id="order_nav"><option value="sort asc">排序号(正序)</option><option value="sort desc">排序号(倒序)</option><option value="id asc">编号(正序)</option><option value="id desc">编号(倒序)</option></select>
+          </div>
+        </div>
+
+        <div class="layui-form">
+        <div class="layui-form-item" id="tag_slider" style="display: none;">
+          <label class="layui-form-label">排序：</label>
+          <div class="layui-input-inline">
+              <select id="order_slider"><option value="sort asc">排序号(正序)</option><option value="sort desc">排序号(倒序)</option><option value="id asc">编号(正序)</option><option value="id desc">编号(倒序)</option></select>
+          </div>
+        </div>
+
+        <div class="layui-form-item" id="tag_novel" style="display: none;">
+          <label class="layui-form-label">分类：</label>
+          <div class="layui-input-inline">
+              <select id="cid_novel"><option value="">全部</option><option value="1,2,3">自定义ID</option></select>
+          </div>
+          <label class="layui-form-label">推荐：</label>
+          <div class="layui-input-inline">
+              <select id="pos_novel"><option value="">所有</option><option value="1">推荐</option></select>
+          </div>
+          <label class="layui-form-label">新书：</label>
+          <div class="layui-input-inline">
+              <select id="newbook_novel"><option value="">否</option><option value="1">是</option></select>
+          </div>
+          <label class="layui-form-label">完结：</label>
+          <div class="layui-input-inline">
+              <select id="over_novel"><option value="">否</option><option value="1">是</option></select>
+          </div>
+          <label class="layui-form-label">数量：</label>
+          <div class="layui-input-inline">
+              <input id="limit_novel" type="text" class="layui-input" value="10">
+          </div>
+          <label class="layui-form-label">分页：</label>
+          <div class="layui-input-inline">
+              <select id="page_novel"><option value="">否</option><option value="1">是</option></select>
+          </div>
+          <label class="layui-form-label">排序：</label>
+          <div class="layui-input-inline">
+              <select id="order_novel">
+                <option value="id asc">编号(正序)</option><option value="id desc">编号(倒序)</option>
+                <option value="update_time asc">更新时间(正序)</option><option value="update_time desc">更新时间(倒序)</option>
+                <option value="hits asc">总人气(正序)</option><option value="hits desc">总人气(倒序)</option>
+                <option value="hits_day asc">日人气(正序)</option><option value="hits_day desc">日人气(倒序)</option>
+                <option value="hits_week asc">周人气(正序)</option><option value="hits_week desc">周人气(倒序)</option>
+                <option value="hits_month asc">月人气(正序)</option><option value="hits_month desc">月人气(倒序)</option>
+                <option value="up asc">顶数(正序)</option><option value="up desc">顶数(倒序)</option>
+                <option value="down asc">踩数(正序)</option><option value="down desc">踩数(倒序)</option>
+                <option value="favorites asc">收藏(正序)</option><option value="favorites desc">收藏(倒序)</option>
+              </select>
+          </div>
+        </div>
+
+        <div class="layui-form-item" id="tag_chapter" style="display: none;">
+          <label class="layui-form-label">小说id：</label>
+          <div class="layui-input-inline">
+              <select id="nid_chapter"><option value="">当前小说</option><option value="1">自定义ID</option></select>
+          </div>
+          <label class="layui-form-label">数量：</label>
+          <div class="layui-input-inline">
+              <input id="limit_chapter" type="text" class="layui-input" value="">
+          </div>
+          <label class="layui-form-label">分页：</label>
+          <div class="layui-input-inline">
+              <select id="page_chapter"><option value="">否</option><option value="1">是</option></select>
+          </div>
+          <label class="layui-form-label">排序：</label>
+          <div class="layui-input-inline">
+              <select id="order_chapter">
+                <option value="asc">正序</option><option value="desc">倒序</option>
+              </select>
+          </div>
+        </div>
+
+        <div class="layui-form-item" id="tag_news" style="display: none;">
+          <label class="layui-form-label">分类：</label>
+          <div class="layui-input-inline">
+              <select id="cid_news"><option value="">全部</option><option value="1,2,3">自定义ID</option></select>
+          </div>
+          <label class="layui-form-label">推荐：</label>
+          <div class="layui-input-inline">
+              <select id="pos_news"><option value="">所有</option><option value="1">推荐</option></select>
+          </div>
+          <label class="layui-form-label">数量：</label>
+          <div class="layui-input-inline">
+              <input id="limit_news" type="text" class="layui-input" value="10">
+          </div>
+          <label class="layui-form-label">分页：</label>
+          <div class="layui-input-inline">
+              <select id="page_news"><option value="">否</option><option value="1">是</option></select>
+          </div>
+          <label class="layui-form-label">排序：</label>
+          <div class="layui-input-inline">
+              <select id="order_news">
+                <option value="id asc">编号(正序)</option><option value="id desc">编号(倒序)</option>
+                <option value="update_time asc">更新时间(正序)</option><option value="update_time desc">更新时间(倒序)</option>
+                <option value="hits asc">总人气(正序)</option><option value="hits desc">总人气(倒序)</option>
+                <option value="hits_day asc">日人气(正序)</option><option value="hits_day desc">日人气(倒序)</option>
+                <option value="hits_week asc">周人气(正序)</option><option value="hits_week desc">周人气(倒序)</option>
+                <option value="hits_month asc">月人气(正序)</option><option value="hits_month desc">月人气(倒序)</option>
+                <option value="up asc">顶数(正序)</option><option value="up desc">顶数(倒序)</option>
+                <option value="down asc">踩数(正序)</option><option value="down desc">踩数(倒序)</option>
+              </select>
+          </div>
+        </div>
+
+        <div class="layui-form-item" id="tag_filter" style="display: none;">
+          <label class="layui-form-label">类型：</label>
+          <div class="layui-input-inline">
+              <select id="name_filter"><option value="size">字数</option><option value="serialize">状态</option><option value="update">更新时间</option></select>
+          </div>
+        </div>
+
+        <div class="layui-form-item" id="tag_comment" style="display: none;">
+          <label class="layui-form-label">字体：</label>
+          <div class="layui-input-inline">
+              <input id="size_comment" type="text" class="layui-input" value="12">
+          </div>
+          <label class="layui-form-label">每页数量：</label>
+          <div class="layui-input-inline">
+              <input id="limit_comment" type="text" class="layui-input" value="5">
+          </div>
+        </div>
+
+        <div class="layui-form-item" id="tag_link" style="display: none;">
+          <label class="layui-form-label">顺序：</label>
+          <div class="layui-input-inline">
+              <select id="order_link">
+                <option value="sort asc">排序号(正序)</option><option value="sort desc">排序号(倒序)</option><option value="id asc">编号(正序)</option><option value="id desc">编号(倒序)</option>
+              </select>
+          </div>
+        </div>
+
+        <div class="layui-form-item vs v_comment" style="display: none;">
+          <label class="layui-form-label">顺序：</label>
+          <div class="layui-input-inline">
+              <select id="order_comment"><option value="desc">倒序</option><option value="asc">正序</option></select>
+          </div>
+          <label class="layui-form-label">排序：</label>
+          <div class="layui-input-inline">
+              <select id="by_comment"><option value="time">时间</option><option value="id">ID</option></select>
+          </div>
+          <label class="layui-form-label">数量：</label>
+          <div class="layui-input-inline">
+              <input id="num_comment" type="text" class="layui-input" value="10">
+          </div>
+          <label class="layui-form-label">分页：</label>
+          <div class="layui-input-inline">
+              <select id="paging_comment"><option value="false">否</option><option value="true">是</option></select>
+          </div>
+        </div>
+      </div>
+      <div class="layui-form-item">
+            <label class="layui-form-label">内容：</label>
+            <div class="layui-input-block">
+                <textarea id="labels" name="labels" cols="" rows="" class="layui-textarea"  placeholder="" style="width:100%;height:500px;"></textarea>
+            </div>
+        </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="__STATIC__/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="__ADMIN__/lib/layui/layui.js"></script>
+  <script type="text/javascript" src="__ADMIN__/js/admin.js"></script>
+  <script type="text/javascript">
+    var mark='nav';
+    layui.use('form', function(){
+        var form = layui.form;
+        form.on('select', function(data){
+           labelcreate();
+        });
+        labelcreate();
+    });
+
+    function showex(obj){
+        $("div[id^='tag_']").hide();
+        $("#tag_"+obj).show();
+        mark=obj;
+        if(obj=='year'){
+            var d = new Date();
+            $("#end_year").val(d.getYear());
+        }
+
+        labelcreate();
+    }
+    function labelcreate()
+    {
+        var value,option,par='',rc=false;
+
+        switch(mark)
+        {
+          case 'nav':
+                option= ['type','cid','order'];
+                value= [ ['key','序号'],['id','编号'],['title','标题'],['pid','上级分类id'],['url','地址'],['branch','是否有下级分类'],['current','是否当前分类'],['meta_title','SEO的网页标题'],['meta_keywords','SEO关键字'],['meta_description','SEO描述'],['icon','icon图标'],['link','外链地址'],['type','分类模型(0:小说,1:文章,2:独立模版,3:外链)'] ];
+                break;
+            case 'slider':
+                option= ['order'];
+                value= [ ['key','序号'],['id','编号'],['title','名称'],['pic','图片'],['url','地址'] ];
+                break;
+            case 'novel':
+                option= ['cid','pos','newbook','over','limit','page','order'];
+                value= [ ['key','序号'],['id','编号'],['cid','分类id'],['ctitle','分类标题'],['curl','分类地址'],['title','标题'],['author','作者'],['author_url','作者作品连接'],['pic','图片'],['content','介绍'],['serialize','连载状态（0，1）'],['serialize_text','连载字符（已完结，连载中）'],['tag','标签'],['tag_array','标签数组'],['word','字数'],['word_million','字数（单位万）'],['time','时间戳（更新时间戳别名）'],['up','顶'],['down','踩'],['hits','浏览数量'],['hits_day','日浏览'],['hits_week','周浏览'],['hits_month','月浏览'],['update_time','更新时间戳'],['create_time','创建时间戳'],['link','外链地址'],['chapter_id','最新章节id'],['chapter_title','最新章节名称'],['chapter_time','最新章节时间戳'],['chapter_url','最新章节地址'],['chapter_count','章节数量'],['url','地址'] ];
+                break;
+            case 'chapter':
+                option= ['nid','limit','page','order'];
+                value= [ ['key','序号'],['id','编号'],['title','章节名称'],['word','章节字数'],['time','时间戳'],['url','地址'],['new','是否新添加（三天内为新内容）'] ];
+                break;
+            case 'news':
+                option= ['cid','pos','limit','page','order'];
+                value= [ ['key','序号'],['id','编号'],['cid','分类id'],['ctitle','分类标题'],['curl','分类地址'],['title','标题'],['pic','图片'],['content','内容'],['time','时间戳（更新时间戳别名）'],['up','顶'],['down','踩'],['hits','浏览数量'],['hits_day','日浏览'],['hits_week','周浏览'],['hits_month','月浏览'],['update_time','更新时间戳'],['create_time','创建时间戳'],['link','外链地址'],['content_pic','内容图片数组可以是使用循环标签输出'],['url','地址'] ];
+                break;
+            case 'filter':
+                option= ['name'];
+                value= [ ['title','名称'],['url','地址'],['current','是否当前'] ]
+                break;
+            case 'comment':
+                option= ['limit','size'];
+                value= [];
+                break;
+            case 'link':
+                option= ['order'];
+                value= [ ['key','序号'],['id','编号'],['title','名称'],['url','地址'] ];
+                break;
+        }
+
+        for(i=0;i<option.length;i++){
+            if($("#"+option[i]+'_'+mark).val() != undefined && $("#"+option[i]+'_'+mark).val() !=''){
+                if(rc)par+=' ';
+                par+= option[i]+ '="' +$("#"+option[i]+'_'+mark).val()+'"';
+                rc=true;
+            }
+        }
+
+        if(value.length ==  0){
+          taglib='{'+mark+' '+par+' /}' + '\n';
+        }else{
+          taglib='{'+mark+' id="vo" '+par+'}' + '\n';
+          for(i=0;i<value.length;i++){
+              if(value[i][0]=='key'){
+                  taglib+= '\t{\$key}' + '  ' + value[i][1] + '\n';
+              }
+              else{
+                  if(value[i][0].indexOf(':')==-1){
+                      taglib+= '\t{\$vo.'+value[i][0]+'}' + '  ' + value[i][1] + '\n';
+                  }
+                  else{
+                      taglib+= '\t{'+value[i][0]+'}' + '  ' + value[i][1] + '\n';
+                  }
+              }
+
+          }
+          taglib+='{/'+mark+'}';
+        }
+        
+        $("#labels").val(taglib);
+    }
+  </script>
+</body>
+</html>

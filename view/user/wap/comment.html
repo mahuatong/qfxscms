@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>{$web['meta_title']}</title>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="{$user_tplpath}css/style.css">
+    <script type="text/javascript" src="{$user_tplpath}js/flexible.min.js"></script>
+</head>
+<body>
+	<div class="app_meskSection"></div>
+	<div class="container">
+		<div class="app_header_section2  app_scrollerHeader" id="header">
+			<div class="app_header_detail2">
+				<div class="app_header_back"></div>
+				<div class="app_header_h1">
+					评论
+					<a href="{:url('user/bookshelf/index')}"> <i class="shujiaIco"></i>
+					</a> <i class="moreIco"></i>
+				</div>
+			</div>
+			<div class="app_header_second" style="display: none;">
+				<ul>
+					<li class="icon1">
+						<a href="/">首页</a>
+					</li>
+					<li class="icon2">
+						<a href="{:url('home/lists/lists')}">书库</a>
+					</li>
+					<li class="icon3">
+						<a href="{:url('user/bookshelf/index')}">书架</a>
+					</li>
+					<li class="icon4">
+						<a href="{:url('user/index/index')}">账户</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="app_body">
+			<div class="app_rechargeRecord_nav">
+	            <a href="{:url('user/comment/index')}" {empty name="Request.param.reply"}class="active"{/empty}><i>我的评论</i></a>
+	            <a href="{:url('user/comment/index',['reply'=>1])}" {eq name="Request.param.reply" value="1"}class="active"{/eq}><i>我的回复</i></a>
+	        </div>
+			{notempty name="list"}
+			<div class="app_rechargeRecord_list">
+				<ul>
+					{volist name='list' id='vo'}
+					<li>
+						<div class="lis">{$vo['type_text']}-<a href="{$vo[$vo['type']]['url']}">{$vo[$vo['type']]['title']}</a></div>
+						<div class="content">{$vo['content']}</div>
+						<div class="time">{$vo['create_time']|time_format="Y-m-d H:i",1}</div>
+					</li>
+					{/volist}
+				</ul>
+			</div>
+			<div class="app_pageBlock">
+		        {$list|raw}
+		    </div>
+			{else /}
+			<div class="app_noBookDataBlock" id="noData">
+				您还没有发表过书评，去
+				<div class="app_listBlockButton">
+					<button onclick="javascript: window.location.href='{:url('home/index/index')}'">找一本喜欢的书看看吧</button>
+				</div>
+			</div>
+			{/notempty}
+		</div>
+	</div>
+	<script type="text/javascript" src="{$user_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer_mobile/layer.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/ajax.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/user.js"></script>
+</body>
+</html>

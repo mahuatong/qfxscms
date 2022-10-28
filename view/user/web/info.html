@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>{$web['meta_title']}</title>
+    	<link href="{$user_tplpath}css/user.css" rel="stylesheet">
+    	<link href="__STATIC__/webuploader/webuploader.css" rel="stylesheet">
+    	<link href="__STATIC__/jcrop/jquery.Jcrop.min.css" rel="stylesheet">
+	</head>
+	<body>
+		{include file="template/user/web/header" /}
+		<div class="container wrap1200">
+			{include file="template/user/web/left.html" /}
+			<div class="i-right">
+				<div class="systemMod">
+					<div class="i-title">
+						<ul class="ulHd">
+							<li class="on">
+								基本信息
+								<span></span>
+							</li>
+							<li>
+								头像设置
+								<span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="accountsBd">
+						<div class="basicAccounts">
+							<form class="ajax_form" action="{:url()}" method="post">
+								<table>
+									<tbody>
+										<tr>
+											<td class="label">用户名：</td>
+											<td>{$user['username']}</td>
+										</tr>
+										<tr>
+											<td class="label">用户邮箱：</td>
+											<td>
+												<input name="email" type="text" value="{$user['email']}" placeholder="请输入您的邮箱" class="name">
+											</td>
+										</tr>
+										<tr>
+											<td class="label">个人签名：</td>
+											<td>
+												<textarea name="introduce" placeholder="请输入您的签名" class="textarea" maxlength="50">{$user['introduce']}</textarea>
+											</td>
+										</tr>
+										<!--邮箱登陆状态-->			
+										<tr>
+											<td class="label">密码设置：</td>
+											<td>
+												<a href="{:url('user/user/password')}">修改密码</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<input type="submit" ajax-post="ajax_form" class="accountsBtn" value="保存">
+							</form>
+						</div>
+						<!--头像设置mod-->			
+						<div class="basicAccounts hide">
+							<div class="mod-basic-form mod-set-head form-account mod">
+								<div class="form-content">
+									{eq name="user['json']['faces']" value="1"}
+									<table class="form-table">
+										<tbody>
+											<tr>
+												<td style="padding-left: 30px;">
+													<div id="filePicker"></div>
+													<span id="errorMessage" class="desc">仅支持JPEG\JPG\GIF\PNG文件，且图片尺寸不超过5M。</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="fl c1 uploader-list" id="fileList"></div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="sp-20"></div>
+									<p class="ac"><input type="submit" value="保存" class="imgBtn hide"></p>
+									{else/}
+									<p class="desc">{$user['group']}用户不支持头像上传</p>
+									{/eq}
+								</div>
+							</div>		
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="{$user_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/webuploader/webuploader.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+	<script type="text/javascript" src="__STATIC__/jcrop/jquery.Jcrop.min.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/uploadhead.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/user.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/ajax.js"></script>
+</html>

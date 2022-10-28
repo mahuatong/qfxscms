@@ -1,0 +1,46 @@
+<!--left mod -->		
+<div class="i-left">
+	<div class="user_block">
+		<div class="header">
+			<span><img src="{$user['headimgurl']}"></span>
+		</div>
+		<div class="name">{$user['username']}</div>
+		<div class="group"><i class="iconfont">&#xe6ab;</i>{$user['group']}</div>
+		<div class="user_block_list2">
+			<ul>
+				<li style="cursor: default">
+					<span class="borderBottom"> <i class="iconfont">&#xe6a3;</i>
+						经验：{$user['exp']}
+					</span>
+				</li>
+				<li style="cursor: default">
+					<span class="borderBottom"> <i class="iconfont">&#xe645;</i>
+						积分：{$user['integral']}
+					</span>
+				</li>
+				<li style="cursor: default">
+					<span class="borderBottom">
+						<i class="iconfont">&#xe612;</i>
+						推荐票：{$user['recommend']}
+					</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	{volist name="user_menu" id="menu"}
+	<p class="title">
+		<i class="iconfont">{$menu['icon']|raw}</i>
+		{$menu['title']}
+	</p>
+	<ul>
+		{volist name="menu['child']" id="child"}
+		<li>
+			<a href="{:url($child['url'])}">
+				<i class="iconfont">{$child['icon']|raw}</i>
+				{$child['title']}
+			</a>
+		</li>
+		{/volist}
+	</ul>
+	{/volist}
+</div>

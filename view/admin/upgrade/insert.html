@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{$meta_title}-清风小说CMS</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" href="__ADMIN__/css/font.css">
+        <link rel="stylesheet" href="__ADMIN__/css/admin.css">
+    </head>
+    <body>
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <form class="layui-form" action="{:url('del')}">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div style="padding-bottom: 30px;">
+                                <div class="layui-step layui-row layui-col-space15">
+                                    <div class="layui-step-li layui-col-xs4 on">
+                                        <span class="num"><em class="f-r5"></em><i>1</i></span>
+                                        <span class="line_bg lbg-r"></span>
+                                        <p class="lbg-txt">下载文件</p>
+                                    </div>
+                                    <div class="layui-step-li layui-col-xs4">
+                                        <span class="num"><em class="f-r5"></em><i>2</i></span>
+                                        <span class="line_bg lbg-l"></span>
+                                        <span class="line_bg lbg-r"></span>
+                                        <p class="lbg-txt">安装文件</p>
+                                    </div>
+                                    <div class="layui-step-li layui-col-xs4">
+                                        <span class="num"><em class="f-r5"></em><i>3</i></span>
+                                        <span class="line_bg lbg-l"></span>
+                                        <p class="lbg-txt">安装完成</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding-bottom: 20px;">
+                                <div class="layui-progress layui-progress-big" lay-showPercent="true" lay-filter="component-progress-demo">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="0%"></div>
+                                </div>
+                            </div>
+                            <table class="layui-table">
+                                <colgroup>
+                                    <col width="300">
+                                    <col>
+                                    <col width="250">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>文件名</th>
+                                        <th>文件大小</th>
+                                        <th>状态</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {notempty name="inList"}
+                                        {volist name="inList" id="vo"}
+                                        <tr>
+                                            <td>{$vo.stored_file_name}</td>
+                                            <td>{$vo.size}KB</td>
+                                            <td><i class="iconfont icon-zanting- layui-color-blue upzt"></i><span class="upztt">等待下载</span></td>
+                                        </tr>
+                                        {/volist}
+                                    {else/}
+                                        <td colspan="3"> aOh! 暂时还没有内容! </td>
+                                    {/notempty}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="__STATIC__/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__ADMIN__/lib/layui/layui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var index = parent.layer.getFrameIndex(window.name); 
+            parent.layer.title('{$meta_title}', index);
+            function date(url,num){
+                if(num==0){
+                    step(0);
+                }
+                $('.upzt').eq(num).addClass('layui-icon layui-icon-loading-1 layui-anim-rotate layui-anim-loop').removeClass('iconfont icon-zanting-').siblings('.upztt').text('开始下载');
+                var count={:count($inList)};
+                $.getJSON(url,{num:num},function(data){
+                    if(data.code==1){
+                        layui.use(['element'], function(){
+                            layui.element.progress('component-progress-demo', data.number/count*100+'%');
+                        });
+                        $('.upzt').eq(num).addClass('layui-icon-ok layui-color-green').removeClass('layui-icon-loading-1 layui-anim-rotate layui-anim-loop layui-color-blue').siblings('.upztt').text('下载完成');
+                        if(count>data.number){
+                            date(url,data.number);
+                        }else{
+                            step(1);
+                            $.getJSON("{:url('install',['id'=>$id,'model'=>'insert'])}",function(data){
+                                if(data.code==1){
+                                    step(2);
+                                }else{
+                                    layui.use('layer', function(){
+                                        layui.layer.msg(data.msg, {time: 0,icon: 0 ,btn: ['关闭']});
+                                    });
+                                }
+                            });
+                        }
+                    }else{
+                        $('.upzt').eq(num).addClass('layui-icon layui-icon-close layui-color-red').removeClass('layui-icon-loading-1 layui-anim-rotate layui-anim-loop layui-color-blue').siblings('.upztt').text(data.error);
+                    }
+                });
+            }
+            function step(num){
+                $('.layui-step-li').eq(num).addClass('on');
+            }
+
+            date("{:url('update')}",0);
+        });
+    </script>
+    </body>
+</html>

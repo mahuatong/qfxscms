@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>{$web['meta_title']}</title>
+    	<link href="{$user_tplpath}css/user.css" rel="stylesheet">
+	</head>
+	<body>
+		{include file="template/user/web/header" /}
+		<div class="container wrap1200">
+			{include file="template/user/web/left.html" /}
+			<div class="i-right">			
+				<div class="i-title" style="padding-left:30px;">
+					最近阅读
+				</div>
+				<div class="bookshelfMod">
+					{notempty name="list"}
+					<table>
+						<tbody>
+							<tr class="head">
+								<td>封面</td>
+								<td class="t2">书名</td>
+								<td class="t3">最新章节</td>
+								<td class="t4">作者</td>
+								<td class="t5">更新时间</td>
+								<td class="t6">状态</td>
+								<td class="t7">操作</td>
+							</tr>
+							{volist name='list' id='novel'}
+							<tr>
+								<td>
+									<a href="{$novel['book']['url']}" target="_blank">
+										<img src="{$novel['book']['pic']}"></a>
+								</td>
+								<td class="t2">
+									<a href="{$novel['book']['url']}" target="_blank">{$novel['book']['title']}</a>
+								</td>
+								<td class="t3">
+									<a href="{$novel['book']['chapter_url']}" target="_blank">{$novel['book']['chapter_title']}</a>
+								</td>
+								<td class="t4">
+									<a href="{$novel['book']['author_url']}" target="_blank">{$novel['book']['author']}</a>
+								</td>
+								<td class="t5">{$novel['book']['chapter_time']|time_format="m-d H:i",1}</td>
+
+								<td class="t6">{$novel['book']['serialize_text']}</td>
+								<td class="t7">
+									<a href="{$novel['reader_url']}" class="goon" target="_blank">继续阅读</a>
+								</td>
+							</tr>
+							{/volist}
+						</tbody>
+					</table>
+					<div class="page-box">
+						<div class="page-content">
+							<div class="ui-pagination">
+								{$page|raw}
+							</div>
+						</div>
+					</div>
+					{else /}
+					<p class="bookNone">
+						您还没有在读的书，快去
+						<a href="/" target="_blank" data-namecard="false">首页</a>
+						看看吧
+					</p>
+					{/notempty}
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="{$user_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/user.js"></script>
+</html>

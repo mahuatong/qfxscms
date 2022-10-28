@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>{$meta_title}</title>
+        <link href="__ADMIN__/css/admin.css" rel="stylesheet">
+    	<link href="__ADMIN__/css/reg_style.css" rel="stylesheet">
+	</head>
+	<body>
+        <!-- start 注册模块 -->
+        <div class="reg-wrap">
+            <div class="reg-main">
+            <div class="layui-card">
+                <div class="layui-card-header">{$meta_title}</div>
+                <div class="layui-card-body">
+                    <div class="reg-form-wrap">
+                        <form action="{:url('oiauth_login')}" method="post">
+                            <div class="reg-form-list form-list">
+                                <dl>
+                                    <dd class="top">
+                                        <em>用户名</em>
+                                        <input type="text" placeholder="输入用户名" name="username" id="username">
+                                    </dd>
+                                    <dd>
+                                        <em>密码</em>
+                                        <input type="password" name="password" id="password" placeholder="6-18位大小写字母、符号或数字">
+                                    </dd>
+                                    <dd> <em>验证码</em>
+                                        <input class="mid" name="code" type="text" id="code" placeholder="验证码">
+                                        <img class="code-img_login" id="imgCode" src="{:url('user/user/verify','','',config('web.official_url'))}" alt="这里是验证码">
+                                    </dd>
+                                </dl>
+                                <div class="login_link"><a href="{:url('oiauth_reg')}">没有帐号注册</a> | <a href="{:url('oiauth_forgetpwd')}">忘记密码</a></div>
+                                <input type="hidden" name="cookie">
+                                <a class="blue-btn btnLogin btn-yuewen" href="javascript:" id="btnRegister">立即登录</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end 注册模块 -->
+	</body>
+	<script type="text/javascript" src="__STATIC__/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__ADMIN__/lib/layui/layui.js"></script>
+	<script type="text/javascript" src="__ADMIN__/js/login.js"></script>
+    <script type="text/javascript">
+        var login = new login();
+        login.url='{:config('web.official_url')}';
+    </script>
+</html>

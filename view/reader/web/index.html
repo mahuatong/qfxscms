@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	    <meta name="keywords" content="{$web['meta_keywords']}">
+	    <meta name="description" content="{$web['meta_description']}">
+	    <title>{$chapter['title']}_{$title}-{$web['meta_title']}</title>
+	    <link rel="stylesheet" href="{$reader_tplpath}css/style.css" type="text/css"/>
+    </head>
+	<body class="theme-{$reader_config[0]|default='0'} {switch reader_config[4] }{case 0} w640{/case}{case 1} w800{/case}{case 2} w900{/case}{case 3} w1280{/case}{/switch}" data-bid="{$url}">
+		<div class="wrap">
+			<div class="read-header" id="readHeader">
+				<div class="wrap-center cf">
+					<div class="left-nav fl">
+						<div class="logo">
+							<a class="logo-ico" href="/"><img src="{$web['logo']}"></a>
+						</div>
+						<ul>
+							<li>
+								<cite><a href="/">首页</a></cite>
+							</li>
+							<li class="quick-nav">
+								<cite>快速导航</cite>
+								<div class="dropdown type-list">
+									{nav id="vo"}
+									<div class="type-box">
+										<h3><a href="{$vo['url']}" target="_blank">{$vo['title']}</a></h3>
+										{neq name="vo['branch']" value="0"}
+											{nav cid="$vo['id']" id="svo"}
+											<a href="{$svo['url']}" target="_blank">{$svo['title']}</a>
+											{/nav}
+										{/neq}
+									</div>
+									{/nav}
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="read-login fr">
+						<ul>
+							<li id="min-search">
+								<form action="{:url('home/search/index')}" method="post" target="_blank">
+									<input class="submit-input" type="submit" id="searchSubmit">			
+									<input id="pin-input" class="pin-input hide" name="keyword" type="text" placeholder="">			
+									<label id="pin-search" for="searchSubmit">
+										<em class="iconfont"></em>
+									</label>
+								</form>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="crumbs-nav">
+				{crumbs id="vo"}
+				    <a href="{$vo['url']}" target="_blank">{$vo['title']}</a>
+				    {if $is_last!=true}
+				    <em class="iconfont"></em>
+				    {/if}
+				{/crumbs}
+			</div>
+			<div class="read-main-wrap font-family0{$reader_config[2]|default='1'}" style="font-size:{$reader_config[1]|default='18'}px" id="j_readMainWrap">
+		        <div id="j_chapterBox">
+		        	<div class="text-wrap" id="ajaxchapter-{$chapter['id']}" data-cid="{$chapter['id']}" data-purl="{$chapter['prev']['url']}" data-nurl="{$chapter['next']['url']}" data-info="0|{$chapter['prev']['id']|default="-1"}|{$chapter['next']['id']|default="-1"}|0">
+		        		<div class="main-text-wrap">
+		        			<div class="text-head">
+		        				<h3 class="j_chapterName">{$chapter['title']}</h3>
+		        				<div class="text-info cf">
+		        					<div class="info fl">
+		        						<a href="{$url}" target="_blank"> <em class="iconfont"></em> {$title}</a>
+		        						<a href="{$author_url}" target="_blank"> <em class="iconfont"></em> {$author}</a> 
+		        						<i><em class="iconfont"></em><span class="j_chapterWordCut">{$chapter['word']}</span>字</i>  
+		        						<i><em class="iconfont"></em><span class="j_updateTime">{$chapter['time']}</span></i> 
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="read-content j_readContent">
+		        				{$chapter['content']|raw}
+		        			</div>
+		        			{notempty name="chapter['intro']"}
+		        			<div class="author-say-wrap">
+			                    <h3>作者感言</h3>
+			                    <div class="author-say cf">
+			                        <p>{$chapter['intro']|raw}</p>
+			                    </div>
+			                </div>
+			                {/notempty}
+		        		</div>
+		        	</div>
+		        	<!-- start 顶部广告 -->		        
+		        	<!-- <div id="page-ops" class="page-ops">
+		        		<a href="#" target="_blank">
+		        			<img src="">		        
+		        			<span class="op-tag"></span>
+		        		</a>
+		        	</div> -->
+		        	<!-- end 顶部广告 --> 
+		        </div>
+		        <div class="la-ball-pulse j_chapterLoad hidden" style="display: none;">
+		            <span></span>
+		            <span></span>
+		            <span></span>
+		        </div>
+		        {eq name="reader_config[3]" value="0"}
+		        <div class="chapter-control dib-wrap">
+		        	{eq name="chapter['prev']['url']" value="javascript:void(0);"}
+		        		<a id="j_chapterPrev" href="{$chapter['prev']['url']}">第一章没有了</a>
+		        	{else /}
+		        		<a id="j_chapterPrev" href="{$chapter['prev']['url']}">上一章</a>
+		        	{/eq}
+		        	<span>|</span>
+		        	{eq name="chapter['next']['url']" value="javascript:void(0);"}
+		        		<a id="j_chapterNext" href="{$url}">最后一章没有了，前往书页</a>
+		        	{else /}
+		        		<a id="j_chapterNext" href="{$chapter['next']['url']}">下一章</a>
+		        	{/eq}
+		        </div>
+		        {/eq}
+		    </div>
+		</div>
+		<div class="float-wrap fix-float-wrap" id="j_floatWrap">
+			<div class="left-bar-list" id="j_leftBarList" style="top: 119px;">
+				<dl>
+					<dd id="j_navCatalogBtn">
+						<a href="javascript:">
+							<i><em class="iconfont"></em><span>目录</span></i> 
+						</a>
+					</dd>
+					<dd id="j_navSettingBtn" class="">
+						<a href="javascript:">
+							<i><em class="iconfont"></em><span>设置</span></i> 
+						</a>
+					</dd>
+					<dd id="j_phoneRead">
+						<a href="javascript:">
+							<i><em class="iconfont"></em><span>手机</span></i>
+						</a>
+					</dd>
+					<dd>
+						{elt name="is_bookshelf" value="0"}
+						<a class="add-book" href="javascript:" {$add_bookshelf}>
+							<i><em class="iconfont"></em><span>书架</span></i>
+						</a>
+						{else/}
+							<a class="add-book in-shelf" href="javascript:">已在书架</a>
+						{/elt}
+					</dd>
+					<dd>
+						<a href="{$url}" target="_blank">
+							<i><em class="iconfont"></em><span>书页</span></i>
+						</a>
+					</dd>
+				</dl>
+				<!-- start 手机阅读面板浮层 -->
+				<div class="panel-wrap cellphone" id="j_cellphone" style="display: none;">
+				    <a class="iconfont close-panel" href="javascript:"></a>
+				    <div class="panel-box">
+				        <h4 class="lang">手机阅读</h4>
+				        <!-- start 二维码 -->
+				        <div class="qr-code-wrap">
+				            <h5>手机扫码阅读</h5>
+				            <div id="code"></div>
+				            <div class="scan-bottom cf">
+				                <div class="tip">
+				                    <p>使用<a href="#" class="red">手机</a>扫码阅读</p>
+				                </div>
+				            </div>
+				        </div>
+				        <!-- end 二维码 -->
+				    </div>
+				</div>
+				<!-- end 手机阅读面板浮层 -->
+				<!-- start 目录面板浮层 -->		
+				<div class="panel-wrap catalog" id="j_catalog" style="display: none;">
+					<a class="iconfont close-panel" href="javascript:"></a>
+					<div class="panel-box">
+						<div class="catalog-tab dib-wrap" id="j_catalogTab">
+							<span class="lang act">目录</span>
+						</div>
+						<div id="j_catalogTabWrap">
+							<!-- start 目录列表 -->		
+							<div class="panel-list-wrap catalog-scroll-wrap" id="j_catalogListWrap">
+								<div class="loading">
+				                    <span></span>
+				                    <p>加载中...</p>
+				                </div>
+							</div>
+							<!-- end 目录列表 -->		
+						</div>
+					</div>
+				</div>
+				<!-- end 目录面板浮层 -->		
+				<!-- start 设置面板浮层 -->		
+				<div class="panel-wrap setting" id="j_setting" style="display: none;">
+					<a class="iconfont close-panel setting-close" href="javascript:"></a>
+					<div class="panel-box">
+						<h4 class="lang">设置</h4>
+						<div class="setting-list-wrap">
+							<ul>
+								<li class="theme-list" id="j_themeList">
+									<i>阅读主题</i>
+									<span title="默认" class="theme-0 {if $reader_config[0]==0 or $reader_config[0]==''}act{/if}" data-st="0">
+										<em class="iconfont"></em>
+									</span>
+									<span title="牛皮纸" class="theme-1 {eq name="reader_config[0]" value="1"}act{/eq}" data-st="1">
+										<em class="iconfont"></em>
+									</span>
+									<span title="淡绿色" class="theme-2 {eq name="reader_config[0]" value="2"}act{/eq}" data-st="2">
+										<em class="iconfont"></em>
+									</span>
+									<span title="淡蓝色" class="theme-3 {eq name="reader_config[0]" value="3"}act{/eq}" data-st="3">
+										<em class="iconfont"></em>
+									</span>
+									<span title="淡粉色" class="theme-4 {eq name="reader_config[0]" value="4"}act{/eq}" data-st="4">
+										<em class="iconfont"></em>
+									</span>
+									<span title="灰色" class="theme-5 {eq name="reader_config[0]" value="5"}act{/eq}" data-st="5">
+										<em class="iconfont"></em>
+									</span>
+									<span title="黑色" class="theme-6 {eq name="reader_config[0]" value="6"}act{/eq}" data-st="6">
+										<em class="iconfont"></em>
+										<cite class="iconfont"></cite>
+									</span>
+
+								</li>
+								<li class="font-family" id="j_fontFamily">
+									<i>正文字体</i>
+									<span data-st="1" class="yahei {if $reader_config[2]==1 or $reader_config[2]==''}act{/if}">雅黑</span>
+									<span data-st="2" class="yahei {eq name="reader_config[2]" value="2"}act{/eq}">宋体</span>
+									<span data-st="3" class="yahei {eq name="reader_config[2]" value="3"}act{/eq}">楷书</span>
+								</li>
+								<li class="font-size" id="j_fontSize">
+									<i>字体大小</i>
+									<cite>
+										<span class="prev">
+											<em class="iconfont"></em>
+										</span> <b></b>
+										<span class="lang">{$reader_config[1]|default='18'}</span> <b></b>
+										<span class="next">
+											<em class="iconfont"></em>
+										</span>
+									</cite>
+								</li>
+								<li class="page-width" id="j_pageWidth">
+									<i>页面宽度</i>
+									<cite>
+										<span class="prev">
+											<em class="iconfont"></em>
+										</span>
+										<b></b>
+										<span class="lang">
+											{switch reader_config[4] }
+											    {case 0}640{/case}
+											    {case 1}800{/case}
+											    {case 2}900{/case}
+											    {case 3}1280{/case}
+											    {default /}800
+											{/switch}
+										</span>
+										<b></b>
+										<span class="next">
+											<em class="iconfont"></em>
+										</span>
+									</cite>
+								</li>
+								<li class="read-mode" id="j_readMode">
+									<i>阅读方式</i>
+									<span data-st="0" {eq name="reader_config[3]" value="0"}class="act"{/eq}>
+										<em class="iconfont"></em>
+									</span>
+									<span data-st="1" {eq name="reader_config[3]" value="1"}class="act"{/eq}>
+										<em class="iconfont"></em>
+									</span>
+								</li>
+							</ul>
+							<div class="btn-wrap dib-wrap">
+								<a class="red-btn" id="j_setSave" href="javascript:">保存</a>
+								<a class="grey-btn" id="j_setCancel" href="javascript:">取消</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end 设置面板浮层 -->		
+			</div>
+			<div class="right-bar-list" id="j_rightBarList" style="bottom: 0px;">
+				<dl>
+<!--					<dd id="navTicket" data-showtype="2" data-aid="qd_R88">-->
+<!--						<a href="javascript:">-->
+<!--							<i>-->
+<!--								<em class="iconfont"></em>-->
+<!--								<span>投票</span>-->
+<!--							</i>-->
+<!--						</a>-->
+<!--					</dd>-->
+<!--					<dd id="j_discussHref">-->
+<!--						<a href="{$url}#comment-tab" target="_blank">-->
+<!--							<i>-->
+<!--								<em class="iconfont"></em>-->
+<!--								<span>评论</span>-->
+<!--							</i>-->
+<!--						</a>-->
+<!--					</dd>-->
+					<!-- <dd id="navReward" data-showtype="3" data-aid="qd_R87">
+						<a href="javascript:">
+							<i>
+								<em class="iconfont"></em>
+								<span>打赏</span>
+							</i>
+						</a>
+					</dd> -->
+					<dd class="go-top" id="j_goTop" title="返回顶部" style="display: none;">
+						<a href="javascript:">
+							<i>
+								<em class="iconfont"></em>
+							</i>
+						</a>
+					</dd>
+
+				</dl>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="{$reader_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="{$reader_tplpath}js/jquery.qrcode.min.js"></script>
+	<script type="text/javascript">
+		var book = {},user = {};
+		//书信息
+	    book.Info = {
+	        "Id":{$id},
+	        "Name":'{$title}',
+	        "authorName": '{$author}',
+	        "url":'{$url}'
+	    };
+	    //页面初始化章节信息
+	    book.chapter = {
+	        //页面进入加载的章节id
+	        id:'{$chapter['id']}',
+	        //章节源id
+	        source_id:{$chapter['source_id']},
+	        //章节vip标识
+	        vipStatus : 0,
+	        //上一章id
+	        prevId :'{$chapter['prev']['id']|default="-1"}',
+	        //下一章id
+	        nextId :'{$chapter['next']['id']|default="-1"}'
+	    };
+	    book.chapterUrl = '{:url('home/chapter/index',['id'=>$chapter['source_id'],'key'=>'chapterId'],true,true)}';
+	    book.nextChapterVip = 0;
+	    user.Info = {
+	    	"id":{$user['id']|default=0},
+	    	"recommend":{$user['recommend']|default=0}
+	    };
+	</script>
+	<script type="text/javascript" src="{$reader_tplpath}js/global.js"></script>
+</html>

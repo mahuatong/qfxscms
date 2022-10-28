@@ -1,0 +1,1189 @@
+@charset "utf-8";
+@import url(../lib/layui/css/layui.css);
+html {
+    background-color: #f2f2f2;
+    color: #666;
+    width: 100%;
+    height: 100%;
+    overflow-x:hidden; 
+    overflow-y:auto;
+}
+body{
+    width: 100%;
+    min-height: 100%;
+}
+
+.lf{
+    float: left;
+}
+.rf{
+    float: right;
+}
+.pl-5{
+    padding-left: 5px;
+}
+.pl-10{
+    padding-left: 10px;
+}
+.pl-15{
+    padding-left: 15px;
+}
+.pl-20{
+    padding-left: 20px;
+}
+.pr-5{
+    padding-right: 5px;
+}
+.pr-10{
+    padding-right: 10px;
+}
+.pr-15{
+    padding-right: 15px;
+}
+.pr-20{
+    padding-right: 20px;
+}
+.text-left {
+    text-align: left;
+}
+.layui-color-red{
+    color: #FF5722;
+}
+.layui-color-orange{
+    color: #FFB800;
+}
+.layui-color-green{
+    color: #009688;
+}
+.layui-color-blue{
+    color: #1E9FFF;
+}
+
+.layui-step {
+    margin: 0 auto;
+    display: block;
+    height: 60px;
+}
+.layui-col-space15>* {
+    padding: 7.5px;
+}
+.layui-step .layui-step-li {
+    position: relative;
+    text-align: center;
+}
+.layui-step .num {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    width: 54px;
+    height: 30px;
+    text-align: center;
+    display: inline-block;
+}
+.layui-step .num em, .num i {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    left: 15px;
+    top: 2px;
+    position: absolute;
+}
+.layui-step .num em {
+    background: #d9eaf3;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    z-index: 2;
+}
+.layui-step .on .line_bg, .layui-step .on .num em {
+    background: #1a97d7;
+}
+.layui-step .num i {
+    z-index: 3;
+    color: #fff;
+    font-style: normal;
+    font-weight: 700;
+    top: 4px;
+}
+.layui-step .line_bg {
+    height: 3px;
+    background: #d9eaf3;
+    display: inline-block;
+    width: 50%;
+    top: 13px;
+    position: absolute;
+    z-index: 1;
+}
+.layui-step .lbg-l {
+    left: 0;
+}
+.layui-step .lbg-r {
+    right: 0;
+}
+.layui-step .lbg-txt {
+    position: relative;
+    color: #b6c6ce;
+}
+.layui-step .on .lbg-txt {
+    color: #1a97d7;
+}
+
+/*欢迎*/
+.countup {
+    cursor: pointer;
+}
+.larryms-data-top .layui-card .layui-card-body>div {
+    display: inline-block;
+    vertical-align: top;
+}
+.larryms-data-top .layui-card .layui-card-body .left {
+    text-align: center;
+    padding-top: 15px;
+    margin-right: 15%;
+}
+.larryms-data-top .layui-card .layui-card-body .left.a i {
+    background: #26A0FA;
+}
+.larryms-data-top .layui-card .layui-card-body .left.b i {
+    background: #FA6332;
+}
+.larryms-data-top .layui-card .layui-card-body .left.c i {
+    background: #68C381;
+}
+.larryms-data-top .layui-card .layui-card-body .left.d i {
+    background: #FFB800;
+}
+.larryms-data-top .layui-card .layui-card-body .left i.layui-icon {
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 100%;
+    margin-bottom: 8px;
+    line-height: 52px;
+    color: #fff;
+    font-size: 24px;
+}
+.larryms-data-top .layui-card .layui-card-body .left p {
+    color: #76838f;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: center;
+}
+.larryms-data-top .layui-card .layui-card-body .right {
+    text-align: right!important;
+}
+.larryms-data-top .layui-card .layui-card-body .right .p {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+}
+.larryms-data-top .layui-card .layui-card-body .right .p h3 {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 50px;
+    color: #76838f;
+}
+.larryms-data-top .layui-card .layui-card-body .right .p cite {
+    color: #a3afb7;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+.layuiadmin-card-status {
+    padding: 0 10px 10px;
+}
+.layuiadmin-card-status li {
+    position: relative;
+    padding: 10px 0;
+    border-bottom: 1px solid #EEE;
+}
+.layuiadmin-card-status li h3 {
+    padding-bottom: 5px;
+    font-weight: 700;
+}
+.layuiadmin-card-status li p {
+    padding-bottom: 10px;
+}
+.layuiadmin-card-status li>span {
+    color: #999;
+}
+
+/*登录*/
+.login-bg{
+    background:url(../images/bg.png) no-repeat center;
+    background-size: cover;
+    overflow: hidden;
+}
+.login{
+    margin: 150px auto 0 auto;
+    max-width: 420px;
+    padding: 40px;
+    background-color: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    /* overflow-x: hidden; */
+    box-sizing: border-box;
+}
+.login a.logo{
+    display: block;
+    height: 58px;
+    width: 167px;
+    margin: 0 auto 30px auto;
+    background-size: 167px 42px;
+}
+.login .message {
+    margin: 10px 0 0 -58px;
+    padding: 18px 10px 18px 60px;
+    background: #189F92;
+    position: relative;
+    color: #fff;
+    font-size: 16px;
+}
+.login #darkbannerwrap {
+    background: url(../images/aiwrap.png);
+    width: 18px;
+    height: 10px;
+    margin: 0 0 20px -58px;
+    position: relative;
+}
+
+.login input[type=text],
+.login input[type=file],
+.login input[type=password],
+.login input[type=email], select {
+    border: 1px solid #DCDEE0;
+    vertical-align: middle;
+    border-radius: 3px;
+    height: 50px;
+    padding: 0px 16px;
+    font-size: 14px;
+    color: #555555;
+    outline:none;
+    width:100%;
+    box-sizing: border-box;
+}
+.login input[type=text]:focus,
+.login input[type=file]:focus,
+.login input[type=password]:focus,
+.login input[type=email]:focus, select:focus {
+    border: 1px solid #27A9E3;
+}
+.login input[type=submit],
+.login input[type=button]{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 12px 24px;
+    margin: 0px;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #189F92;
+    border-radius: 3px;
+    border: none;
+    -webkit-appearance: none;
+    outline:none;
+    width:100%;
+}
+.login .verify{
+    width: 180px;
+    height: 50px;
+    float: right;
+}
+.login hr {
+    background: #fff url() 0 0 no-repeat;
+}
+.login hr.hr15 {
+    height: 15px;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+.login hr.hr20 {
+    height: 20px;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+/*头部*/
+.container{
+    width: 100%;
+    height: 50px;
+    background-color: #373d41;
+}
+.container .logo a{
+    float: left;
+    color: #fff;
+    font-size: 18px;
+    padding-left: 20px;
+    line-height: 50px;
+    width: 200px;
+}
+.container .logo a img{
+    height: 28px;
+    width: 28px;
+}
+.container .right{
+    background-color:rgba(0,0,0,0);
+    float: right;
+
+}
+.container .left{
+    background-color:rgba(0,0,0,0);
+    float: left;
+
+}
+.container .left_open {
+    height: 45px;
+    float: left;
+}
+.container .left_open i {
+    display: block;
+    background: rgba(0,0,0,.2) url() 0 0 no-repeat;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 9px;
+    cursor: pointer;
+}
+.container .layui-nav-item{
+    line-height: 50px;
+}
+.container .layui-nav-child{
+    top: 50px;
+}
+.container .layui-nav-child i{
+    margin-right: 10px;
+}
+
+/*左侧菜单*/
+.left-nav{
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background-color: #42485b;
+    width: 220px;
+    max-width: 220px;
+    overflow: auto;
+    overflow-x:hidden;
+}
+
+.left-nav i{
+    padding:0 10px;
+}
+
+.left-nav .layui-tab-content{
+    padding: 0px;
+}
+
+.left-nav .layui-nav {
+    width: 220px;
+    background-color: #42485b;
+}
+
+.left-nav .layui-nav .layui-nav-itemed>.layui-nav-child {
+    padding: 5px 0;
+}
+
+.left-nav .layui-nav .layui-nav-itemed .layui-nav-child a {
+    padding-left: 45px;
+}
+
+.left-nav .layui-nav .layui-nav-child .layui-nav-child a {
+    padding-left: 60px;
+}
+
+[nav-href] {
+    cursor: pointer;
+}
+
+.page-content{
+    position: absolute;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    left: 220px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.page-content .tab{
+    height: 100%;
+    width: 100%;
+    background: #EFEEF0 url() 0 0 no-repeat;
+    margin: 0px;
+}
+
+.page-content .layui-tab-title{
+    height: 40px;
+    line-height: 40px;
+    padding: 0 40px 0 0px;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+    position: relative;
+    z-index: 100;
+}
+
+.page-content [lay-filter="xbs_tab"] .layui-tab-title li:not(.home) i:not(.layui-tab-close){
+    padding-right: 8px;
+}
+
+.page-content .layui-tab-title li.home .layui-tab-close{
+    display: none;
+}
+.page-content .layui-tab-title li{
+    min-width: 0;
+    line-height: 38px;
+    max-width: 160px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-right: 1px solid #f6f6f6;
+    vertical-align: top;
+}
+.page-content .layui-tab-title li:first-child {
+    padding-right: 15px;
+}
+
+.page-content .layui-tab-title li:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    border-radius: 0;
+    background-color: #009688;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+}
+
+.page-content .layui-tab-title li:hover:after {
+    width: 100%
+}
+
+.page-content .layui-tab-title li.layui-this, .page-content .layui-tab-title li:hover {
+    background-color: #f6f6f6;
+}
+
+.page-content .layui-tab-title li.layui-this:after {
+    width: 100%;
+    border: none;
+    height: 2px;
+    background-color: #009688;
+}
+
+.page-content .layui-tab-title li .layui-tab-close{
+    border-radius: 50%;
+}
+
+.page-content .layui-tab-bar{
+    height:38px;
+    line-height: 38px;
+}
+.page-content .layui-tab-content{
+    position: absolute;
+    top: 40px;
+    bottom: 0px;
+    width: 100%;
+    background: #fff url() 0 0 no-repeat;
+    padding: 0px;
+    overflow: hidden;
+}
+.page-content .layui-tab-content .layui-tab-item{
+    width: 100%;
+    height: 100%;
+    
+}
+.page-content .layui-tab-content .layui-tab-item iframe{
+    width: 100%;
+    height: 100%;
+
+}
+
+.layui-fluid {
+    padding: 15px;
+}
+
+/*内容*/
+.w100 {
+    width: 100px!important;
+}
+
+.w300 {
+    width: 300px!important;
+}
+.w400 {
+    width: 400px!important;
+}
+.w500 {
+    width: 500px!important;
+}
+
+.layui-card .layui-tab-brief .layui-tab-title li {
+    margin: 0 15px;
+    padding: 0;
+    line-height: 42px;
+}
+
+.layui-card-header {
+    position: relative;
+}
+
+.layui-card-header.layuiadmin-card-header-auto {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: auto;
+}
+
+.layuiadmin-card-header-auto .layui-form-item:last-child {
+    margin-bottom: 0;
+}
+
+.width100 .layui-form-label {
+    width: 100px;
+}
+.width100 .layui-input-block {
+    margin-left: 130px;
+}
+.layui-form-item .layui-input-company {
+    width: auto;
+    padding-right: 10px;
+    line-height: 38px;
+}
+.layui-word-aux a {
+    margin-right: 5px;
+}
+.layui-word-aux a span{
+    margin-right: 2px;
+    color: #999;
+}
+
+.layui-card.layui-card-open{
+    margin-bottom: 0;
+}
+
+.x-show {
+    cursor: pointer;
+}
+
+.layui-chapter{
+    height: auto; 
+    padding:0;
+    background-color: #F2F2F2;
+}
+
+.layui-chapter-hr{
+    padding-left: 15px;
+    padding-right: 10px;
+    padding-top: 6px;
+}
+
+.layui-chapter-checkbox{
+    padding: 6px 10px;
+}
+
+.layui-card-status li{
+    position: relative;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 10px 0 6px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.layui-card-status li.cur{
+    background-color: #F6FBFF;
+}
+
+.layui-card-status li h4 {
+    color:#333;
+    padding-bottom: 6px;
+    padding-left: 15px;
+    padding-right: 10px;
+    overflow: hidden;
+}
+
+.layui-card-status li p{
+    color: #999;
+    padding-left: 15px;
+    padding-right: 10px;
+    line-height: 22px;
+    font-size: 12px!important;
+}
+
+.layui-card-status li:hover .layuiadmin-reply{display:block}
+
+.layui-card-status .layuiadmin-reply {
+    display: none;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+}
+
+.box-scroll {
+    padding:0;
+    height: 754px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.layui-input-block .setfont {
+    color: #999;
+    font-size: 12px;
+    line-height: 20px;
+    position: absolute;
+    right: 1%;
+    bottom: -18px;
+}
+
+.openlist-container {
+    background: #fff;
+    border: 1px solid transparent;
+}
+.openlist-container img {
+    width: 100%;
+    height: 140px;
+}
+.openlist-container .cmdlist-text {
+    padding: 10px;
+}
+.openlist-container .cmdlist-text .info{
+    font-size: 12px;
+    height: 20px;
+}
+
+
+.cmdlist-container {
+    position: relative;
+    background: #fff;
+    padding: 10px;
+    top: 0;
+    box-shadow: 0px 3px 6px #eee;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -ms-transition: all .25s;
+    -o-transition: all .25s;
+    transition: all .25s;
+}
+.cmdlist-container:hover{
+    position: relative;
+    top:-5px;box-shadow:0px 5px 10px 5px #e1dddd;
+}
+.cmdlist-container div.mex-box>a:first-child{
+    display: inline-block;
+    width: 100%;
+}
+.cmdlist-container div a:first-child img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.cmdlist-container .mex-box{
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+.cmdlist-container .mex-box .btngroup {
+    background: rgba(255,255,255,.7);
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding-top: 5px!important;
+    padding-bottom: 5px!important;
+    width: 100%!important;
+    text-align: center;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -ms-transition: all .25s;
+    -o-transition: all .25s;
+    transition: all .25s;
+}
+.cmdlist-container:hover .mex-box .btngroup{opacity:1;}
+.cmdlist-container .mex-box .btngroup a{
+    margin: 5px 15px;
+    padding-right: 20px!important;
+    padding-left: 20px!important;
+}
+.cmdlist-text {
+    padding: 20px;
+}
+.cmdlist-text .info {
+    height: 30px;
+    font-size: 15px;
+    line-height: 20px;
+    width: 100%;
+    overflow: hidden;
+    color: #64686a;
+    margin-bottom: 10px;
+}
+.cmdlist-text .price {
+    font-size: 14px;
+}
+.cmdlist-text .price b {
+    float: left;
+    margin-right: 10px;
+}
+.cmdlist-text .price b span{
+    color: #ff0000;
+}
+.cmdlist-text .widget-title{
+    float: left;
+    font-size: 12px;
+    color: #46be8a !important;
+    line-height: 20px;
+}
+.cmdlist-text .flow {
+    text-align: right;
+    float: right;
+}
+.cmdlist-container .thumb {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    float: left;
+}
+.cmdlist-container .thumb {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    float: left;
+}
+.cmdlist-container .thumb img.cover-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.cmdlist-container .text {
+    padding-left: 20px;
+    display: table-cell;
+    vertical-align: top;
+}
+.cmdlist-container .text .layadmin-title{
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.cmdlist-container .text p{
+    height: 72px;
+    line-height: 24px;
+    color: #999;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+.cmdlist-container .text .btngroup {
+    background: rgba(255,255,255,.7);
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding-top: 5px!important;
+    padding-bottom: 5px!important;
+    width: 100%!important;
+    text-align: center;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -ms-transition: all .25s;
+    -o-transition: all .25s;
+    transition: all .25s;
+}
+.cmdlist-container:hover .text .btngroup{opacity:1;}
+.cmdlist-container .text .btngroup a{
+    margin: 5px 15px;
+    padding-right: 20px!important;
+    padding-left: 20px!important;
+}
+.cmdlist-container .text-addons{
+    padding:0;
+    padding-top:20px; 
+}
+.upzt{
+    font-size:20px;
+    margin-right: 5px;
+}
+
+.layui-form-label {
+    width: 100px;
+}
+.layui-input-block {
+    margin-left: 130px;
+}
+.position .thumb{
+    width:100%;
+    height: 200px;
+    float:none;
+}
+.position .text p{
+    height: 24px;
+}
+
+/*联盟*/
+
+.layadmin-homepage-shadow {
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    background-color: #fff;
+    border-radius: 0;
+    border: 1px solid #e7ecf3;
+}
+.layadmin-homepage-panel {
+    margin-bottom: 15px;
+}
+.layadmin-homepage-panel .text-center, .layadmin-maillist-fluid .layadmin-text-center {
+    text-align: center;
+}
+.layadmin-homepage-pad-ver {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.layadmin-homepage-pad-img {
+    box-shadow: 0 0 0 4px rgba(0,0,0,.1);
+    border-radius: 50%;
+}
+.layadmin-homepage-font {
+    font-weight: 600;
+    color: #2b425b;
+    font-size: 1.2em;
+}
+.widgets-body-box {
+    background: #fff;
+    padding-bottom: 25px;
+}
+.widgets-info-box {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.list-item-sm {
+    padding: 5px 15px;
+    color: #2b425b;
+    font-size: 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.list-item-sm span em{
+    font-size: 10px;
+    padding-left: 5px;
+    font-style:normal;
+}
+.layui-card .layui-table-view {
+    margin: 0;
+}
+.larryms-order-demo thead tr th {
+    background: rgba(243,247,249,.5);
+    border-bottom: 1px solid #e4eaec;
+    font-weight: 500;
+    color: #526069;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+}
+.larryms-order-demo tbody tr {
+    border-bottom: 1px solid #e4eaec;
+}
+.larryms-order-demo tbody tr td {
+    font-size: 14px;
+    padding: 10px 8px;
+    box-sizing: border-box;
+    height: 70px;
+    text-align: center;
+}
+.layui-class-tree ul{
+	border-top: 1px dashed #e6e6e6;
+}
+.layui-class-tree li{
+	padding: 5px 10px;
+}
+.layui-class-tree li a {
+    padding-bottom: 5px;
+    line-height: 30px;
+    font-size: 14px;
+    margin: 0;
+    color: #333;
+    display: inline-block;
+}
+.layui-class-tree li ul {
+    padding-left: 20px;
+}
+
+.layui-class-tree li ul li {
+	display: inline-block;
+	vertical-align: top;
+}
+
+/*分页*/
+
+.page{
+    margin-top: 20px;
+    text-align: center;
+
+}
+.page a{
+    display: inline-block;
+    background: #fff url() 0 0 no-repeat;
+    color: #888;
+    padding: 10px;
+    min-width: 15px;
+    border: 1px solid #E2E2E2;
+
+}
+.page span{
+    display: inline-block;
+    padding: 10px;
+    min-width: 15px;
+    border: 1px solid #E2E2E2;
+}
+.page span.current{
+    display: inline-block;
+    background: #009688 url() 0 0 no-repeat;
+    color: #fff;
+    padding: 10px;
+    min-width: 15px;
+    border: 1px solid #009688;
+}
+.page .pagination li{
+    display: inline-block;
+    margin-right: 5px;
+    text-align: center;
+    line-height:normal;
+}
+.page .pagination li.active span{
+    background: #009688 url() 0 0 no-repeat;
+    color: #fff;
+    border: 1px solid #009688;
+}
+
+/*表单组*/
+.input-group .layui-input{
+    float: left;
+    margin-left: -1px;
+    width: auto;
+}
+.input-group .layui-btn{
+    float: left;
+    border-radius: 0 2px 2px 0;
+    margin-left: -1px;
+    width: auto;
+}
+
+.layui-layout-admin .layui-input-block{
+    min-height: 80px;
+}
+
+.layui-layout-admin .layui-footer {
+    background-color: #fff;
+    left: 0;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 -1px 2px 0 rgba(0,0,0,.05);
+    transition: all .3s;
+    -webkit-transition: all .3s;
+}
+.layadmin-comment-shadow {
+    padding: 15px 20px 10px;
+    overflow: hidden;
+    border-bottom: 1px solid #EEE;
+}
+.layadmin-comment-shadow .media-left {
+    display: block;
+    float: left;
+    vertical-align: top;
+    padding-right: 10px;
+}
+.layadmin-comment-shadow .media-body {
+    width: auto;
+    display: block;
+    overflow: hidden;
+}
+.layadmin-comment-shadow .media-body .pad-btm p:first-child {
+    padding-bottom: 5px;
+}
+.layadmin-comment-shadow  .media-body .pad-btm .fontColor a {
+    font-weight: 600;
+    color: #337ab7;
+}
+.layadmin-comment-shadow .media-body .pad-btm .fontColor span {
+    color: #758697;
+    font-weight: 600;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.layadmin-comment-shadow .media-body .min-font {
+    margin-bottom: 5px;
+}
+.layadmin-comment-shadow .media-body .min-font .layui-breadcrumb a {
+    font-size: 11px;
+}
+.layui-breadcrumb a {
+    color: #999!important;
+}
+.layadmin-comment-shadow  .media-body .media .media-right {
+    float: right;
+    padding-top: 5px;
+}
+.layadmin-comment-shadow .media-body .media .list-inline li {
+    padding: 0 5px;
+    display: inline-block;
+}
+.layadmin-comment-shadow .media-left img {
+    border-radius: 50%;
+}
+.layadmin-comment-shadow .media-body .media-list {
+    padding-top: 5px;
+    margin-top: 40px;
+    border-top: 1px solid #e9e9e9;
+}
+.layadmin-comment-shadow .media-body .media-list .media-item {
+    padding-bottom: 15px;
+    margin-top: 15px;
+}
+.layadmin-comment-shadow .media-body .media-list .media-item-left {
+    display: inline-block;
+    padding-right: 10px;
+    margin-bottom: 5px;
+    display: block;
+    float: left;
+}
+.layadmin-comment-shadow .img-xs {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+.layadmin-comment-shadow .media-body .media-list .media-text {
+    overflow: hidden;
+    width: auto;
+    display: block;
+}
+.layadmin-comment-shadow .media-body .media-list .media-text  mdall{
+    font-size: 11px;
+    color: #999!important;
+}
+.layadmin-comment-shadow .media-body .media-list .media-text  mdall a {
+    font-size: 11px;
+    color: #999!important;
+    font-weight:normal;
+}
+.layadmin-comment-shadow .media-body .media-list .media-text  mdall span[lay-separator] {
+    margin: 0 10px;
+    color: #999;
+    font-weight:normal;
+}
+
+.layadmin-comment-shadow .media-body .media-list .media-text a {
+    margin-right: 10px;
+    font-weight: 600;
+    display: inline-block;
+}
+.layadmin-comment-shadow .media-body .media-list .media-text div:nth-child(2) {
+    margin-top: 5px;
+}
+
+.layadmin-comment-shadow .media-body .media-list .media {
+    display:block;
+}
+
+.layuiadmin-card-text {
+    background-color: #f8f8f8;
+    color: #777;
+    padding: 24px;
+    text-align: center;
+}
+
+.layuiadmin-card-text .layui-text-top {
+    padding-bottom: 10px;
+}
+.layuiadmin-card-text .layui-text-top i {
+    font-size: 45px;
+    line-height: 45px;
+    font-weight: 400;
+    font-style: normal;
+    display: inline-block;
+    vertical-align: top;
+    speak: none;
+    padding-top: 10px;
+    margin-bottom: 5px;
+}
+
+.layuiadmin-card-text .layui-text-top a {
+    line-height: 24px;
+    font-size: 16px;
+    vertical-align: top;
+}
+.layuiadmin-card-text .layui-text-center {
+    height: 36px;
+    line-height: 18px;
+    overflow: hidden;
+}
+.layuiadmin-card-text .layui-text-bottom {
+    position: relative;
+}
+.layuiadmin-card-text p.layuiadmin-big-font {
+    font-size: 36px;
+    color: #666;
+    line-height: 36px;
+    padding: 5px 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+}
+.layadmin-takerates{
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+.layadmin-takerates .layui-progress h3 {
+    position: absolute;
+    right: 0;
+    top: -35px;
+    color: #999;
+    font-size: 14px;
+}
+.layadmin-takerates .layui-progress-text {
+    top: -35px;
+    line-height: 26px;
+    font-size: 26px;
+}
+.layui-table .layui-form-checkbox[lay-skin=primary]{
+    padding-left: 0;
+}
+
+.tags .layui-badge i{
+    font-size: 12px;
+}
+
+.tags .layui-badge i:hover{
+    background-color:#fff;color:#000;cursor:pointer;
+}
+
+@media screen and (max-width: 768px){
+    .container .logo a{
+        width: 140px;
+    }
+    .left-nav{
+        left: -220px;
+    }
+    .page-content{
+        left: 0px;
+    }
+    .page-content .layui-tab-content .layui-tab-item{
+        -webkit-overflow-scrolling: touch; 
+        overflow-y: scroll; 
+    }
+}
+

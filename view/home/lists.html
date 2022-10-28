@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	    <meta name="keywords" content="{$list_keywords}">
+	    <meta name="description" content="{$list_description}">
+	    <title>{$list_title}</title>
+	    <link rel="stylesheet" href="{$home_tplpath}css/style.css" type="text/css"/>
+    </head>
+	<body>
+		{include file="/header" /}
+		<div class="body-bg">
+		    <div class="wrap">
+		        <div class="containerbox">
+		            <div class="block10"></div>
+		        	<div class="wrap1200 ranklist">	        	
+		        		<div class="leftbar fl">
+		        			<div class="selectlist">
+		        				<div class="select selchannel">
+		        					<span class="tname">频道</span>
+		        					<ul class="textlist">
+		        						{filter id="type" name="type" type="0"}
+		        						<li {eq name="type['current']" value="1"}class="on"{/eq}>
+		        							<a href="{$type['url']}">{$type['title']}</a>
+		        						</li>
+		        						{/filter}
+		        					</ul>
+		        				</div>
+		        				{notempty name="cid"}
+		        				<div class="select selstyle">
+		        					<span class="tname">分类</span>
+		        					<ul class="textlist">
+		        						{filter id="type" name="type" cid="$cid"}
+		        						<li {eq name="type['current']" value="1"}class="on"{/eq}>
+		        							<a href="{$type['url']}">{$type['title']}</a>
+		        						</li>
+		        						{/filter}
+		        					</ul>
+		        				</div>
+		        				{/notempty}
+		        				<div class="select selnum">
+		        					<span class="tname">字数</span>
+		        					<ul class="textlist">
+		        						{filter id="size" name="size"}
+		        						<li {eq name="size['current']" value="1"}class="on"{/eq}>
+		        							<a href="{$size['url']}">{$size['title']}</a>
+		        						</li>
+		        						{/filter}
+		        					</ul>
+		        				</div>
+		        				<div class="select selstatus">
+		        					<span class="tname">状态</span>
+		        					<ul class="textlist">
+		        						{filter id="serialize" name="serialize"}
+		        						<li {eq name="serialize['current']" value="1"}class="on"{/eq}>
+		        							<a href="{$serialize['url']}">{$serialize['title']}</a>
+		        						</li>
+		        						{/filter}
+		        					</ul>
+		        				</div>
+		        				<div class="select seltime">
+		        					<span class="tname">更新时间</span>
+		        					<ul class="textlist">
+		        						{filter id="update" name="update"}
+		        						<li {eq name="update['current']" value="1"}class="on"{/eq}>
+		        							<a href="{$update['url']}">{$update['title']}</a>
+		        						</li>
+		        						{/filter}
+		        					</ul>
+		        				</div>
+		        			</div>
+		        		</div>
+
+		        		<div class="right-cont-box fr rankdata">
+		        			<div class="comment-r-menu">
+		        				<ul class="fl comment-status">
+		        					<li class="human">
+		        						<a href="javascript:;" class="firstname downj" id="human">总人气</a>
+		        						<div class="tipshover" style="display: none;">
+		        							<a href="{:url('home/lists/lists',['id'=>$Request.param.id,'size'=>$Request.param.size,'serialize'=>$Request.param.serialize,'update'=>$Request.param.update,'order'=>'hits desc'])}" {eq name='Request.param.order' value='hits+desc'}class="cur"{/eq}>总人气</a>
+		        							<a href="{:url('home/lists/lists',['id'=>$Request.param.id,'size'=>$Request.param.size,'serialize'=>$Request.param.serialize,'update'=>$Request.param.update,'order'=>'hits_week desc'])}" {eq name='Request.param.order' value='hits_week+desc'}class="cur"{/eq}>周人气</a>
+		        							<a href="{:url('home/lists/lists',['id'=>$Request.param.id,'size'=>$Request.param.size,'serialize'=>$Request.param.serialize,'update'=>$Request.param.update,'order'=>'hits_month desc'])}" {eq name='Request.param.order' value='hits_month+desc'}class="cur"{/eq}>月人气</a>
+		        						</div>
+		        					</li>
+		        					<li class="orderOther {if $Request.param.order=='id+desc' or $Request.param.order==''}cur{/if}">
+		        						<a href="{:url('home/lists/lists',['id'=>$Request.param.id,'size'=>$Request.param.size,'serialize'=>$Request.param.serialize,'update'=>$Request.param.update,'order'=>'id desc'])}" class="r-cream-btn">最新添加</a>
+		        					</li>
+		        					<li class="orderOther {eq name='Request.param.order' value='update_time+desc'}cur{/eq}">
+		        						<a href="{:url('home/lists/lists',['id'=>$Request.param.id,'size'=>$Request.param.size,'serialize'=>$Request.param.serialize,'update'=>$Request.param.update,'order'=>'update_time desc'])}" class="r-cream-btn">更新时间</a>
+		        					</li>
+		        					<li class="orderOther {eq name='Request.param.order' value='recommend+desc'}cur{/eq}">
+		        						<a href="{:url('home/lists/lists',['id'=>$Request.param.id,'size'=>$Request.param.size,'serialize'=>$Request.param.serialize,'update'=>$Request.param.update,'order'=>'recommend desc'])}" class="r-all-btn">推荐票</a>
+		        					</li>
+		        					<li class="orderOther {eq name='Request.param.order' value='word+desc'}cur{/eq}">
+		        						<a href="{:url('home/lists/lists',['id'=>$Request.param.id,'size'=>$Request.param.size,'serialize'=>$Request.param.serialize,'update'=>$Request.param.update,'order'=>'word desc'])}" class="r-all-btn">字数</a>
+		        					</li>
+		        				</ul>
+		        			</div>
+		        			<div class="rankdatacont">
+		        				<div class="tabsbox1">
+		        					<div class="rankday">
+		        						<div class="tabsday-cont">
+		        							<div class="tab-cont-1 secd-rank-list">
+		        								<div class="listboxw">
+		        									{novel id="novel" limit="20" order="id desc" page="1"}
+		        									<dl>
+		        										<dt>
+		        											<a href="{$novel['url']}" target="_blank">
+		        												<img src="" class="lazyimg" data-original="{$novel['pic']}"></a>
+		        										</dt>
+		        										<dd>
+		        											<a href="{$novel['url']}" class="bigpic-book-name" target="_blank">{$novel['title']}</a>
+		        											<p>
+		        												<a href="{$novel['author_url']}" target="_blank">{$novel['author']}</a>
+		        												|
+		        												<a href="{$novel['curl']}" target="_blank">{$novel['ctitle']}</a>
+		        												| {$novel['serialize_text']}
+		        											</p>
+		        											<p class="big-book-info">{$novel['content']|raw|strip_tags}</p>
+		        											<p>
+		        												<span href="javascript:;" target="_blank">{$novel['word_million']} 万字 |</span>
+		        												<span class="red">{$novel['time']|time_format}更新</span>
+		        											</p>
+		        										</dd>
+		        									</dl>
+		        									{if $i%2 == 0 }
+														<div class="line"></div>
+		        									{/if}
+		        									{/novel}
+		        								</div>
+		        							</div>
+		        						</div>
+		        					</div>
+		        				</div>
+		        				<div class="pages_bottom" style="display: block;">
+		        					<ul>
+		        						{novel_page /}
+		        					</ul>
+		        				</div>
+		        			</div>
+		        		</div>
+		        	</div>
+		        </div>
+		    </div>
+		</div>
+		<div class="block20"></div>
+		{include file="/footer" /}
+	</body>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.lazyload.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.mouseDelay.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/global.js"></script>
+</html>

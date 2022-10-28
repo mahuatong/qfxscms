@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>{$web['meta_title']}</title>
+    	<link href="{$user_tplpath}css/style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="header">
+	        <div class="box-center">
+	            <div class="logo cf"><a href="{$web['url']}"><img src="{$web['logo']}"></a><em></em><span class="lang">用户登录</span></div>
+	        </div>
+	    </div>
+	    <div class="box-center">
+	    	<div class="login-area-wrap cf">
+	    		<div class="login-op-img fl">
+	    			<img src="{$user_tplpath}images/loginBg.jpg">
+	    		</div>
+	    		<!-- start 登录区 --> 
+	    		<div class="login-wrap type-20 fl">
+					<div class="login-box">
+						<div class="input-mode">
+                            <div class="error-tip hidden"></div>
+                            <dl>
+                                <dd class="">
+                                	<em class="iconfont">&#xe64a;</em>
+                                	<input name="username" type="text" placeholder="用户名" id="username">
+                                </dd>
+                                <dd class="">
+                                	<em class="iconfont">&#xe60c;</em>
+                                	<input name="password" type="password" placeholder="密码" id="password">
+                                </dd>
+                                {eq name="Think.config.web.user_login_verify" value="1"}
+                                <dd class="code-input" id="dvCode">
+                                	<em class="iconfont">&#xe623;</em>
+                                	<input name="code" type="text" id="code" placeholder="请输入验证码">
+                                    <img src="{:url('user/user/verify')}" id="imgCode" alt="验证码">
+                                    <div class="code-tip"><cite></cite><p>点击图片刷新</p></div>
+                                </dd>
+                                {/eq}
+                            </dl>
+                            <!-- start 登录操作 -->
+                            <div class="login-common-wrap">
+                                <div class="auto-login-box cf">
+                                    <div class="link fr">
+                                        <a href="{:url('forgetpwd')}" target="_blank">忘记密码</a>
+                                        <em>|</em>
+                                        <a href="{:url('reg')}">免费注册</a>
+                                    </div>
+                                    <input type="checkbox" id="autologin" name="autologin">
+                                    <label for="autologin" class="ui-checkbox"></label><label for="autologin">自动登录</label>
+                                </div>
+                                <a class="blue-btn go-login btnLogin login-button" href="{:url('login')}">登 录</a>
+                            </div>
+                            <!-- end 登录操作 -->
+                        </div>
+						<div class="common-html-wrap">
+                            <div class="reg-wrap">
+                            	{oauth_login id="login"}
+                                <a href="{$login['url']}" title="{$login['title']}"><img src="{$login['pic']}"></a>
+                                {/oauth_login}
+                            </div>
+                        </div>
+					</div>
+	    		</div>
+	    		<!-- end 登录区 -->	    
+	    	</div> 
+	    </div>
+	    <div class="footer-wrap">
+	    	<div class="footer">
+	    		<div class="copy-right">
+	    			<p>{$web['icp']}</p>
+	    			<p>
+	    				Copyright © 2018 All Rights Reserved
+	    				<a href="{$web['url']}" target="_blank">{$web['meta_title']}</a>版权所有
+	    			</p>
+	    		</div>
+	    	</div>
+	    </div>
+	</body>
+	<script type="text/javascript" src="{$user_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/login.js"></script>
+	<script type="text/javascript">
+		var login = new login();
+	</script>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	    <meta name="keywords" content="{$list_keywords}">
+	    <meta name="description" content="{$list_description}">
+	    <title>{$list_title}</title>
+	    <link rel="stylesheet" href="{$home_tplpath}css/style.css" type="text/css"/>
+    </head>
+	<body>
+		{include file="/header" /}
+		<div class="body-bg">
+		    <div class="wrap">
+		        <div class="containerbox">
+		            <div class="block10"></div>
+		        	<div class="wrap1200 ranklist">	        	
+		        		<div class="leftbarlist fl">
+						    <ul>
+						        <li class="on"><a href="{:url('home/lists/index',['id'=>41])}" class="alicon">全部榜单</a></li>
+						        <li><a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_day'])}">点击日榜</a></li>
+						        <li><a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_week'])}">点击周榜</a></li>
+						        <li><a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_month'])}">点击月榜</a></li>
+						        <li><a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits'])}">点击总榜</a></li>
+						        <li><a href="{:url('home/other/index',['tpl'=>'rank_hits','newbook'=>'1'])}">新书榜</a></li>
+						        <li><a href="{:url('home/other/index',['tpl'=>'rank_hits','over'=>'1'])}">完结榜</a></li>
+						    </ul>
+						</div>
+
+		        		<div class="rightcont fr">
+					        <div class="rank-list-w">
+					            <span class="titmenu">点击日榜</span>
+					            <div class="tabs-cont-r">
+					                <!-- 点击榜 日 -->
+					                <ul class="rank-1">
+					                	{novel id="novel" limit="10" order="hits_day desc"}
+				            			{if $i==1}
+				            			<li class="top topred">
+				            				<span class="num">{$i}</span>
+				            				<dl class="book-block">
+				            					<dt>
+				            						<a href="{$novel['url']}" target="_blank">
+				            							<img class="lazyimg" data-original="{$novel['pic']}" src="">
+				            						</a>
+				            					</dt>
+				            					<dd>
+				            						<a href="{$novel['url']}" target="_blank" class="book-name">{$novel['title']}</a>
+				            						<span class="book-author">
+				            							<a href="{$novel['author_url']}" target="_blank">{$novel['author']}</a>
+				            						</span>
+				            						<span class="clicknum">{$novel['hits']}点击</span>
+				            					</dd>
+				            				</dl>
+				            			</li>
+				            			{else/}
+				            			<li class="topred">
+				            				<span class="num">{$i}</span>
+				            				<a class="book-list-f" href="{$novel['url']}" target="_blank">{$novel['title']}</a>
+				            			</li>
+				            			{/if}
+				            			{/novel}
+					                </ul>
+					            </div>
+					            <a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_day'])}" target="_blank" class="more">查看更多&gt;&gt;</a>
+					        </div>
+
+					        <div class="rank-list-w">
+					            <span class="titmenu">点击周榜</span>
+					            <div class="tabs-cont-r">
+					                <ul class="rank-1">
+					                    {novel id="novel" limit="10" order="hits_week desc"}
+				            			{if $i==1}
+				            			<li class="top topred">
+				            				<span class="num">{$i}</span>
+				            				<dl class="book-block">
+				            					<dt>
+				            						<a href="{$novel['url']}" target="_blank">
+				            							<img class="lazyimg" data-original="{$novel['pic']}" src="">
+				            						</a>
+				            					</dt>
+				            					<dd>
+				            						<a href="{$novel['url']}" target="_blank" class="book-name">{$novel['title']}</a>
+				            						<span class="book-author">
+				            							<a href="{$novel['author_url']}" target="_blank">{$novel['author']}</a>
+				            						</span>
+				            						<span class="clicknum">{$novel['hits']}点击</span>
+				            					</dd>
+				            				</dl>
+				            			</li>
+				            			{else/}
+				            			<li class="topred">
+				            				<span class="num">{$i}</span>
+				            				<a class="book-list-f" href="{$novel['url']}" target="_blank">{$novel['title']}</a>
+				            			</li>
+				            			{/if}
+				            			{/novel}
+					                </ul>
+					            </div>
+					            <a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_week'])}" target="_blank" class="more">查看更多&gt;&gt;</a>
+					        </div>
+					        <div class="rank-list-w">
+					            <span class="titmenu">点击月榜</span>
+					            <div class="tabs-cont-r">
+					                <ul class="rank-1">
+					                    {novel id="novel" limit="10" order="hits_month desc"}
+				            			{if $i==1}
+				            			<li class="top topred">
+				            				<span class="num">{$i}</span>
+				            				<dl class="book-block">
+				            					<dt>
+				            						<a href="{$novel['url']}" target="_blank">
+				            							<img class="lazyimg" data-original="{$novel['pic']}" src="">
+				            						</a>
+				            					</dt>
+				            					<dd>
+				            						<a href="{$novel['url']}" target="_blank" class="book-name">{$novel['title']}</a>
+				            						<span class="book-author">
+				            							<a href="{$novel['author_url']}" target="_blank">{$novel['author']}</a>
+				            						</span>
+				            						<span class="clicknum">{$novel['hits']}点击</span>
+				            					</dd>
+				            				</dl>
+				            			</li>
+				            			{else/}
+				            			<li class="topred">
+				            				<span class="num">{$i}</span>
+				            				<a class="book-list-f" href="{$novel['url']}" target="_blank">{$novel['title']}</a>
+				            			</li>
+				            			{/if}
+				            			{/novel}
+					                </ul>
+					            </div>
+					            <a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_month'])}" target="_blank" class="more">查看更多&gt;&gt;</a>
+					        </div>
+					        <div class="rank-list-w">
+					            <span class="titmenu">点击总榜</span>
+					            <div class="tabs-cont-r">
+					                <ul class="rank-1">
+					                    {novel id="novel" limit="10" order="hits desc"}
+				            			{if $i==1}
+				            			<li class="top topred">
+				            				<span class="num">{$i}</span>
+				            				<dl class="book-block">
+				            					<dt>
+				            						<a href="{$novel['url']}" target="_blank">
+				            							<img class="lazyimg" data-original="{$novel['pic']}" src="">
+				            						</a>
+				            					</dt>
+				            					<dd>
+				            						<a href="{$novel['url']}" target="_blank" class="book-name">{$novel['title']}</a>
+				            						<span class="book-author">
+				            							<a href="{$novel['author_url']}" target="_blank">{$novel['author']}</a>
+				            						</span>
+				            						<span class="clicknum">{$novel['hits']}点击</span>
+				            					</dd>
+				            				</dl>
+				            			</li>
+				            			{else/}
+				            			<li class="topred">
+				            				<span class="num">{$i}</span>
+				            				<a class="book-list-f" href="{$novel['url']}" target="_blank">{$novel['title']}</a>
+				            			</li>
+				            			{/if}
+				            			{/novel}
+					                </ul>
+					            </div>
+					            <a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits'])}" target="_blank" class="more">查看更多&gt;&gt;</a>
+					        </div>
+					        <div class="rank-list-w">
+					            <span class="titmenu">新书榜</span>
+					            <div class="tabs-cont-r">
+					                <ul class="rank-1">
+					                    {novel id="novel" newbook="1" limit="10" order="hits desc"}
+				            			{if $i==1}
+				            			<li class="top topred">
+				            				<span class="num">{$i}</span>
+				            				<dl class="book-block">
+				            					<dt>
+				            						<a href="{$novel['url']}" target="_blank">
+				            							<img class="lazyimg" data-original="{$novel['pic']}" src="">
+				            						</a>
+				            					</dt>
+				            					<dd>
+				            						<a href="{$novel['url']}" target="_blank" class="book-name">{$novel['title']}</a>
+				            						<span class="book-author">
+				            							<a href="{$novel['author_url']}" target="_blank">{$novel['author']}</a>
+				            						</span>
+				            						<span class="clicknum">{$novel['hits']}点击</span>
+				            					</dd>
+				            				</dl>
+				            			</li>
+				            			{else/}
+				            			<li class="topred">
+				            				<span class="num">{$i}</span>
+				            				<a class="book-list-f" href="{$novel['url']}" target="_blank">{$novel['title']}</a>
+				            			</li>
+				            			{/if}
+				            			{/novel}
+					                </ul>
+					            </div>
+					            <a href="{:url('home/other/index',['tpl'=>'rank_hits','newbook'=>'1'])}" target="_blank" class="more">查看更多&gt;&gt;</a>
+					        </div>
+					        <div class="rank-list-w">
+					            <span class="titmenu">完结榜</span>
+					            <div class="tabs-cont-r">
+					                <ul class="rank-1">
+					                    {novel id="novel" over="1" limit="10" order="hits desc"}
+				            			{if $i==1}
+				            			<li class="top topred">
+				            				<span class="num">{$i}</span>
+				            				<dl class="book-block">
+				            					<dt>
+				            						<a href="{$novel['url']}" target="_blank">
+				            							<img class="lazyimg" data-original="{$novel['pic']}" src="">
+				            						</a>
+				            					</dt>
+				            					<dd>
+				            						<a href="{$novel['url']}" target="_blank" class="book-name">{$novel['title']}</a>
+				            						<span class="book-author">
+				            							<a href="{$novel['author_url']}" target="_blank">{$novel['author']}</a>
+				            						</span>
+				            						<span class="clicknum">{$novel['hits']}点击</span>
+				            					</dd>
+				            				</dl>
+				            			</li>
+				            			{else/}
+				            			<li class="topred">
+				            				<span class="num">{$i}</span>
+				            				<a class="book-list-f" href="{$novel['url']}" target="_blank">{$novel['title']}</a>
+				            			</li>
+				            			{/if}
+				            			{/novel}
+					                </ul>
+					            </div>
+					            <a href="{:url('home/other/index',['tpl'=>'rank_hits','over'=>'1'])}" target="_blank" class="more">查看更多&gt;&gt;</a>
+					        </div>
+					    </div>
+		        	</div>
+		        </div>
+		    </div>
+		</div>
+		<div class="block20"></div>
+		{include file="/footer" /}
+	</body>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.lazyload.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.mouseDelay.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/global.js"></script>
+</html>

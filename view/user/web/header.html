@@ -1,0 +1,46 @@
+<div class="mod-header">
+	<div class="ibody">
+		<!--搜索部分 start-->	
+		<div class="wrap1200 logo iMod">
+			<a href="{:url('user/index/index')}" class="fl imotie">用户中心</a>
+			<ul class="iUl">
+				<li>
+					<a href="{:url('home/index/index')}">首页</a>
+				</li>
+				<li>
+					<a href="{:url('user/index/index')}">个人中心</a>
+				</li>
+				<li class="accounts">
+					<a href="javaScript:;">账户设置</a>
+					<p style="display: none;">
+						<a href="{:url('user/user/info')}">个人信息</a>
+						<a href="{:url('user/user/password')}">修改密码</a>
+					</p>
+				</li>
+			</ul>
+			<div class="searchbox">
+				<form action="{:url('home/search/index')}" method="get">
+				<div class="searchbox-inner">
+					<input type="text" name="keyword" placeholder="找书" class="searchinput" value="">
+					<i class="search-icon"></i>
+					<input type="submit" value="" class="searchbtn">
+				</div>
+				</form>
+			</div>
+			<div class="login">
+                <div class="login_after" id="mod_login_after">
+                    <span class="yh">
+                        <img src="{$user['headimgurl']}" alt="{$user['username']}">
+                        <a href="{:url('user/index/index')}">{$user['username']}</a>
+                    </span>
+                    <ul class="xiala">
+                        <li><i class="iconfont">&#xe605;</i><a href="{:url('user/bookshelf/index')}">我的书架</a></li>
+                        <li><i class="iconfont">&#xe64a;</i><a href="{:url('user/index/index')}">个人中心</a></li>
+                        <li><i class="iconfont">&#xe6a1;</i><a href="{:url('user/user/logout')}">退出</a></li>
+                    </ul>
+                </div>
+            </div>
+		</div>
+		<!--搜索部分 end-->		
+	</div>
+</div>

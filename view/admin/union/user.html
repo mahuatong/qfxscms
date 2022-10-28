@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{$meta_title}-清风小说CMS</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" href="__ADMIN__/css/admin.css">
+    </head>
+    <body>
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md3">
+                <div class="layadmin-homepage-panel layadmin-homepage-shadow">
+                    <div class="layui-card text-center">
+                        <div class="layui-card-body">
+                            <div class="layadmin-homepage-pad-ver">
+                                <img class="layadmin-homepage-pad-img" src="{$user['headimgurl']}" width="96" height="96"></div>
+                            <h4 class="layadmin-homepage-font">{$user['username']}</h4>
+                        </div>
+                    </div>
+                    <div class="widgets-body-box text-center">
+                        <ul class="text-left widgets-info-box">
+                            <li class="list-item-sm">
+                                <span>赠送积分<em style="color: red">不能出售</em></span>
+                                <label class="layui-badge-rim rf">{$user['gift_integral']}</label>
+                            </li>
+                            <li class="list-item-sm">
+                                <span>积分</span>
+                                <label class="layui-badge layui-bg-blue rf">{$user['integral']}</label>
+                            </li>
+                            <li class="list-item-sm">
+                                <span>余额</span>
+                                <label class="layui-badge rf">{:number_format($user['price'],2)} 元</label>
+                            </li>
+                        </ul>
+                        <div class="widgets-info-box layui-btn-container">
+                            <button onclick="admin_show('修改密码','{:url('admin/union/user_passw')}',500,275)" class="layui-btn layui-btn-fluid">修改密码</button>
+                            <button onclick="admin_show('修改域名','{:url('admin/union/user_domain')}',500,325)" class="layui-btn layui-btn-normal layui-btn-fluid">修改域名</button>
+                            <button class="layui-btn layui-btn-danger layui-btn-fluid ajax-get" url="{:url('admin/union/user_logout')}">退出联盟登录</button>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="layui-col-md9">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        用户数据
+                    </div>
+                    <div class="layui-card-body">
+                        <div class="layui-row layui-col-space10">
+                            <div class="layui-col-xs12 layui-col-sm4">
+                                <div class="layuiadmin-card-text">
+                                    <div class="layui-text-top">
+                                        <i class="layui-icon layui-icon-form"></i>
+                                        <p>今日数据消费</p>
+                                        <p class="layuiadmin-big-font">{$user_data['data']}</p>
+                                    </div>
+                                    <p class="layui-text-center">今日数据消费多少积分</p>
+                                    <p class="layui-text-bottom">
+                                        <button onclick="admin_show('数据消费','{:url('admin/union/data_log')}',800,600)" class="layui-btn layui-btn-normal">查看记录</button>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="layui-col-xs12 layui-col-sm4">
+                                <div class="layuiadmin-card-text">
+                                    <div class="layui-text-top">
+                                        <i class="layui-icon layui-icon-cart-simple"></i>
+                                        <p>市场消费</p>
+                                        <p class="layuiadmin-big-font">{$user_data['market']}</p>
+                                    </div>
+                                    <p class="layui-text-center">市场消费总计</p>
+                                    <p class="layui-text-bottom">
+                                        <button onclick="admin_show('数据消费','{:url('admin/union/market_log')}',800,600)" class="layui-btn layui-btn-normal">查看记录</button>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="layui-col-xs12 layui-col-sm4">
+                                <div class="layuiadmin-card-text">
+                                    <div class="layui-text-top">
+                                        <i class="layui-icon layui-icon-rmb"></i>
+                                        <p>余额</p>
+                                        <p class="layuiadmin-big-font">{:number_format($user['price'],2)}</p>
+                                    </div>
+                                    <p class="layui-text-center">账户余额大于50元可以提现</p>
+                                    <p class="layui-text-bottom">
+                                        <button onclick="admin_show('提现','{:url('admin/union_cash/add')}',600,330)" class="layui-btn layui-btn-normal">提现</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="__STATIC__/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__ADMIN__/lib/layui/layui.js"></script>
+    <script type="text/javascript" src="__ADMIN__/js/admin.js"></script>
+    </body>
+</html>

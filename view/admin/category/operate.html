@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{$meta_title}-清风小说CMS</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__ADMIN__/css/admin.css"></head>
+<body>
+  <div class="layui-card layui-card-open">
+    <div class="layui-card-body">
+      <form class="layui-form" action="{:url($type)}">
+        <div class="layui-form-item">
+          <label class="layui-form-label">将栏目</label>
+          <div class="layui-form-mid">{$title}</div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">{$operate}到栏目</label>
+          <div class="layui-input-inline">
+            <select name="to" lay-verify="required">
+              {volist name="list" id="vo"}
+                <option value="{$vo.id}">{$vo.html}{$vo.title}</option>
+              {/volist}
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <input type="hidden" name="from" value="{$from}">
+            <button class="layui-btn" lay-submit lay-filter="ajax" type="submit">提交</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="__STATIC__/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="__ADMIN__/lib/layui/layui.js"></script>
+  <script type="text/javascript" src="__ADMIN__/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	    <meta name="keywords" content="{$web['meta_keywords']}">
+	    <meta name="description" content="{$web['meta_description']}">
+	    <title>{$chapter['title']}_{$title}-{$web['meta_title']}</title>
+	    <link rel="stylesheet" href="{$reader_tplpath}css/style.css" type="text/css"/>
+	    <link rel="stylesheet" href="//at.alicdn.com/t/font_934628_i2rehiz8kch.css" type="text/css"/>
+    </head>
+    <body class="skin-{switch reader_config[2]}{case 0}default{/case}{case 1}blue{/case}{case 2}green{/case}{case 3}light{/case}{/switch} {eq name="reader_config[0]" value="n"} read-night{/eq}">
+    	<aside id="asideChapter" class="aside" data-is-bind-scroll="true">
+		    <i id="asideOverlay" class="aside-overlay" role="button" title="点击关闭浮层"></i>
+		    <div id="asideChapterContent" class="aside-content"></div>
+		</aside>
+	    <div id="pageRead" class="page-read {eq name="reader_config[3]" value="h"}H{/eq}">
+	    	<content id="readContent" class="page-read-content">
+	    		<div id="readLoadPrev" class="read-load-prev">
+		            <a class="read-load-icon btn-any loading"></a>
+		            <p class="read-load-p">下拉阅读上一章</p>
+		        </div>
+	    		<article id="chapterContent" class="read-article" style="font-size: {php}echo ($reader_config[1]*2+12)/16{/php}rem">
+	    			<section class="read-section jsChapterWrapper" data-chapter-id="{$chapter['id']}">
+	    				<h3>{$chapter['title']}</h3>
+	    				{$chapter['content']|raw}
+	    				{notempty name="chapter['intro']"}
+	    				<div class="read-author-say jsAuthorSay">
+			                <div class="read-author-p">{$chapter['intro']|raw}</div>
+			            </div>
+			            {/notempty}
+	    			</section>
+	    		</article>
+	    		<div id="readLoadNext" class="read-load-next">
+	    			<a id="btnLoadNextChapter" href="javascript:" class="btn-normal red" style="display:none" data-size="14" role="button">加载下一章</a>
+	    			<a id="aGotoBookEnd" href="{$url}" class="btn-blank blue" style="display:none">已经是最后一章了 »</a>
+		    	</div>
+		    </content>
+		    <div class="page-read-top">
+		    	<h1 id="chapterTitle" class="read-book-name">{$chapter['title']}</h1>
+		    </div>
+		    <mark id="readPageMark" class="read-page-mark">你刚刚阅读到这里</mark>
+		    <p id="pageNum" class="read-page-num"></p>
+	    </div>
+	    <div id="pageReadOpt" class="page-read-opt" data-settings-str="dn:{$reader_config[0]}|fs:{$reader_config[1]}|skin:{$reader_config[2]}|vh:{$reader_config[3]}" data-book-publish="0" data-sale-modes="1" data-has-sub="0">
+	    	<header class="header read-opt-header">
+	    		<a href="javascript:history.back();" class="header-back jsBack">
+	    			<i class="iconfont icon-previewleft"><title>返回</title></i>
+	    		</a>
+	    		<div class="header-operate">
+	    			<a id="btnPledgeTrigger" href="javascript:" class="iconfont icon-wodetuijianzhuanhongbao" title="推荐票" role="button">
+	    			</a>
+	    			<a id="readBtnMore" href="javascript:" class="iconfont icon-dotshorizontal jsLayerTrigger" title="更多操作" data-rel="readMoreX" role="menu" aria-expanded="false">
+	    			</a>
+	    		</div>
+	    	</header>
+			{elt name="is_bookshelf" value="0"}
+	    	<a href="javascript:" {$add_bookshelf} id="readJoinSJ" class="read-join-sj" role="button">加入书架</a>
+			{/elt}
+	    	<div id="readMoreX" class="read-opt-more">
+	    		<a href="{:url('home/index/index')}" class="read-opt-a">
+	    			<i class="iconfont icon-zhuye1"></i>
+	    			<h4>返回首页</h4>
+	    		</a>
+	    		<!-- <a href="javascript:" id="btnDownloadFreeChapters" class="read-opt-a">
+	    			<i class="iconfont icon-lixianxiazai"></i>
+	    			离线章节
+	    		</a> -->
+	    		<a href="{$url}" class="read-opt-a">
+	    			<i class="iconfont icon-SU"></i>
+	    			书籍详情
+	    		</a>
+	    		<a href="{:url('user/bookshelf/index')}" class="read-opt-a">
+	    			<i class="iconfont icon-books"></i>
+	    			返回我的书架
+	    		</a>
+		    </div>
+		    <div id="readOptProg" class="read-opt-bot read-opt-prog">
+		    	<div class="read-prog-info">
+		    		<a href="javascript:" id="readProgPrev" class="read-prog-prev">
+		    			<i class="iconfont icon-back" aria-hidden="true"></i>
+		    			上一章
+		    		</a>
+		    		<a href="javascript:" id="readProgNext" class="read-prog-next">
+		    			下一章
+		    			<i class="iconfont icon-you" aria-hidden="true"></i>
+		    		</a>
+		    		<div id="readProgVal" class="read-prog-val">
+		    			<h4 class="ell"></h4>
+		    			<output role="presentation"></output>
+		    		</div>
+		    	</div>
+		    	<div class="read-prog-bar">
+		    		<input type="range" id="readProgRange" name="read-prog" min="0" max="1000" value="0">
+		    	</div>
+		    </div>
+		    <div id="readOptSet" class="read-opt-bot read-opt-set">
+		    	<div class="read-set-font">
+		    		<a href="javascript:" id="readFontDown" class="read-font-down" data-index="0" role="button">
+		    			<i class="iconfont icon-yueduye_zitijianxiao"></i>
+		    			<aria>字号变小</aria>
+		    		</a>
+		    		<a href="javascript:" id="readFontUp" class="read-font-up" data-index="1" role="button">
+		    			<i class="iconfont icon-yueduye_zitizengda"></i>
+		    			<aria>字号变大</aria>
+		    		</a>
+		    		<div class="read-font-bar">
+		    			<div class="range">
+		    				<div class="range-track">
+		    					<a class="range-thumb" role="slider" aria-valuenow="0" aria-valuemax="8" aria-valuemin="1"></a>
+		    				</div>
+		    			</div>
+		    			<input type="range" id="readFontRange" name="font-size" min="1" max="8" value="{$reader_config[1]}">
+		    		</div>
+		    	</div>
+		    	<div id="readSetSkin" class="read-set-skin">
+		    		<ul class="btn-group" role="radiogroup">
+		    			<li class="btn-group-cell read-set-cell">
+		    				<input type="radio" id="skinDefault" name="skin" value="default" {eq name="reader_config[2]" value="0"}checked=""{/eq} data-index="0" title="默认皮肤">	    
+		    				<label class="read-skin-default" for="skinDefault" title="默认皮肤">
+		    					<i class="iconfont icon-ok center"></i>
+		    				</label>
+		    			</li>
+		    			<li class="btn-group-cell read-set-cell">
+		    				<input type="radio" id="skinBlue" name="skin" value="blue" {eq name="reader_config[2]" value="1"}checked=""{/eq} data-index="1" title="蓝色皮肤">	    
+		    				<label class="read-skin-blue" for="skinBlue" title="蓝色皮肤">
+		    					<i class="iconfont icon-ok center"></i>
+		    				</label>
+		    			</li>
+		    			<li class="btn-group-cell read-set-cell">
+		    				<input type="radio" id="skinGreen" name="skin" value="green" {eq name="reader_config[2]" value="2"}checked=""{/eq} data-index="2" title="绿色皮肤">	    
+		    				<label class="read-skin-green" for="skinGreen" title="绿色皮肤">
+		    					<i class="iconfont icon-ok center"></i>
+		    				</label>
+		    			</li>
+		    			<li class="btn-group-cell read-set-cell">
+		    				<input type="radio" id="skinLight" name="skin" value="light" {eq name="reader_config[2]" value="3"}checked=""{/eq} data-index="3" title="浅色皮肤">	    
+		    				<label class="read-skin-light" for="skinLight" title="浅色皮肤">
+		    					<i class="iconfont icon-ok center"></i>
+		    				</label>
+		    			</li>
+		    		</ul>
+		    	</div>
+		    	<div id="readSetLayout" class="read-set-layout">
+		    		<ul class="btn-group">
+		    			<li class="btn-group-cell read-set-cell">
+		    				<input type="radio" id="layoutV" name="layout" value="v" {eq name="reader_config[3]" value="v"}checked=""{/eq}>	    
+		    				<label class="read-btn-layout" for="layoutV">上下滑动</label>
+		    			</li>
+		    			<li class="btn-group-cell read-set-cell">
+		    				<input type="radio" id="layoutH" name="layout" value="h" {eq name="reader_config[3]" value="h"}checked=""{/eq}>	    
+		    				<label class="read-btn-layout" for="layoutH">左右滑动</label>
+		    			</li>
+		    		</ul>
+		    	</div>
+		    </div>
+		    <footer class="read-opt-footer">
+		    	<div class="btn-group">
+		    		<a href="#&amp;asideChapter" id="readBtnChapter" class="btn-group-cell" data-rel="asideChapter" role="button" aria-haspopup="true">
+		    			<i class="iconfont icon-mulu"></i>
+		    			<h4 class="read-opt-footer-h">目录</h4>
+		    		</a>
+		    		<a href="javascript:" id="readBtnProg" class="btn-group-cell jsLayerTrigger" data-rel="readOptProg" role="menuitem">
+		    			<i class="iconfont icon-jindutiao"></i>
+		    			<h4 class="read-opt-footer-h">进度</h4>
+		    		</a>
+		    		<a href="javascript:" id="readBtnSet" class="btn-group-cell jsLayerTrigger" data-rel="readOptSet" role="menuitem">
+		    			<i class="iconfont icon-shezhi"></i>
+		    			<h4 class="read-opt-footer-h">设置</h4>
+		    		</a>
+
+		    		<a href="javascript:" id="readBtnMode" class="btn-group-cell" data-mode="{eq name="reader_config[0]" value="n"}day{else/}night{/eq}" role="checkbox" title="日间夜间模式切换">
+		    			<i class="iconfont icon-yueliang"></i>
+		    			<h4 class="read-opt-footer-h">{eq name="reader_config[0]" value="n"}日间{else/}夜间{/eq}</h4>
+		    		</a>
+<!--		    		<a href="{$url}" class="btn-group-cell">-->
+<!--		    			<i class="iconfont icon-pinglun"></i>-->
+<!--		    			<h4 class="read-opt-footer-h">评论</h4>-->
+<!--		    		</a>-->
+		    	</div>
+		    </footer>
+	    </div>
+    </body>
+    <script type="text/javascript" src="{$reader_tplpath}js/zepto.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/layer_mobile/layer.js"></script>
+    <script type="text/javascript" src="{$reader_tplpath}js/reader.js"></script>
+    <script type="text/javascript">
+		var book = {},user = {};
+		//书信息
+	    book.Info = {
+	        "Id":{$id},
+	        "Name":'{$title}',
+	        "authorName": '{$author}'
+	    };
+	    //页面初始化章节信息
+	    book.chapter = {
+	        //页面进入加载的章节id
+	        source_id:{$chapter['source_id']},
+	        id:'{$chapter['id']}',
+	        title:'{$chapter['title']}',
+	        content:'{$chapter['content']|raw}',
+	        intro:'{$chapter['intro']|raw}',
+	        //章节vip标识
+	        vipStatus : 0,
+	        //上一章id
+	        prevId :'{$chapter['prev']['id']|default=""}',
+	        //下一章id
+	        nextId :'{$chapter['next']['id']|default=""}'
+	    };
+	    book.chapterUrl = '{:url('home/chapter/index',['id'=>$chapter['source_id'],'key'=>'chapterId'])}';
+	    book.url = '{$url}'
+	    user.Info = {
+	    	"id":{$user['id']|default=0},
+	    	"recommend":{$user['recommend']|default=0}
+	    };
+	</script>
+    <script type="text/javascript" src="{$reader_tplpath}js/global.js"></script>
+</html>

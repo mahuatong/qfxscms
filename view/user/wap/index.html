@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>{$web['meta_title']}</title>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="{$user_tplpath}css/style.css">
+    <script type="text/javascript" src="{$user_tplpath}js/flexible.min.js"></script>
+</head>
+<body>
+	<div class="app_meskSection"></div>
+	<div class="container">
+		<div class="app_header_section2  app_scrollerHeader" id="header">
+			<div class="app_header_detail2">
+				<div class="app_header_back"></div>
+				<div class="app_header_h1">
+					用户中心
+					<a href="{:url('user/bookshelf/index')}"> <i class="shujiaIco"></i>
+					</a> <i class="moreIco"></i>
+				</div>
+			</div>
+			<div class="app_header_second" style="display: none;">
+				<ul>
+					<li class="icon1">
+						<a href="/">首页</a>
+					</li>
+					<li class="icon2">
+						<a href="{:url('home/lists/lists')}">书库</a>
+					</li>
+					<li class="icon3">
+						<a href="{:url('user/bookshelf/index')}">书架</a>
+					</li>
+					<li class="icon4">
+						<a href="{:url('user/index/index')}">账户</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="app_body">
+			<div class="app_accountBlock">
+				<div class="app_accountBlock_headerBg">
+					<img src="{$user_tplpath}images/user-bg.png"  class="background" />
+					<div class="app_accountBlock_headerCon">
+						<img src="{$user['headimgurl']}" />
+					</div>
+					<div class="app_accountBlock_edit">
+						<a href="{:url('user/user/info')}"></a>
+					</div>
+					<div class="app_accountBlock_name">
+						<span class="name">{$user['username']}</span>
+					</div>
+					<div class="app_accountBlock_group">
+						<span class="group"><i class="iconfont">&#xe6ab;</i>{$user['group']}</span>
+					</div>
+				</div>
+				<div class="app_accountBlock_lis">
+					<ul>
+						<li><i class="iconfont">&#xe6a3;</i>经验<span>{$user['exp']}</span></li>
+						<li><i class="iconfont">&#xe645;</i>积分<span>{$user['integral']}</span></li>
+						<li><i class="iconfont">&#xe612;</i>推荐票<span>{$user['recommend']}</span></li>
+					</ul>
+				</div>
+
+				<div class="app_accountBlock_lis2">
+					<ul>
+						{volist name="user_menu" id="menu"}
+							{volist name="menu['child']" id="child"}
+								<li>
+									<a href="{:url($child['url'])}"><i class="iconfont">{$child['icon']|raw}</i>{$child['title']}</a>
+								</li>
+							{/volist}
+						{/volist}
+						
+					</ul>
+				</div>
+
+				<div class="app_changeUser">
+					<button onclick="javascript:window.location.href='{:url('user/user/logout')}'">退出登录</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="{$user_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/user.js"></script>
+</body>
+</html>

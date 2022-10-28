@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	    <meta name="keywords" content="{$web['meta_keywords']}">
+	    <meta name="description" content="{$web['meta_description']}">
+	    <title>{$keyword}-搜索-{$web['meta_title']}</title>
+	    <link rel="stylesheet" href="{$home_tplpath}css/style.css" type="text/css"/>
+    </head>
+	<body>
+		{include file="/header" /}
+		<div class="body-bg">
+			<div class="wrap">
+				<div class="block20"></div>
+				<div class="wrap1200 ranklist">
+					<div class="right-cont-box fl rankdata">
+						<div class="comment-r-menu">
+							<span class="titmenu">搜索结果</span>
+						</div>
+						<div class="rankdatacont search">
+							{novel id="novel" limit="30" order="update_time desc" page="1"}
+							<div class="secd-rank-list">
+								<dl>
+									<dt>
+										<a href="{$novel['url']}" target="_blank">
+											<img src="" class="lazyimg" data-original="{$novel['pic']}">
+										</a>
+									</dt>
+									<dd>
+										<a href="{$novel['url']}" class="bigpic-book-name" target="_blank">
+											{$novel['title']}
+										</a>
+										<p>
+											<a href="{$novel['author_url']}" target="_blank">{$novel['author']}</a>
+											|
+											<a href="{$novel['curl']}" target="_blank">{$novel['ctitle']}</a>
+											| {$novel['serialize_text']}
+											<span class="clicknum"> <em>{$novel['word_million']} 万字</em>
+												| <em>{$novel['recommend']}推荐</em>
+												|
+												<em>{$novel['hits']}点击</em>
+											</span>
+										</p>
+										<p class="big-book-info">
+											{$novel['content']|raw|strip_tags}
+										</p>
+										<p>
+											<a href="{$novel['chapter_url']}" target="_blank" class="red">最近更新 {$novel['chapter_title']}</a>
+											<span>| {$novel['time']|time_format}更新</span>
+										</p>
+									</dd>
+								</dl>
+								<div class="bigbtn">
+									<a href="{$novel['url']}" class="detailbtn" target="_blank">书籍详情</a>
+								</div>
+							</div>
+							{/novel}
+							<div class="pages_bottom" style="display: block;">
+	        					<ul>
+	        						{novel_page /}
+	        					</ul>
+	        				</div>
+						</div>
+					</div>
+					<div class="search-result-r fr">
+				        <div class="titmenu">大家都看</div>
+				        {novel id="novel" limit="5" order="hits desc"}
+				        <dl class="book-block">
+			                <dt>
+			                	<a href="{$novel['url']}" target="_blank">
+			                		<img src="{$novel['pic']}">
+			                	</a>
+			                </dt>
+			                <dd>
+			                    <a href="{$novel['url']}" class="book-name" target="_blank">{$novel['title']}</a>
+			                    <span class="book-author"><a href="{$novel['author_url']}" target="_blank">{$novel['author']}</a> | <a href="{$novel['curl']}" target="_blank">{$novel['ctitle']}</a>
+
+			                    </span>
+			                    <a href="{$novel['url']}" class="book-info" target="_blank">{$novel['content']}</a>
+
+			                </dd>
+			            </dl>
+				        {/novel}
+				    </div>
+				</div>
+			</div>
+		</div>
+		<div class="block20"></div>
+		{include file="/footer" /}
+	</body>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.lazyload.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.mouseDelay.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/global.js"></script>
+</html>

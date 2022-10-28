@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{$meta_title}-清风小说CMS</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__ADMIN__/css/admin.css"></head>
+  <link rel="stylesheet" href="__ADMIN__/css/font.css"></head>
+<body>
+  <div class="layui-card layui-card-open">
+    <div class="layui-card-body">
+      <form class="layui-form" lay-filter="source" action="{:url()}">
+        <div class="layui-form-item">
+          <label class="layui-form-label">网址类型</label>
+          <div class="layui-input-block">
+            <input type="radio" name="source[type]" value="1" title="序列网址" lay-filter="type" checked>
+            <input type="radio" name="source[type]" value="2" title="多网址" lay-filter="type">
+            <input type="radio" name="source[type]" value="3" title="单网址" lay-filter="type">
+          </div>
+        </div>
+        <div class="layui-form-item" source-type='1'>
+          <label class="layui-form-label">采集网址：</label>
+          <div class="layui-input-block">
+            <input type="text" name="source[url]" class="layui-input" value="" id="source_url">
+            <div class="layui-form-mid layui-word-aux">
+              通配符<a href="javascript:;" onclick="insertText('source[url]','[内容{num}]',1)"> [内容] </a>
+            </div>
+          </div>
+        </div>
+        <div class="layui-form-item" source-type='1'>
+          <label class="layui-form-label">页码配置：</label>
+          <div class="layui-form-mid">从</div>
+          <div class="layui-input-inline" style="width: 60px;">
+            <input type="text" name="source[param_num_start]" value="1" class="layui-input">
+          </div>
+          <div class="layui-form-mid">至</div>
+          <div class="layui-input-inline" style="width: 60px;">
+            <input type="text" name="source[param_num_end]" value="5" class="layui-input">
+          </div>
+          <div class="layui-form-mid">页，每次增加</div>
+          <div class="layui-input-inline" style="width: 60px;">
+            <input type="text" name="source[param_num_inc]" value="1" class="layui-input">
+          </div>
+          <div class="layui-input-inline" style="width: 80px;">
+            <input type="checkbox" name="source[param_num_desc]" value="1" title="倒序" lay-skin="primary"> 
+          </div>
+        </div>
+        <div class="layui-form-item" source-type='2'>
+          <label class="layui-form-label">采集网址</label>
+          <div class="layui-input-block">
+            <textarea name="source[large_urls]" class="layui-textarea"></textarea>
+            <div class="layui-form-mid layui-word-aux">
+              每行一个地址
+            </div>
+          </div>
+        </div>
+        <div class="layui-form-item" source-type='3'>
+          <label class="layui-form-label">采集网址</label>
+          <div class="layui-input-block">
+            <input type="text" name="source[urls]" class="layui-input" value="">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <input name="index" type="hidden" value="{$index|default=""}" />
+            <button class="layui-btn" lay-submit lay-filter="source" type="submit">提交</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="__STATIC__/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="__ADMIN__/lib/layui/layui.js"></script>
+  <script type="text/javascript" src="__ADMIN__/js/admin.js"></script>
+  <script type="text/javascript" src="__ADMIN__/js/collect.js"></script>
+  <script type="text/javascript">
+    {present name="index"}
+      source_edit();
+    {else /}
+      source_type();
+    {/present}
+  </script>
+</body>
+</html>

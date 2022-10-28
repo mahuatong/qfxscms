@@ -1,0 +1,34 @@
+<div class="media-list">
+	{volist name="tree" id="list"}
+    <div class="media-item">
+        <a href="javascript:;" class="media-item-left">
+            <img class="img-xs" src="{$list['user']['headimgurl']}"></a>
+        <div class="media-text">
+            <div>
+                <a href="javascript:;">{$list['user']['username']}</a>
+                <mdall>
+	                {$list['create_time']|time_format} 
+	                <span lay-separator="">-</span>
+	                <a class="layui-icon layui-icon-praise"></a><a href="javascript:;"> 点赞({$list['up']})</a>
+                </mdall>
+            </div>
+            <div>{$list['content']}</div>
+            <div class="media">
+                <div class="media-right">
+                    <ul class="list-inline">
+                        <li>
+                            <a onclick="admin_show('编辑','{:url('edit',['id'=>$list['id']])}',500,285)" class="layui-btn layui-btn-normal layui-btn-xs" href="javascript:;"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+                        </li>
+                        <li>
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" onclick="admin_del(this,'{:url('del',['id'=>$list['id']])}','.media-item:first')"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {notempty name="list['_']"}
+				{:controller('Comment')->tree($list['_'])}
+			{/notempty}
+        </div>
+    </div>
+    {/volist}
+</div>

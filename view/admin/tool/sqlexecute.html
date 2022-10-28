@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{$meta_title}-清风小说CMS</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" href="__ADMIN__/css/admin.css">
+    </head>
+    <body>
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <form class="layui-form" method="post" action="{:url()}">
+                    <div class="layui-card">
+                        <div class="layui-card-header">{$meta_title}</div>
+                        <div class="layui-card-body">
+                            <blockquote class="layui-elem-quote layui-quote-nm">
+                                常用语句对照：<br>
+                                1.查询数据
+                                SELECT * FROM {pre}novel   查询所有数据<br>
+                                SELECT * FROM {pre}novel WHERE id=1000   查询指定ID数据
+                                <br>
+                                2.删除数据
+                                DELETE FROM {pre}novel   删除所有数据<br>
+                                DELETE FROM {pre}novel WHERE id=1000   删除指定的第几条数据<br>
+                                DELETE FROM {pre}novel WHERE author LIKE '%土豆%'   author"土豆"的数据
+                                <br>
+                                3.修改数据
+                                UPDATE {pre}novel SET hits=1   将所有hits字段里的值修改成"1"<br>
+                                UPDATE {pre}novel SET hits=1 WHERE id=1000  指定的第几条数据把hits字段里的值修改成"1"
+                                <br>
+                                4.替换图片地址
+                                UPDATE {pre}novel SET pic=REPLACE(pic, '原始字符串', '替换成其他字符串')
+                                <br>
+                                5.清空数据ID重新从1开始
+                                TRUNCATE {pre}novel
+                           </blockquote>
+                            <div style="padding-bottom: 10px;">
+                                <div class="layui-form-item"><textarea name="sql" class="layui-textarea" rows="10" placeholder="请输入sql语句"></textarea></div>
+                                <div class="layui-form-item"><button class="layui-btn" lay-current="1" lay-submit lay-filter="ajax" type="submit">确认执行</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="__STATIC__/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__ADMIN__/lib/layui/layui.js"></script>
+    <script type="text/javascript" src="__ADMIN__/js/admin.js"></script>
+    </body>
+</html>

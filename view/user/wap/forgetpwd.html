@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>{$web['meta_title']}</title>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="{$user_tplpath}css/style.css">
+    <script type="text/javascript" src="{$user_tplpath}js/flexible.min.js"></script>
+</head>
+<body>
+	<div class="app_meskSection"></div>
+	<div class="container">
+		<div class="app_header_section2  app_scrollerHeader" id="header">
+			<div class="app_header_detail2">
+				<div class="app_header_back"></div>
+				<div class="app_header_h1">
+					找回密码
+					<i class="moreIco"></i>
+				</div>
+			</div>
+			<div class="app_header_second" style="display: none;">
+				<ul>
+					<li class="icon1">
+						<a href="/">首页</a>
+					</li>
+					<li class="icon2">
+						<a href="{:url('home/lists/lists')}">书库</a>
+					</li>
+					<li class="icon3">
+						<a href="{:url('user/bookshelf/index')}">书架</a>
+					</li>
+					<li class="icon4">
+						<a href="{:url('user/index/index')}">账户</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="app_body">
+			<div class="app_bindPhoneBlock">
+				<div class="app_bindPhoneBlock_header">
+					<span class="app_header">
+						<img src="{$user_tplpath}images/userlogin.png"></span>
+				</div>
+				{switch name="Request.param.step"}
+				{case value="2"}
+				<div class="app_lisLoinSpan">
+					<ul>
+						<li class="code">
+							<input id="code" type="text" name="pwdcode" placeholder="请输入验证码">
+							<button class="codeBtn" send-data='{"email":"{:session('forget_pwd.email')}","type":"passw"}' send-url="{:url('email_code')}">获取验证码</button>
+						</li>
+					</ul>
+				</div>
+				<div class="app_listBlockButton" style="padding-top: 0.36rem">
+					<button id="loginbtn" ajax-post='app_lisLoinSpan' url="{:url('forgetpwd',['step'=>2])}">下一步</button>
+				</div>
+				{/case}
+				{case value="3"}
+				<div class="app_lisLoinSpan">
+					<ul>
+						<li class="password">
+							<input type="password" name="newpassword" placeholder="请输入密码">
+						</li>
+						<li class="password">
+							<input type="password" name="confirmpassword" placeholder="再次输入密码">
+						</li>
+						<li class="code">
+							<input id="code" type="text" name="code" placeholder="请输入验证码">
+							<img src="{:url('user/user/verify')}" id="imgCode" alt="验证码">
+						</li>
+					</ul>
+				</div>
+				<div class="app_listBlockButton" style="padding-top: 0.36rem">
+					<button id="loginbtn" ajax-post='app_lisLoinSpan' url="{:url('forgetpwd',['step'=>3])}" errorback="newcode()">下一步</button>
+				</div>
+				{/case}
+				{case value="4"}
+				<div class="app_subscribeBlock_div">
+		            <div class="app_subscribeBlock_left">
+		                密码已经修改成功！
+		            </div>
+		            <div class="app_subscribeBlock_kaiTong">
+		                <span class="button" onclick="javascript: window.location.href='{:url('user/user/login')}'">马上登录</span>
+		            </div>
+		        </div>
+				{/case}
+				{default /}
+				<div class="app_lisLoinSpan">
+					<ul>
+						<li class="username">
+							<input id="userphone" type="text" name="username" placeholder="请输入帐号">	
+						</li>
+						<li class="code">
+							<input id="code" type="text" name="code" placeholder="请输入验证码">
+							<img src="{:url('user/user/verify')}" id="imgCode" alt="验证码">
+						</li>
+					</ul>
+				</div>
+				<div class="app_listBlockButton" style="padding-top: 0.36rem">
+					<button id="loginbtn" ajax-post='app_lisLoinSpan' url="{:url('forgetpwd',['step'=>1])}" errorback="newcode()">下一步</button>
+				</div>
+				{/switch}
+				<div class="app_registerList">
+					<span class="public_AddFloatLeft">
+						<a href="{:url('user/user/reg')}">我要注册</a>
+					</span>
+					<span class="public_AddFloatRight">
+						<a href="{:url('user/user/forgetpwd')}">忘记密码</a>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="{$user_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer_mobile/layer.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/ajax.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/user.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>{$web['meta_title']}</title>
+    	<link href="{$user_tplpath}css/user.css" rel="stylesheet">
+	</head>
+	<body>
+		{include file="template/user/web/header" /}
+		<div class="container wrap1200">
+			{include file="template/user/web/left.html" /}
+			<div class="i-right">		
+				<div class="myReview">
+					<div class="i-title">
+						<ul class="ulHd">
+							<li {empty name="Request.param.reply"}class="on"{/empty}><a href="{:url('user/comment/index')}">我的评论</a><span></span></li>
+							<li {eq name="Request.param.reply" value="1"}class="on"{/eq}><a href="{:url('user/comment/index',['reply'=>1])}">我的回复</a><span></span></li>
+						</ul>
+					</div>
+					<div class="divBd">
+						<!--我的书评 mod -->				
+						<div id="reviewList" style="display: block;">
+							{notempty name="list"}		
+							<ul class="reviewList">
+								{volist name='list' id='vo'}
+								<li>
+									<p class="reviewDetail">
+										<span class="title">{$vo['type_text']}-<a href="{$vo[$vo['type']]['url']}">{$vo[$vo['type']]['title']}</a></span>
+										<span class="reviewCont">{$vo['content']}</span>
+										<span class="time">{$vo['create_time']|time_format="Y-m-d H:i",1}</span>
+									</p>
+								</li>
+								{/volist}
+							</ul>
+							<div class="page-box">
+								<div class="page-content">
+									<div class="ui-pagination">
+										{$list|raw}
+									</div>
+								</div>
+							</div>
+							{else /}
+							<p class="bookNone">
+								您还没有发表过书评，去
+								<a href="/" target="_blank" data-namecard="false">首页</a>
+								找一本喜欢的书看看吧
+							</p>
+							{/notempty}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="{$user_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/ajax.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/user.js"></script>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{$meta_title}-清风小说CMS</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" href="__ADMIN__/css/admin.css">
+    </head>
+    <body>
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <form class="layui-form" action="{:url('export')}">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div style="padding-bottom: 10px;">
+                              <button class="layui-btn" lay-submit lay-filter="export"><i class="layui-icon layui-icon-template-1"></i> 立即备份</button>
+                              <button class="layui-btn" lay-submit lay-filter="optimize" lay-url="{:url('optimize')}"><i class="layui-icon layui-icon-console"></i> 优化表</button>
+                              <button class="layui-btn" lay-submit lay-filter="repair" lay-url="{:url('repair')}"><i class="layui-icon layui-icon-util"></i> 修复表</button>
+                            </div>
+                            <table class="layui-table">
+                                <colgroup>
+                                    <col width="50">
+                                    <col>
+                                    <col width="150">
+                                    <col width="150">
+                                    <col width="200">
+                                    <col width="150">
+                                    <col width="180">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th><input name="layTableCheckbox" lay-filter="layTableAllChoose" type="checkbox" lay-skin="primary"></th>
+                                        <th>表名</th>
+                                        <th>数据量</th>
+                                        <th>数据大小</th>
+                                        <th>创建时间</th>
+                                        <th>备份状态</th>
+                                        <th><div align="center">操作</div></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {notempty name="list"}
+                                    {volist name="list" id="table"}
+                                    <tr>
+                                        <td><input name="tables[]" type="checkbox" lay-skin="primary" value="{$table.name}"></td>
+                                        <td>{$table.name}</td>
+                                        <td>{$table.rows}</td>
+                                        <td>{$table.data_length|format_bytes}</td>
+                                        <td>{$table.create_time}</td>
+                                        <td class="info">未备份</td>
+                                        <td align="center">
+                                            <a class="layui-btn layui-btn-normal layui-btn-xs ajax-get" href="{:url('optimize',['tables'=>$table['name']])}"><i class="layui-icon layui-icon-console"></i>优化表</a> 
+                                            <a class="layui-btn layui-btn-danger layui-btn-xs ajax-get" href="{:url('repair',['tables'=>$table['name']])}"><i class="layui-icon layui-icon-util"></i>修复表</a>
+                                        </td>
+                                    </tr>
+                                    {/volist}
+                                    {/notempty}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="__STATIC__/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__ADMIN__/lib/layui/layui.js"></script>
+    <script type="text/javascript" src="__ADMIN__/js/admin.js"></script>
+    <script type="text/javascript">
+        layui.use('form', function(){
+        var form = layui.form;
+      
+        form.on('submit(optimize)', function(data){
+            ajsx_post($(this).attr('lay-url'), data.field);
+            return false;
+        });
+
+        form.on('submit(repair)', function(data){
+            ajsx_post($(this).attr('lay-url'), data.field);
+            return false;
+        });
+
+        form.on('submit(export)', function(data){
+            var sthis=this;
+            var action=$(data.form).attr('action');
+            $(this).addClass("layui-btn-disabled");
+            $(this).html("正在发送备份请求...");
+            $.post(action, data.field, function(data){
+                if(data.code){
+                    tables = data.data.tables;
+                        $(sthis).html(data.msg + "开始备份，请不要关闭本页面！");
+                        backup(action,data.data.tab,sthis);
+                        window.onbeforeunload = function(){ return "正在备份数据库，请不要关闭！" }
+                } else {
+                    layer.msg(data.msg, {icon: 2},function(){
+                        $(sthis).removeClass("layui-btn-disabled");
+                        $(sthis).html("<i class='layui-icon layui-icon-template-1'></i> 立即备份");
+                    });
+                }
+            }, "json");
+            return false;
+        });
+
+        function ajsx_post(url,field){
+            $.post(url, field, function(data){
+                if(data.code){
+                    layer.msg(data.msg, {icon: 1},function(){
+                        $('input[type="checkbox"]').prop("checked", false);
+                        form.render('checkbox');
+                    });
+                } else {
+                    layer.msg(data.msg, {icon: 2});
+                }
+            }, "json");
+        }
+
+        function backup(url,tab,obj){
+            showmsg(tab.id, "开始备份...(0%)");
+            $.get(url, tab, function(data){
+                if(data.code){
+                    showmsg(tab.id, data.msg);
+                    if(!$.isPlainObject(data.data.tab)){
+                        $(obj).removeClass("layui-btn-disabled");
+                        $(obj).html("<i class='layui-icon layui-icon-template-1'></i> 备份完成，点击重新备份");
+                        window.onbeforeunload = function(){ return null }
+                        return;
+                    }
+                    backup(url,data.data.tab,obj);
+                } else {
+                    layer.msg(data.msg, {icon: 2});
+                    $(obj).removeClass("layui-btn-disabled");
+                    $(obj).html("<i class='layui-icon layui-icon-template-1'></i> 立即备份");
+                }
+            }, "json");
+        }
+
+        function showmsg(id, msg){
+            $('.layui-form').find("input[value=" + tables[id] + "]").closest("tr").find(".info").html(msg);
+        }
+
+    });
+    </script>
+    </body>
+</html>

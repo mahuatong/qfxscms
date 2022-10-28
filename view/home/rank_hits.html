@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	    <meta name="keywords" content="{$web['meta_keywords']}">
+	    <meta name="description" content="{$web['meta_description']}">
+	    <title>排行-{$web['meta_title']}</title>
+	    <link rel="stylesheet" href="{$home_tplpath}css/style.css" type="text/css"/>
+    </head>
+	<body>
+		{include file="/header" /}
+		<div class="body-bg">
+		    <div class="wrap">
+		        <div class="containerbox">
+		            <div class="block10"></div>
+		        	<div class="wrap1200 ranklist">
+		        		<div class="leftbarlist fl">
+						    <ul>
+						        <li><a href="{:url('home/lists/index',['id'=>41])}" class="alicon">全部榜单</a></li>
+						        <li {eq name="Request.param.order" value="hits_day"}class="on"{/eq}><a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_day'])}">点击日榜</a></li>
+						        <li {eq name="Request.param.order" value="hits_week"}class="on"{/eq}><a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_week'])}">点击周榜</a></li>
+						        <li {eq name="Request.param.order" value="hits_month"}class="on"{/eq}><a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_month'])}">点击月榜</a></li>
+						        <li {eq name="Request.param.order" value="hits"}class="on"{/eq}><a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits'])}">点击总榜</a></li>
+						        <li {eq name="Request.param.newbook" value="1"}class="on"{/eq}><a href="{:url('home/other/index',['tpl'=>'rank_hits','newbook'=>'1'])}">新书榜</a></li>
+						        <li {eq name="Request.param.over" value="1"}class="on"{/eq}><a href="{:url('home/other/index',['tpl'=>'rank_hits','over'=>'1'])}">完结榜</a></li>
+						    </ul>
+						</div>
+
+				        <div class="right-cont-box fr ranklistdata">
+			        		<div class="comment-r-menu">
+							    <span class="fl r-c-t">点击榜</span>
+							    <ul class="fl comment-status">
+							        <li {eq name="Request.param.order" value="hits_day"}class="on"{/eq}><a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_day'])}" class="r-new-btn">日榜</a></li>
+							        <li {eq name="Request.param.order" value="hits_week"}class="on"{/eq}><a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_week'])}" class="r-cream-btn">周榜</a></li>
+							        <li {eq name="Request.param.order" value="hits_month"}class="on"{/eq}><a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_month'])}" class="r-all-btn">月榜</a></li>
+							        <li {eq name="Request.param.order" value="hits"}class="on"{/eq}><a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits'])}" class="r-all-btn">总榜</a></li>
+							    </ul>
+							</div>
+							<div class="rankdatacont">
+								{assign name="order" value="$Request.param.order|default='id'" /}
+								{novel id="novel" limit="30" over="input('over')" newbook="input('newbook')" order="$order desc"}
+                                <div class="secd-rank-list rank">
+                                    <dl>
+                                        <dt>
+                                        	<a href="{$novel['url']}" target="_blank"><img src="" class="lazyimg" data-original="{$novel['pic']}"></a>
+                                        </dt>
+                                        <dd>
+                                            <a href="{$novel['url']}" class="bigpic-book-name" target="_blank">
+                                                <span class="num red">{$i}</span>{$novel['title']}</a>
+                                            <p>
+                                                <a href="{$novel['author_url']}" target="_blank">{$novel['author']}</a> | <a href="{$novel['curl']}" target="_blank">{$novel['ctitle']}</a> |
+                                                {$novel['serialize_text']}<span class="clicknum">{$novel['hits']} 点击</span></p>
+                                            <p class="big-book-info">{$novel['content']|raw|strip_tags}</p>
+                                            <p><a href="{$novel['chapter_url']}" target="_blank" class="red">最近更新 {$novel['chapter_title']}</a><span>| {$novel['time']|time_format}</span></p>
+                                        </dd>
+                                    </dl>
+                                    <div class="bigbtn">
+                                        <a href="{$novel['url']}" class="detailbtn" target="_blank">书籍详情</a>
+                                    </div>
+                                </div>
+                                {/novel}
+					   		</div>
+		        		</div>
+		        	</div>
+		        </div>
+		    </div>
+		</div>
+		<div class="block20"></div>
+		{include file="/footer" /}
+	</body>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.lazyload.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.mouseDelay.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/global.js"></script>
+</html>

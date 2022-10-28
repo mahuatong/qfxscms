@@ -1,0 +1,326 @@
+@charset "UTF-8";
+@font-face {font-family: "user_iconfont";
+  src: url('../font/iconfont.eot');
+  src: url('../font/iconfont.eot#iefix') format('embedded-opentype'),
+  url('../font/iconfont.woff') format('woff'),
+  url('../font/iconfont.ttf') format('truetype'),
+  url('../font/iconfont.svg#iconfont') format('svg');
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, a, blockquote, th, textarea, th, td {
+  margin: 0;
+  padding: 0; }
+body {
+  height: 100%;
+  font-family: "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+  text-align: left;
+  color: #1A1A1A;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased; 
+}
+i, em, cite {
+    font-style: normal;
+}
+label {
+    cursor: pointer;
+}
+input, button {
+    border: none;
+    outline: none;
+    font-family: "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+input[type=checkbox] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+a {
+  outline: none;
+  text-decoration: none;
+  color: #262626;
+  transition: color .3s, background-color .3s; 
+}
+a:hover {
+  color: #2972CC;
+}
+p {
+    word-break: break-all;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.red {
+    color: #BF2C24;
+}
+.error {
+    color: #ED4259;
+}
+.hidden {
+    display: none;
+}
+.header {
+    height: 99px;
+    border-bottom: 1px solid #DFDFDF;
+}
+.cf {
+    zoom: 1;
+}
+.cf:before, .cf:after {
+    display: table;
+    content: '';
+}
+.sprite {
+    background-image: url(../images/sprite.png);
+}
+.icon-pass {
+    width: 24px;
+    height: 24px;
+    background-position: 0 -72px;
+}
+.icon-error {
+    width: 24px;
+    height: 24px;
+    background-position: 0 -48px;
+}
+.reg-wrap{
+    padding-top: 100px;
+}
+.reg-main {
+    width: 600px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.reg-form-wrap {
+    padding-top: 40px;
+}
+.reg-form-wrap .reg-form-list {
+    padding-left: 40px;
+}
+.reg-form-wrap .reg-form-list dd {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 32px;
+}
+.reg-form-wrap .reg-form-list dd em {
+    min-width: 60px;
+    font: 14px/44px "PingFangSC-Regular", "-apple-system", Simsun;
+    float: left;
+    margin-right: 24px;
+    text-align: right;
+}
+.reg-form-wrap .reg-form-list dd i {
+    float: left;
+    margin: 10px 0 0 12px;
+}
+.reg-form-wrap .reg-form-list dd input[type=text], .reg-form-wrap .reg-form-list dd input[type=password] {
+    float: left;
+    padding: 0 16px;
+    width: 308px;
+    border: 1px solid #E6E6E6;
+    height: 40px;
+    font: 14px/42px "PingFangSC-Regular", "-apple-system", Simsun;
+}
+.reg-form-wrap .reg-form-list dd input[type=text].mid, .reg-form-wrap .reg-form-list dd input[type=password].mid {
+    width: 149px;
+}
+.reg-form-wrap .reg-form-list dd.error em {
+    color: #1A1A1A;
+}
+.reg-form-wrap .reg-form-list dd.error input[type=text], .reg-form-wrap .reg-form-list dd.error input[type=password] {
+    border: 1px solid #ED4259;
+}
+.reg-form-wrap .reg-form-list dd:before, .reg-form-wrap .reg-form-list dd:after {
+    display: table;
+    content: '';
+}
+.reg-form-wrap .reg-form-list .code-img_login {
+    float: left;
+    margin: 0 14px 0 16px;
+    width: 140px;
+    height: 44px;
+    cursor:pointer;
+}
+.reg-form-wrap .reg-form-list .code-img {
+    float: left;
+    margin: 0 14px 0 16px;
+    width: 108px;
+    height: 44px;
+}
+.reg-form-wrap .reg-form-list .code-img + a {
+    float: left;
+    font: 12px/40px "PingFangSC-Regular", "-apple-system", Simsun;
+}
+.reg-form-wrap .reg-form-list .code-btn {
+    float: left;
+    margin: 0 14px 0 16px;
+    width: 140px;
+    height: 44px;
+}
+.reg-form-wrap .reg-form-list div.code-tip {
+    position: relative;
+    top: -20px;
+    left: 84px;
+    width: 400px;
+    border: 1px solid #FFDC95;
+    background: #FFF7E7;
+    font: 12px/24px "PingFangSC-Regular", "-apple-system", Simsun;
+    color: #6B3612;
+    padding: 6px 12px 8px 8px;
+    display:none;
+}
+.reg-form-wrap .reg-form-list dd .password-tip {
+    position: absolute;
+    top: 0;
+    left: 444px;
+    z-index: 1;
+    border: 1px solid #FFDC95;
+    background: #FFF7E7;
+    font: 12px/24px "PingFangSC-Regular", "-apple-system", Simsun;
+    color: #6B3612;
+    padding: 6px 12px 8px 8px;
+}
+.reg-form-wrap .reg-form-list dd .password-tip span {
+    position: absolute;
+    top: 5px;
+    left: -7px;
+    border-top: 7px solid transparent;
+    border-right: 7px solid #FFDC95;
+    border-bottom: 7px solid transparent;
+    border-left: 0 none;
+    width: 0;
+    height: 0;
+}
+.reg-form-wrap .reg-form-list dd .password-tip span cite {
+    position: absolute;
+    top: -7px;
+    left: 2px;
+    border-top: 7px solid transparent;
+    border-right: 7px solid #FFF7E7;
+    border-bottom: 7px solid transparent;
+    border-left: 0 none;
+    width: 0;
+    height: 0;
+}
+.blue-btn {
+    position: relative;
+    z-index: 1;
+    border-color: #2A8CCD;
+    color: #FFF !important;
+    background: #2E9DE7;
+    text-align: center;
+    display: block;
+    width: 340px;
+    height: 40px;
+    margin: 0 0 30px 84px;
+    font: 16px/40px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+.blue-btn.disabled {
+    border-color: #A6A6A6 !important;
+    background: #A6A6A6 !important;
+    cursor: default;
+}
+.btn-yuewen {
+        border-color: #ff5722 !important;
+    background: #ff5722 !important;
+}
+.reg-form-wrap .reg-form-list dd:after {
+    clear: both;
+}
+.reg-form-wrap .reg-form-list .deal {
+    padding-left: 80px;
+}
+.reg-form-wrap .reg-form-list>.login_link {
+    text-align: right;
+    padding-right: 100px;
+    padding-left: 80px;
+    margin-bottom: 30px;
+}
+.reg-form-wrap .reg-form-list>.login_link a {
+    color: #1e9fff;
+}
+.ui-checkbox {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 4px solid transparent;
+    border-radius: 6px;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px, inset 1px 0, inset -1px 0, inset 0 -1px, inset 0 0 1px;
+    background-color: #FFF;
+    background-clip: content-box;
+    color: #BFBFBF;
+    -webkit-transition: color .2s, background-color .1s;
+    transition: color .2s, background-color .1s;
+    vertical-align: -5px;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.ui-checkbox::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNDcuNTY3LDY3LjU3NWMtMy45NzgtMy4yNDEtNC4zNTYtMy4zMzctOC45LTUuNjM5Yy0yLjA0NC0xLjA0NC01LjA1NywxLjY0NS02LjUzLDMuNjM1TDkyLDExNy43MjgNCglMNjUuODUxLDgzLjk3M2MtMS40NzktMS45ODgtNC4yMDYtMi43Mi02LjI1MS0xLjc4MmMtNC42NTgsMi40MDctNC4xODksMi4zMjYtOC4xNjgsNS40NjZjLTEuODE3LDEuNDY2LTEuOTMyLDQuMDgyLTAuNDU2LDYuMDY1DQoJYzAsMCwyOC4xODMsMzYuNDk5LDMxLjU5Miw0MC44OTZjNC45OTksNi4yNzUsMTQuMDksNS45NjUsMTguODY0LDBjMy41Mi00LjQ5OCw0Ni41OS02MS4wNzgsNDYuNTktNjEuMDc4DQoJQzE0OS40OTksNzEuNTQ5LDE0OS4zODUsNjguOTM3LDE0Ny41NjcsNjcuNTc1eiIvPg0KPC9zdmc+DQo=) no-repeat center;
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+  background-size: 20px 20px;
+  visibility: hidden; 
+}
+:checked + .ui-checkbox, :checked + .ui-checkbox:hover {
+    color: #2E9DE7;
+    background-color: #2E9DE7;
+}
+:checked + .ui-checkbox::after {
+    visibility: visible;
+    -webkit-animation: bounceIn .2s;
+    animation: bounceIn .2s;
+}
+.reg-form-wrap .reg-form-list .deal a, .reg-form-wrap .reg-form-list .deal label {
+    display: inline-block;
+    vertical-align: middle;
+    font: 12px/16px "PingFangSC-Regular", "-apple-system", Simsun;
+}
+
+.reg-form-wrap .reg-form-list .password-strong {
+    float: left;
+    padding-left: 12px;
+}
+.reg-form-wrap .reg-form-list .password-strong p {
+    font: 14px/44px "PingFangSC-Regular", "-apple-system", Simsun;
+}
+.reg-form-wrap .reg-form-list .password-strong p span {
+    position: relative;
+    display: inline-block;
+    height: 6px;
+    margin-right: 8px;
+    width: 118px;
+}
+.reg-form-wrap .reg-form-list .password-strong p span b {
+    position: absolute;
+    left: 0;
+    height: 6px; 
+}
+.reg-form-wrap .reg-form-list .password-strong p span.level-1 {
+    border: 1px solid #FC6C28;
+}
+.reg-form-wrap .reg-form-list .password-strong p span.level-1 b {
+    width: 38px;
+    background: #FC6C28; 
+}
+.reg-form-wrap .reg-form-list .password-strong p span.level-2 {
+    border: 1px solid #FFCB00;
+}
+.reg-form-wrap .reg-form-list .password-strong p span.level-2 b {
+    width: 78px;
+    background: #FFCB00;
+}
+.reg-form-wrap .reg-form-list .password-strong p span.level-3 {
+    border: 1px solid #8CCD0A; 
+}
+.reg-form-wrap .reg-form-list .password-strong p span.level-3 b {
+    width: 118px;
+    background: #8CCD0A; 
+}

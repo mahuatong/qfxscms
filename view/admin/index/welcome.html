@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>欢迎页面-清风小说CMS</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" href="__ADMIN__/css/font.css">
+        <link rel="stylesheet" href="__ADMIN__/css/admin.css">
+    </head>
+    <body>
+    <div class="layui-fluid">
+        <div class="larry-container">
+            <div class="layui-row layui-col-space15 larryms-data-top">
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
+                    <section class="layui-card">
+                        <div class="layui-card-body countup">
+                            <div class="left a">
+                                <i class="layui-icon layui-icon-read"></i>
+                                <p>小说</p>
+                            </div>
+                            <div class="right">
+                                <div class="p">
+                                    <h3>{$count['novel_count']|number_format}</h3>
+                                    <cite>今日新增{$count['novel_today_count']}</cite>
+                                    <cite>今日更新{$count['novel_today_count_update']}</cite>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
+                    <section class="layui-card">
+                        <div class="layui-card-body countup">
+                            <div class="left b">
+                                <i class="layui-icon layui-icon-form"></i>
+                                <p>文章</p>
+                            </div>
+                            <div class="right">
+                                <div class="p">
+                                    <h3>{$count['news_count']|number_format}</h3>
+                                    <cite>今日新增{$count['news_today_count']}</cite>
+                                    <cite>今日更新{$count['news_today_count_update']}</cite>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
+                    <section class="layui-card">
+                        <div class="layui-card-body countup">
+                            <div class="left c">
+                                <i class="layui-icon layui-icon-username"></i>
+                                <p>用户</p>
+                            </div>
+                            <div class="right">
+                                <div class="p">
+                                    <h3>{$count['user_count']|number_format}</h3>
+                                    <cite>今日新增{$count['user_today_count']}</cite>
+                                    <cite>今日更新{$count['user_today_count_update']}</cite>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-hide-md layui-show-lg-inline-block layui-col-lg3">
+                    <section class="layui-card">
+                        <div class="layui-card-body countup">
+                            <div class="left d">
+                                <i class="layui-icon layui-icon-dialogue"></i>
+                                <p>评论</p>
+                            </div>
+                            <div class="right">
+                                <div class="p">
+                                    <h3 id="userCounter">{$count['comment_count']|number_format}</h3>
+                                    <cite>今日新增{$count['comment_today_count']}</cite>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md8">
+                    <div class="layui-card">
+                        <div class="layui-card-header">服务器信息</div>
+                        <div class="layui-card-body layui-text">
+                            <table class="layui-table">
+                                <colgroup><col width="100"><col><col width="100"><col></colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td>操作系统</td>
+                                        <td>{$Think.const.PHP_OS}</td>
+                                        <td>脚本引擎</td>
+                                        <td>{$Think.server.server_software}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PHP版本</td>
+                                        <td>{$Think.const.PHP_VERSION}</td>
+                                        <td>CURL支持</td>
+                                        <td><?php $curl = @curl_version();echo $curl['version'] ? $curl['version'] : '<i class="layui-icon layui-icon-close" style="font-size: 22px; color: #FF5722;"></i>'; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>安装目录</td>
+                                        <td>{$Think.server.DOCUMENT_ROOT}</td>
+                                        <td>服务器</td>
+                                        <td>{$Think.server.HTTP_HOST}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>最大上传</td>
+                                        <td><?php echo get_cfg_var("file_uploads") ? get_cfg_var("upload_max_filesize") : '<i class="layui-icon layui-icon-close" style="font-size: 22px; color: #FF5722;"></i>';?></td>
+                                        <td>GD图形库</td>
+                                        <td><?php $gd = @gd_info(); echo $gd['GD Version'] ? $gd['GD Version'] : '<i class="layui-icon layui-icon-close" style="font-size: 22px; color: #FF5722;"></i>';?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>脚本超时</td>
+                                        <td><?php $t = ini_get("max_execution_time"); echo $t;?>秒</td>
+                                        <td>mysql</td>
+                                        <td>{:think\\facade\\Db::query("select version() as v;")[0]['v']}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-card">
+                        <div class="layui-card-header">版本信息</div>
+                        <div class="layui-card-body layui-text">
+                            <table class="layui-table">
+                                <colgroup><col width="100"><col></colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td>当前版本</td>
+                                        <td>{$web['version']}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>think版本</td>
+                                        <td>{:think\\App::VERSION}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>主要特色</td>
+                                        <td>零门槛 / 响应式 / 清爽 / 极简</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-sm8">
+                    <div class="layui-card">
+                        <div class="layui-card-header">最近更新小说</div>
+                        <div class="layui-card-body">
+                            <table class="layui-table">
+                                <colgroup>
+                                <col>
+                                <col width="150">
+                                <col width="300">
+                                <col width="110">
+                                </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>名称</th>
+                                    <th>栏目</th>
+                                    <th>最新章节</th>
+                                    <th>更新时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {volist name="novle" id="vo"}
+                                <tr>
+                                    <td>{$vo.title}</td>
+                                    <td>{$vo.ctitle}</td>
+                                    <td>{$vo.chapter_title}</td>
+                                    <td>{$vo.update_time|time_format="m-d H:i"}</td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm4">
+                    <div class="layui-card">
+                        <div class="layui-card-header">小说评论</div>
+                        <div class="layui-card-body">
+                            <ul class="layuiadmin-card-status layuiadmin-home2-usernote">
+                                {volist name="comment" id="vo"}
+                                <li>
+                                    <h3>{$vo.user.username}</h3>
+                                    <p>{$vo.content}</p>
+                                    <span>{$vo.create_time|time_format="m-d H:i"}</span>
+                                </li>
+                                {/volist}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="__STATIC__/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__ADMIN__/lib/layui/layui.js"></script>
+    <script type="text/javascript" src="__ADMIN__/js/admin.js"></script>
+    <script type="text/javascript">
+        layui.use(['layer','jquery'], function(){
+            var layer = layui.layer;
+            var $ = layui.jquery;
+            $.getJSON("{:url('Upgrade/index')}",function(data){
+                if(data.code==1 && data.version){
+                    layer.confirm('<table class="layui-table"><colgroup><col width="100"><col></colgroup><tbody><tr><td>版本号</td><td>'+data.version.version+'</td></tr><tr><td>更新内容</td><td>'+data.version.content+'</td></tr></tbody></table>', {title:'升级提示',area: ['600px','350px'],btn: ['现在升级','以后在说']},function(index){
+                        layer.close(index);
+                        admin_show('系统升级','{:url('Upgrade/lists')}?id='+data.version.id+'&type='+data.version.type,0,0,1,1);
+                    });
+                }
+            });
+        })
+    </script>
+    </body>
+</html>

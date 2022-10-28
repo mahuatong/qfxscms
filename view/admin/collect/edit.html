@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{$meta_title}-清风小说CMS</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__ADMIN__/css/admin.css"></head>
+  <link rel="stylesheet" href="__ADMIN__/css/font.css"></head>
+<body>
+  <div class="layui-card layui-card-open">
+    <div class="layui-card-body">
+      <form class="layui-form" lay-filter="collect" action="{:url()}">
+        <div class="layui-tab">
+          <ul class="layui-tab-title">
+            <li class="layui-this">基本信息</li>
+            <li>列表网址</li>
+            <li>列表规则</li>
+            <li>内容规则</li>
+          </ul>
+          <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+              <div class="layui-form-item">
+                <label class="layui-form-label">规则名称</label>
+                <div class="layui-input-block">
+                  <input type="text" name="title" lay-verify="required" class="layui-input" value="{$info.title|default=''}">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">网站编码</label>
+                <div class="layui-input-inline">
+                  <select name="charset">
+                    <option value="auto" {eq name="info.charset|default='auto'" value="auto"}selected="selected"{/eq}>自动检测</option>
+                    <option value="utf-8" {eq name="info.charset|default='auto'" value="utf-8"}selected="selected"{/eq}>utf-8</option>
+                    <option value="gbk" {eq name="info.charset|default='auto'" value="gbk"}selected="selected"{/eq}>gbk</option>
+                    <option value="gb2312" {eq name="info.charset|default='auto'" value="gb2312"}selected="selected"{/eq}>gb2312</option>
+                  </select>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">类型</label>
+                <div class="layui-input-inline">
+                  <select name="type" lay-filter="type">
+                    <option value="novel" {eq name="info.type|default='novel'" value="novel"}selected="selected"{/eq}>小说</option>
+                    <option value="news" {eq name="info.type|default='novel'" value="news"}selected="selected"{/eq}>文章</option>
+                  </select>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">网址补全</label>
+                <div class="layui-input-block">
+                  <input type="radio" name="url_complete" value="1" title="是" {eq name="info['url_complete']|default=1" value="1"}checked{/eq}>
+                  <input type="radio" name="url_complete" value="0" title="否" {eq name="info['url_complete']|default=1" value="0"}checked{/eq}>
+                </div>
+                <div class="layui-form-mid layui-word-aux">将所有页面源码中的相对地址转换成绝对地址（包含超链接、图片、JS链接等）</div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">倒序采集</label>
+                <div class="layui-input-block">
+                  <input type="radio" name="url_reverse" value="1" title="是" {eq name="info['url_reverse']|default=0" value="1"}checked{/eq}>
+                  <input type="radio" name="url_reverse" value="0" title="否" {eq name="info['url_reverse']|default=0" value="0"}checked{/eq}>
+                </div>
+                <div class="layui-form-mid layui-word-aux">以相反的顺序采集内容页网址</div>
+              </div>
+
+              <div class="layui-form-item">
+                <label class="layui-form-label">自动采集</label>
+                <div class="layui-input-block">
+                  <input type="radio" name="is_auto" value="1" title="是" {eq name="info['is_auto']|default=0" value="1"}checked{/eq}>
+                  <input type="radio" name="is_auto" value="0" title="否" {eq name="info['is_auto']|default=0" value="0"}checked{/eq}>
+                </div>
+                <div class="layui-form-mid layui-word-aux">程序自动采集</div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">图片本地化</label>
+                <div class="layui-input-block">
+                  <input type="radio" name="pic_local" value="1" title="是" {eq name="info['pic_local']|default=0" value="1"}checked{/eq}>
+                  <input type="radio" name="pic_local" value="0" title="否" {eq name="info['pic_local']|default=0" value="0"}checked{/eq}>
+                </div>
+                <div class="layui-form-mid layui-word-aux">保存图片到本地</div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">重复数据处理</label>
+                <div class="layui-input-block">
+                  <input type="radio" name="update" value="0" title="不处理" {eq name="info['update']|default=0" value="0"}checked{/eq}>
+                  <input type="radio" name="update" value="1" title="替换" {eq name="info['update']|default=0" value="1"}checked{/eq}>
+                </div>
+                <div class="layui-form-mid layui-word-aux">重复数据是否替换，例如重复小说替换为当前规则采集的数据源</div>
+              </div>
+            </div>
+            <div class="layui-tab-item">
+              <div style="padding-bottom: 10px;">
+                <button class="layui-btn layui-btn-sm" type="button" lay-open="{:url('source')}" lay-title="添加列表" lay-full="1"><i class="layui-icon layui-icon-add-1"></i> 添加</button>
+              </div>
+              <table class="layui-table">
+                  <colgroup>
+                      <col>
+                      <col width="250">
+                  </colgroup>
+                  <thead>
+                      <tr>
+                          <th>启始地址</th>
+                          <th><div align="center">操作</div></th>
+                      </tr>
+                  </thead>
+                  <tbody id="source_view">
+                  </tbody>
+              </table>
+              <script id="source" type="text/html">
+                {{#  layui.each(d, function(index, item){ }}
+                <tr>
+                    <td>{{ item.url }}</td>
+                    <td align="center">
+                      <a lay-open="{:url('source')}" lay-title="编辑列表" lay-index="{{ index }}" lay-full="1" class="layui-btn layui-btn-normal layui-btn-xs" href="javascript:;"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+                      <a class="layui-btn layui-btn-danger layui-btn-xs" lay-operate="del" lay-operate-data="source" href="javascript:;"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                      <div class="layui-btn-group" style="margin-left: 10px;">
+                        <a class="layui-btn layui-btn-xs" lay-operate="up" lay-operate-data="source" href="javascript:;"><i class="iconfont">&#xe61f;</i></a>
+                        <a class="layui-btn layui-btn-xs" lay-operate="down" lay-operate-data="source" href="javascript:;"><i class="iconfont">&#xe621;</i></a>
+                      </div>
+                    </td>
+                </tr>
+                {{#  }); }}
+              </script>
+              <input type="hidden" name="source_url" value="{$info.source_url|default=''}">
+            </div>
+            <div class="layui-tab-item">
+              <fieldset class="layui-elem-field layui-field-title">
+                <legend>列表网址</legend>
+              </fieldset>
+              <div class="layui-form-item">
+                <label class="layui-form-label">获取区间</label>
+                <div class="layui-input-block">
+                  <textarea name="section" placeholder="区域开始代码[内容]区域结束代码" class="layui-textarea">{$info.section|default=''}</textarea>
+                  <div class="layui-form-mid layui-word-aux">
+                    通配符<a href="javascript:;" onclick="insertText('section','[内容{num}]',1)"> [内容] </a>
+                  </div>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">网址规则</label>
+                <div class="layui-input-block">
+                  <textarea name="url_rule" placeholder="默认获取a标签链接，示例：&lt;a href=&quot;http://demo.com/[内容1]/[内容2]&quot;&gt;(*)&lt;/a&gt;" class="layui-textarea">{$info.url_rule|default=''}</textarea>
+                  <div class="layui-form-mid layui-word-aux">
+                    正则<a href="javascript:;" onclick="insertReg('url_rule','(*)')"> (*) </a>
+                    通配符<a href="javascript:;" onclick="insertText('url_rule','[内容{num}]')"> [内容] </a>
+                  </div>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">拼接网址</label>
+                <div class="layui-input-block">
+                  <input type="text" name="url_merge" placeholder="默认拼接所有[内容]标签，示例：http://www.demo.com/[内容1]-[内容2].html" class="layui-input" value="{$info.url_merge|default=''}">
+                  <div class="layui-form-mid layui-word-aux">
+                    正则<a href="javascript:;" onclick="insertReg('url_merge','(*)')"> (*) </a>
+                    通配符<a href="javascript:;" onclick="insertText('url_merge','[内容{num}]')"> [内容] </a>
+                  </div>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">网址过滤</label>
+                <div class="layui-input-block layui-form-pane">
+                  <div class="layui-form-item" style="clear:inherit">
+                    <label class="layui-form-label">必须包含</label>
+                    <div class="layui-input-block">
+                      <input type="text" name="url_must" class="layui-input" value="{$info.url_must|default=''}">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                      正则<a href="javascript:;" onclick="insertReg('url_must','(*)')"> (*) </a>
+                    </div>
+                  </div>
+                  <div class="layui-form-item" style="clear:inherit">
+                    <label class="layui-form-label">不能包含</label>
+                    <div class="layui-input-block">
+                      <input type="text" name="url_ban" class="layui-input" value="{$info.url_ban|default=''}">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        正则<a href="javascript:;" onclick="insertReg('url_ban','(*)')"> (*) </a>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <fieldset class="layui-elem-field layui-field-title">
+                <legend>关联网址</legend>
+              </fieldset>
+              <div style="padding-bottom: 10px;">
+                <button class="layui-btn layui-btn-sm" type="button" lay-open="{:url('relation')}" lay-title="添加关联" lay-full="1"><i class="layui-icon layui-icon-add-1"></i> 添加</button>
+              </div>
+              <table class="layui-table">
+                  <colgroup>
+                      <col>
+                      <col width="300">
+                      <col width="250">
+                  </colgroup>
+                  <thead>
+                      <tr>
+                          <th>名称</th>
+                          <th>目标</th>
+                          <th><div align="center">操作</div></th>
+                      </tr>
+                  </thead>
+                  <tbody id="relation_view">
+                      
+                  </tbody>
+              </table>
+            </div>
+            <script id="relation" type="text/html">
+              {{#  layui.each(d, function(index, item){ }}
+              <tr>
+                <td>{{ item.title }}</td>
+                <td>{{#  if(item.page=="default"){ }}默认内容页{{# }else{ }}{{ d[item.page]['title'] }}{{#  } }}</td>
+                <td align="center">
+                  <a lay-open="{:url('relation')}" lay-title="编辑关联" lay-index="{{ index }}" lay-full="1" class="layui-btn layui-btn-normal layui-btn-xs" href="javascript:;"><i class="layui-icon layui-icon-edit"></i>编辑</a> 
+                  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-operate="del" lay-operate-data="relation" href="javascript:;"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                  <div class="layui-btn-group" style="margin-left: 10px;">
+                    <a class="layui-btn layui-btn-xs" lay-operate="up" lay-operate-data="relation" href="javascript:;"><i class="iconfont">&#xe61f;</i></a>
+                    <a class="layui-btn layui-btn-xs" lay-operate="down" lay-operate-data="relation" href="javascript:;"><i class="iconfont">&#xe621;</i></a>
+                  </div>
+                </td>
+              </tr>
+              {{#  }); }}
+            </script>
+            <input type="hidden" name="relation_url" value="{$info.relation_url|default=''}">
+            <div class="layui-tab-item">
+              <div class="layui-collapse" id="field_view">
+                
+              </div>
+              <script id="field" type="text/html">
+                {{#  layui.each(d.field, function(index, item){ }}
+                <div class="layui-colla-item" lay-id="{{ index }}">
+                  <h2 class="layui-colla-title">
+                    <b>{{ item }}规则</b>
+                    <input type="hidden" name="rule[{{ index }}][field]" value='{{ index }}'>
+                  </h2>
+                  <div class="layui-colla-content layui-show">
+                    {{#  if(index=='category'){ }}
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">入库方式</label>
+                      <div class="layui-input-block">
+                        <input type="radio" name="category_way" lay-filter="category_way" value="1" title="固定分类" {eq name="info['category_way']|default=1" value="1"}checked{/eq}>
+                        <input type="radio" name="category_way" lay-filter="category_way" value="0" title="对应分类" {eq name="info['category_way']|default=1" value="0"}checked{/eq}>
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">固定分类</label>
+                      <div class="layui-input-inline">
+                        <select name="category_fixed">
+                          <option value="">选择栏目</option>
+                          {{#  layui.each(d.category, function(cindex, citem){ }}
+                          <option value="{{ citem.id }}" {{#  if({$info['category_fixed']|default="0"}==citem.id){ }}selected="selected"{{#  } }}>{{ citem.html }}{{ citem.title }}</option>
+                          {{#  }); }}
+                        </select>
+                      </div>
+                    </div>
+                    {{#  } }}
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">目标页</label>
+                      <div class="layui-input-inline">
+                        <select name="rule[{{ index }}][source]">
+                          <option value="default">内容页</option>
+                          <optgroup label="关联页">
+                          {{#  layui.each(d.relation, function(rindex, ritem){ }}
+                          <option value="{{ rindex }}" {{#  if(d['info'][index]['source']==rindex){ }}selected="selected"{{#  } }}>{{ ritem.title }}</option>
+                          {{#  }); }}
+                          </optgroup>
+                        </select>
+                      </div>
+                      <a style="position: absolute;right: 40px;" onclick="admin_show('测试规则','{:url('test')}?field={{ index }}',0,0,1)" class="layui-btn layui-btn-normal layui-btn-sm" href="javascript:;">测试{{ item }}规则</a>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">规则</label>
+                      <div class="layui-input-block">
+                        <textarea name="rule[{{ index }}][rule]" placeholder="示例：;&lt;div id=&quot;a&quot;&gt;[内容]&lt;/div&gt;" class="layui-textarea">{{#  if(d['info']){ }}{{ d['info'][index]['rule'] }}{{#  } }}</textarea>
+                        <div class="layui-form-mid layui-word-aux">
+                          正则<a href="javascript:;" onclick="insertReg('rule[{{ index }}][rule]','(*)')"> (*) </a>
+                          通配符<a href="javascript:;" onclick="insertText('rule[{{ index }}][rule]','[内容{num}]')"> [内容] </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">拼接内容</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="rule[{{ index }}][merge]" placeholder="默认拼接所有[内容]标签，示例：[内容1] [内容2]" class="layui-input" value="{{#  if(d['info']){ }}{{ d['info'][index]['merge'] }}{{#  } }}">
+                        <div class="layui-form-mid layui-word-aux">
+                          通配符<a href="javascript:;" onclick="insertText('rule[{{ index }}][merge]','[内容{num}]')"> [内容] </a>
+                        </div>
+                      </div>
+                    </div>
+                    {{#  if(index=='serialize'){ }}
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">连载字符</label>
+                      <div class="layui-input-inline">
+                        <input type="text" name="rule[{{ index }}][serial]" placeholder="目标站连载，示例：连载中" class="layui-input" value="{{#  if(d['info']){ }}{{ d['info'][index]['serial'] }}{{#  } }}">
+                      </div>
+                      <label class="layui-form-label">完结字符</label>
+                      <div class="layui-input-inline">
+                        <input type="text" name="rule[{{ index }}][over]" placeholder="目标站完结，示例：完结" class="layui-input" value="{{#  if(d['info']){ }}{{ d['info'][index]['over'] }}{{#  } }}">
+                      </div>
+                    </div>
+                    {{#  } }}
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">过滤规则</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="rule[{{ index }}][strip]" class="layui-input" value="{{#  if(d['info']){ }}{{ d['info'][index]['strip'] }}{{#  } }}">
+                        <div class="layui-form-mid layui-word-aux">
+                          <a href="javascript:;"><span>all</span>全部标签</a>
+                          <a href="javascript:;"><span>a</span>超链接</a>
+                          <a href="javascript:;"><span>img</span>图片</a>
+                          <a href="javascript:;"><span>div</span>层</a>
+                          <a href="javascript:;"><span>p</span>段落</a>
+                          <a href="javascript:;"><span>br</span>换行</a>
+                          <a href="javascript:;"><span>form</span>表单</a>
+                          <a href="javascript:;"><span>iframe</span>框架</a>
+                          <a href="javascript:;"><span>object</span>对象</a>
+                          <a href="javascript:;"><span>script</span>脚本</a>
+                          <a href="javascript:;"><span>style</span>样式</a>
+                          <a href="javascript:;"><span>link</span>外部样式</a>
+                        </div>
+                      </div>
+                    </div>
+                    {{#  if(index!=='category'){ }}
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">内容替换</label>
+                      <div class="layui-input-block">
+                        <div style="padding-bottom: 10px;">
+                          <button class="layui-btn layui-btn-sm" type="button" lay-open="{:url('field_replace')}" lay-index="{{ index }}" lay-title="内容替换" lay-size="600,347"><i class="layui-icon layui-icon-add-1"></i> 添加</button>
+                        </div>
+                        <table class="layui-table">
+                            <colgroup>
+                                <col>
+                                <col>
+                                <col width="250">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>目标</th>
+                                    <th>替换</th>
+                                    <th><div align="center">操作</div></th>
+                                </tr>
+                            </thead>
+                            <tbody id="replace_{{ index }}_view">
+                                {{#  if(d.info){ }}
+                                {{#  layui.each(d['info'][index]['replace'], function(reindex, reitem){ }}
+                                <tr>
+                                  <td>{{ reitem.find }}</td>
+                                  <td>{{ reitem.replaces }}</td>
+                                  <td align="center">
+                                    <a lay-open="{:url('field_replace')}" lay-title="编辑替换" lay-index="{{ index }}|{{ reindex }}" lay-size="600,347" class="layui-btn layui-btn-normal layui-btn-xs" href="javascript:;"><i class="layui-icon layui-icon-edit"></i>编辑</a> 
+                                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-operate="del" lay-operate-index="{{ index }}" lay-operate-data="replace" href="javascript:;"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                                    <div class="layui-btn-group" style="margin-left: 10px;">
+                                      <a class="layui-btn layui-btn-xs" lay-operate="up" lay-operate-index="{{ index }}" lay-operate-data="replace" href="javascript:;"><i class="iconfont">&#xe61f;</i></a>
+                                      <a class="layui-btn layui-btn-xs" lay-operate="down" lay-operate-index="{{ index }}" lay-operate-data="replace" href="javascript:;"><i class="iconfont">&#xe621;</i></a>
+                                    </div>
+                                  </td>
+                                </tr>
+                                {{#  }); }}
+                                {{#  } }}
+                            </tbody>
+                        </table>
+                        <input name="rule[{{ index }}][replace]" type="hidden" value='{{#  if(d['info']){ if(d['info'][index]['replace']){ }}{{ JSON.stringify(d['info'][index]['replace']) }}{{#  } } }}' />
+                      </div>
+                    </div>
+                    {{#  } }}
+                    {{#  if(index=='category'){ }}
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">栏目转换</label>
+                      <div class="layui-input-block">
+                        <div style="padding-bottom: 10px;">
+                          <button class="layui-btn layui-btn-sm" type="button" lay-open="{:url('field_category')}" lay-title="栏目转换" lay-size="600,450"><i class="layui-icon layui-icon-add-1"></i> 添加</button>
+                        </div>
+                        <table class="layui-table">
+                            <colgroup>
+                                <col>
+                                <col>
+                                <col width="250">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>目标栏目</th>
+                                    <th>本地栏目ID</th>
+                                    <th><div align="center">操作</div></th>
+                                </tr>
+                            </thead>
+                            <tbody id="category_equivalents_view">
+                                {{#  if(d.info){ }}
+                                {{#  layui.each(d['category_equivalents'], function(cindex, citem){ }}
+                                <tr>
+                                  <td>{{ citem.target }}</td>
+                                  <td>{{ citem.local }}</td>
+                                  <td align="center">
+                                    <a lay-open="{:url('field_category')}" lay-title="编辑" lay-index="{{ cindex }}" lay-size="600,450" class="layui-btn layui-btn-normal layui-btn-xs" href="javascript:;"><i class="layui-icon layui-icon-edit"></i>编辑</a> 
+                                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-operate="category_del" lay-operate-data="category_equivalents" href="javascript:;"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                                  </td>
+                                </tr>
+                                {{#  }); }}
+                                {{#  } }}
+                            </tbody>
+                        </table>
+                        <input name="category_equivalents" type="hidden" value='{{#  if(d['category_equivalents']){ }}{{ JSON.stringify(d['category_equivalents']) }}{{#  } }}' />
+                      </div>
+                    </div>
+                    {{#  } }}
+                  </div>
+                </div>
+                {{#  }); }}
+              </script>
+              <script id="category_equivalents" type="text/html">
+                {{#  layui.each(d, function(index, item){ }}
+                <tr>
+                  <td>{{ item.target }}</td>
+                  <td>{{ item.local }}</td>
+                  <td align="center">
+                    <a lay-open="{:url('field_category')}" lay-title="编辑" lay-index="{{ index }}" lay-size="600,450" class="layui-btn layui-btn-normal layui-btn-xs" href="javascript:;"><i class="layui-icon layui-icon-edit"></i>编辑</a> 
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-operate="category_del" lay-operate-data="category_equivalents" href="javascript:;"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                  </td>
+                </tr>
+                {{#  }); }}
+              </script>
+              <script id="replace" type="text/html">
+                {{#  layui.each(d['list'], function(index, item){ }}
+                <tr>
+                  <td>{{ item.find }}</td>
+                  <td>{{ item.replaces }}</td>
+                  <td align="center">
+                    <a lay-open="{:url('field_replace')}" lay-title="编辑替换" lay-index="{{ d['field_index'] }}|{{ index }}" lay-size="600,347" class="layui-btn layui-btn-normal layui-btn-xs" href="javascript:;"><i class="layui-icon layui-icon-edit"></i>编辑</a> 
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-operate="del" lay-operate-index="{{ d['field_index'] }}" lay-operate-data="replace" href="javascript:;"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                    <div class="layui-btn-group" style="margin-left: 10px;">
+                      <a class="layui-btn layui-btn-xs" lay-operate="up" lay-operate-index="{{ d['field_index'] }}" lay-operate-data="replace" href="javascript:;"><i class="iconfont">&#xe61f;</i></a>
+                      <a class="layui-btn layui-btn-xs" lay-operate="down" lay-operate-index="{{ d['field_index'] }}" lay-operate-data="replace" href="javascript:;"><i class="iconfont">&#xe621;</i></a>
+                    </div>
+                  </td>
+                </tr>
+                {{#  }); }}
+              </script>
+            </div>
+          </div>
+        </div>
+        <div class="layui-layout-admin">
+          <div class="layui-input-block">
+            <div class="layui-footer">
+              <input name="id" type="hidden" value="{$info.id|default=''}" />
+              <button type="submit" style="width: 150px!important;" lay-submit lay-filter="ajax" class="layui-btn">保存</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var field_data={:json_encode($field)};
+    {notempty name="info"}
+      field_data['category_equivalents']={:json_encode($info['category_equivalents'])};
+      field_data['info']={:json_encode($info['rule'])};
+    {/notempty}
+  </script>
+  <script type="text/javascript" src="__STATIC__/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="__ADMIN__/lib/layui/layui.js"></script>
+  <script type="text/javascript" src="__ADMIN__/js/admin.js"></script>
+  <script type="text/javascript" src="__ADMIN__/js/collect.js"></script>
+</body>
+</html>

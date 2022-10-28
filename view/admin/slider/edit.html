@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{$meta_title}-清风小说CMS</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__ADMIN__/css/admin.css"></head>
+<body>
+  <div class="layui-card layui-card-open">
+    <div class="layui-card-body">
+      <form class="layui-form" action="{:url()}">
+        <div class="layui-form-item">
+          <label class="layui-form-label">标题</label>
+          <div class="layui-input-block">
+            <input type="text" name="title" lay-verify="required" class="layui-input" value="{$info.title|default=''}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">类型</label>
+          <div class="layui-input-inline">
+            <select name="type" lay-verify="required">
+              <option value="">选择类型</option>
+              <option value="0" {eq name="info.type|default=''" value="0"}selected="selected"{/eq}>web</option>
+              <option value="1" {eq name="info.type|default=''" value="1"}selected="selected"{/eq}>wap</option>
+              <option value="2" {eq name="info.type|default=''" value="2"}selected="selected"{/eq}>app</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">图片</label>
+          <div class="layui-input-block">
+            <div class="input-group">
+              <input type="text" name="picpath" style="width:350px;" class="layui-input" value="{$info.picpath|default=''}">
+              <button class="layui-btn" id="upload" type="button" title="上传图片">上传图片</button>
+            </div>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">链接地址</label>
+          <div class="layui-input-block w500">
+            <div class="input-group">
+              <input type="text" name="link" style="width:350px;" class="layui-input" value="{$info.link|default=''}">
+              <button class="layui-btn" type="button" onclick="select_novle()" title="选择小说">选择小说</button>
+            </div>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">排序</label>
+          <div class="layui-input-inline">
+            <input type="text" name="sort" lay-verify="required" class="layui-input" value="{$info.sort|default='0'}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <input name="id" type="hidden" value="{$info.id|default=""}" />
+            <button class="layui-btn" lay-submit lay-filter="ajax" type="submit">提交</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="__STATIC__/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="__ADMIN__/lib/layui/layui.js"></script>
+  <script type="text/javascript" src="__ADMIN__/js/admin.js"></script>
+  <script type="text/javascript">
+    var select_novle = function(){
+      var type=$('[name="type"]').val();
+      if(type){
+        var url='{:url('novel/open')}?type='+type;
+        parent.admin_show('选择小说',url,850,600);
+      }else{
+        layui.layer.msg('请先选择类型', {icon: 0,shade: 0.3});
+      }
+    }
+    layui.use(['layer','upload','jquery'], function(){
+      var layer =layui.layer;
+      var upload = layui.upload;
+      var uploadInst = upload.render({
+        elem: '#upload' //绑定元素
+        ,url: '{:url('upload/pic')}' //上传接口
+        ,data: {path:'slider'}
+        ,done: function(data){
+          if(data.code){
+            layer.msg(data.msg, {icon: 1,shade: 0.3,time: 2000},function(layero, index){
+                $('[name="picpath"]').val(data.data.path);
+            });
+          }else{
+            layer.msg(data.msg, {icon: 0,shade: 0.3});
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

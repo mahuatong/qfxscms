@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	    <meta name="keywords" content="{$web['meta_keywords']}">
+	    <meta name="description" content="{$web['meta_description']}">
+	    <title>{$title}-{$ctitle}-{$web['meta_title']}</title>
+	    <link rel="stylesheet" href="{$home_tplpath}css/style.css" type="text/css"/>
+    </head>
+	<body>
+		{include file="/header" /}
+		<div class="path ">
+			{crumbs id="vo"}
+		    <a href="{$vo['url']}">{$vo['title']}</a>
+		    {if $is_last!=true}
+		    <span>&gt;</span>
+		    {/if}
+			{/crumbs}
+		</div>
+		<div class="work_brief clearfixer">
+			<div class="fl detailgame">
+				<div class="pic fl">
+					<span><img src="{$pic}" alt=""></span>
+				</div>
+				<div class="brief fl">
+					<div class="title clearfixer">
+						<span class="name fl">{$title}</span>
+						<a href="{$author_url}" class="author fl" target="_blank">{$author}</a>
+						<span class="write fl">著</span>
+					</div>
+					<div class="tags clearfixer">
+
+						<a href="{:url('home/lists/lists',['serialize'=>$serialize])}">
+							<span class="fl isfinish">{$serialize_text}</span>
+						</a>
+						<a href="{$curl}">
+							<span class="fl">{$ctitle}</span>
+						</a>
+					</div>
+					<div class="hits"> <i></i>
+						<span>{$word_million}万 字</span> <i></i>
+						<span>总点击 {$hits}</span>
+						<i></i>
+						<span>推荐票 {$recommend}</span>
+					</div>
+					<p class="brief_text">
+						{$content|raw|strip_tags}
+					</p>
+					<div class="btns">
+						<a href="{$reader_url}" class="free on ui_bg_bdcolor" target="_blank">马上阅读</a>
+<!--						<a href="javascript:;" {$add_bookshelf} class="addshelf">加入书架</a>-->
+					</div>
+				</div>
+			</div>
+			<div class="fr detailgame_btn">
+				<img src="{$home_tplpath}images/200x300.png">
+			</div>
+		</div>
+		<div class="work_content clearfixer" id="content-tab">
+			<div class="header">
+				<div class="tab fl j-content-tab">
+					<a href="#brief">
+						<span class="on">作品简介</span>
+					</a>
+					<a href="#catalog">
+						<span>目录({$chapter_count}章)</span>
+					</a>
+				</div>
+<!--				<a href="#comment-tab" class="fl comment">书友评论</a>-->
+			</div>
+			<div class="tabcontent j-content-main">
+				<div class="tabcontent-1 clearfixer">
+					<div class="column_left fl">
+						<div class="summary">
+							<pre class="summary1">{$content|raw|strip_tags}</pre>
+						</div>
+						<div class="newchapter">
+							<div class="title clearfixer">
+								<span class="chaptername fl">
+									最新章节&nbsp;:&nbsp;&nbsp;
+									<a target="_blank" href="{$chapter_url}">{$chapter_title}</a>
+								</span>
+								<span class="updatetime fr">更新时间&nbsp;:&nbsp;{:time_format($chapter_time,'Y-m-d H:i',1)}</span>
+							</div>
+							<p>
+								<a target="_blank" href="{$chapter_url}">
+									{$chapter_content|raw|strip_tags|mb_substr=0,300}
+								</a>
+							</p>
+						</div>
+<!--						<div class="reader_comments" id="comment-tab">-->
+<!--							{comment size="12" /}-->
+<!--						</div>-->
+					</div>
+					<div class="column_right fr">
+						<div class="author ">
+							<div class="allbook">
+								<div class="title clearfixer">
+									<div class="text fl">作者作品</div>
+									<div class="tab fr">
+										<span class="j_all_work_prev fl show"></span>
+										<span class="j_all_work_next fl on show"></span>
+									</div>
+								</div>
+								<div class="all_work_content">
+									<div class="all_work_contentbox">
+										{novel id="novel" author="$author"}
+										<a href="{$novel['url']}" target="_blank" class="all_work_contentboxitem visiable">
+											<img src="{$novel['pic']}" alt="">
+											<p>{$novel['title']}</p>
+										</a>
+										{/novel}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="same-recomend">
+							<div class="rec-title">同类推荐</div>
+							<ul class="rec-content ">
+								{novel id="novel" cid="$cid" limit="5" order="hits_week desc"}
+								<li class="clearfixer">
+									<a href="{$novel['url']}" class="rec-pic fl" target="_blank">
+										<img data-original="{$novel['pic']}" alt="" class="lazyimg" src=""></a>
+									<div class="rec-detail fl">
+										<a href="{$novel['url']}" class="rec-con-title" target="_blank">{$novel['title']}</a>
+										<p class="rec-author">
+											<a href="{$novel['author_url']}" target="_blank">作者 : {$novel['author']}</a>
+										</p>
+										<p class="rec-text">{$novel['content']}</p>
+									</div>
+								</li>
+								{/novel}
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="wrap1200 catebg" style="display: none;">
+					<div class="cate-tit">
+						<h2>作品章节</h2>
+					</div>
+					<div class="cate-list">
+						<ul>
+							<li>
+								{chapter id="chapter"}
+								<a target="_blank" href="{$chapter['url']}">
+									<span class="chapter_name">{$chapter['title']}</span>
+									<span class="chapter_date">{:time_format($chapter['time'],'m-d')}</span>
+									{eq name="chapter['new']" value="1"}<span class="newChapter"></span>{/eq}
+								</a>
+								{if $i%3 == 0 }
+	            					</li><li>
+	            				{/if}
+	            				{/chapter}
+							</li>
+						</ul>
+						<div class="cl"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="block20"></div>
+		{include file="/footer" /}
+	</body>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.lazyload.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.mouseDelay.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.bxslider.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/global.js"></script>
+</html>

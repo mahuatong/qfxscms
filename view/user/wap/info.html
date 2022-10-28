@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>{$web['meta_title']}</title>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="{$user_tplpath}css/style.css">
+    <script type="text/javascript" src="{$user_tplpath}js/flexible.min.js"></script>
+</head>
+<body>
+	<div class="app_meskSection"></div>
+	<div class="container">
+		<div class="app_header_section2  app_scrollerHeader" id="header">
+			<div class="app_header_detail2">
+				<div class="app_header_back"></div>
+				<div class="app_header_h1">
+					个人信息
+					<a href="{:url('user/bookshelf/index')}"> <i class="shujiaIco"></i>
+					</a> <i class="moreIco"></i>
+				</div>
+			</div>
+			<div class="app_header_second" style="display: none;">
+				<ul>
+					<li class="icon1">
+						<a href="/">首页</a>
+					</li>
+					<li class="icon2">
+						<a href="{:url('home/lists/lists')}">书库</a>
+					</li>
+					<li class="icon3">
+						<a href="{:url('user/bookshelf/index')}">书架</a>
+					</li>
+					<li class="icon4">
+						<a href="{:url('user/index/index')}">账户</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="app_body">
+			<div class="app_wanJiPassWord">
+		        <div class="app_lisBlockSpan">
+		            <ul>
+		                <li>
+		                    <span class="left">用户名：</span>
+		                    <input type="text" value="{$user['username']}" disabled="true">
+		                </li>
+		                <li>
+		                    <span class="left">用户邮箱：</span>
+		                    <input name="email" id="email" type="text" value="{$user['email']}" placeholder="请输入您的邮箱">
+		                </li>
+		                <li>
+		                    <span class="left">个人签名：</span>
+		                    <textarea name="introduce" cols="30" rows="10" placeholder="请输入您的签名" maxlength="50">{$user['introduce']}</textarea>
+		                </li>
+		            </ul>
+		        </div>
+		        <div class="app_listBlockButton app_marginStyle1" style="padding-bottom: 1.5rem">
+		        	<button id="submitbtn" ajax-post="app_lisBlockSpan" url="{:url()}">确认</button>
+		        </div>
+		    </div>
+		</div>
+	</div>
+	<script type="text/javascript" src="{$user_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer_mobile/layer.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/ajax.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/user.js"></script>
+</body>
+</html>

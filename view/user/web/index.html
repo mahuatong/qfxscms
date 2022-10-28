@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>{$web['meta_title']}</title>
+    	<link href="{$user_tplpath}css/user.css" rel="stylesheet">
+	</head>
+	<body>
+		{include file="template/user/web/header" /}
+		<div class="container wrap1200">
+			{include file="template/user/web/left.html" /}
+			<!--right mod -->		
+			<div class="i-right">
+				<!--bot mod -->		
+				<div class="i-bot">
+					<!--left mod -->		
+					<div class="l-botMod">
+						<div class="myMod" id="myMod">
+							<div class="i-title">
+								我的书架
+								<a href="{:url('user/bookshelf/index')}" class="clickMore" target="_blank">查看更多&gt;&gt;</a>
+							</div>
+							{empty name="bookshelf_list"}
+							<p class="bookNone">您还没有在读的书，快去<a href="/" target="_blank" data-namecard="false">首页</a>看看吧</p>
+							{/empty}
+							<ul class="bookUl">
+								{volist name="bookshelf_list" id="novel"}
+								<li>
+									<a href="{$novel['book']['url']}" target="_blank" alt="{$novel['book']['title']}" title="{$novel['book']['title']}">
+										<img src="{$novel['book']['pic']}">
+									</a>
+									<p>
+										<a href="{$novel['book']['url']}" target="_blank">
+											<span class="bookName">{$novel['book']['title']}</span>
+										</a>
+										<span class="bookStatus">
+											<b class="authorSt"><em>{$novel['book']['serialize_text']}</em>
+												<a href="{$novel['book']['author_url']}" target="_blank">
+													<em class="none">{$novel['book']['author']}</em>
+												</a>
+											</b> 
+											<b class="authorSt chapterSt"><a href="{$novel['book']['chapter_url']}" target="_blank">
+													<em class="ct">最新章节：{$novel['book']['chapter_title']}</em>
+												</a>
+												<em class="time">{$novel['book']['chapter_time']|time_format="m-d H:i",1}更新</em></b> 
+										</span>
+										<a href="{$novel['reader_url']}" target="_blank"> <i class="goon">阅读</i>
+										</a>
+									</p>
+								</li>
+								{/volist}
+							</ul>
+						</div>
+						<div class="myMod">
+							<div class="i-title">
+								最近阅读
+								<a href="{:url('user/recentread/index')}" class="clickMore" target="_blank">查看更多&gt;&gt;</a>
+							</div>
+							{empty name="recentread_list"}
+							<p class="bookNone">您还没有在读的书，快去<a href="/" target="_blank" data-namecard="false">首页</a>看看吧</p>
+							{/empty}
+							<ul class="bookUl">
+								{volist name="recentread_list" id="novel"}
+								<li>
+									<a href="{$novel['book']['url']}" target="_blank" alt="{$novel['book']['title']}" title="{$novel['book']['title']}">
+										<img src="{$novel['book']['pic']}">
+									</a>
+									<p>
+										<a href="{$novel['book']['url']}" target="_blank">
+											<span class="bookName">{$novel['book']['title']}</span>
+										</a>
+										<span class="bookStatus">
+											<b class="authorSt"><em>{$novel['book']['serialize_text']}</em>
+												<a href="{$novel['book']['author_url']}" target="_blank">
+													<em class="none">{$novel['book']['author']}</em>
+												</a>
+											</b> 
+											<b class="authorSt chapterSt"><a href="{$novel['book']['chapter_url']}" target="_blank">
+													<em class="ct">最新章节：{$novel['book']['chapter_title']}</em>
+												</a>
+												<em class="time">{$novel['book']['chapter_time']|time_format="m-d H:i",1}更新</em></b> 
+										</span>
+										<a href="{$novel['reader_url']}" target="_blank"> <i class="goon">继续阅读</i>
+										</a>
+									</p>
+								</li>
+								{/volist}
+							</ul>
+						</div>
+						<div class="myMod hotMod">
+							<div class="i-title">
+								热读作品
+								<ul class="tabHd">
+									<li class="on"></li>
+									<li class=""></li>
+									<li class=""></li>
+								</ul>
+							</div>
+							<div class="tabBd">
+								<ul class="hotBookBd  " style="display: block;">
+									{volist name="hotbook_list" id="vo" offset="0" length='4'}
+									<li>
+										<a href="{$vo['url']}" target="_blank" alt="{$vo['title']}" title="{$vo['title']}">
+											<img src="{$vo['pic']}">
+											<span class="bookName">{$vo['title']}</span>
+											<span class="bookAuthor">{$vo['author']}</span>
+										</a>
+									</li>
+									{/volist}
+								</ul>
+								<ul class="hotBookBd hide " style="display: none;">
+									{volist name="hotbook_list" id="vo" offset="4" length='4'}
+									<li>
+										<a href="{$vo['url']}" target="_blank" alt="{$vo['title']}" title="{$vo['title']}">
+											<img src="{$vo['pic']}">
+											<span class="bookName">{$vo['title']}</span>
+											<span class="bookAuthor">{$vo['author']}</span>
+										</a>
+									</li>
+									{/volist}
+								</ul>
+								<ul class="hotBookBd hide " style="display: none;">
+									{volist name="hotbook_list" id="vo" offset="8" length='4'}
+									<li>
+										<a href="{$vo['url']}" target="_blank" alt="{$vo['title']}" title="{$vo['title']}">
+											<img src="{$vo['pic']}">
+											<span class="bookName">{$vo['title']}</span>
+											<span class="bookAuthor">{$vo['author']}</span>
+										</a>
+									</li>
+									{/volist}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--right mod -->		
+					<div class="r-botMod">		
+						<div class="myWorks myLike">
+							<div class="i-title">推荐作品</div>
+							<ul>
+								{volist name="potbook_list" id="vo"}
+								<li>
+									<a href="{$vo['url']}" target="_blank" alt="{$vo['title']}" title="{$vo['title']}">
+										<img src="{$vo['pic']}">
+									</a>
+									<p>
+										<a href="{$vo['url']}" target="_blank">
+											<span class="bookName other">{$vo['title']}</span>
+										</a>
+										<a href="{$vo['author_url']}" target="_blank">
+											<span class="bookStatus other">{$vo['author']}</span>
+										</a>
+										<span class="bookBrief">{$vo['content']|raw|strip_tags|mb_substr=0,300}</span>
+									</p>
+								</li>
+								{/volist}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="{$user_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/jquery.SuperSlide.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/user.js"></script>
+	<script type="text/javascript">
+		$(".hotMod").slide({titCell:".tabHd li",mainCell:".tabBd",autoPlay:"auto",interTime: 2000});
+	</script>
+</html>

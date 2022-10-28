@@ -1,0 +1,13 @@
+<div class="module module-merge">
+    <div id="catelogX" class="chapter-tab-x active">
+        <ol id="volumes" class="chapter-ol chapter-ol-catalog">
+        	{chapter id="chapter" nid="$id"}
+            <li class="chapter-li jsChapter">
+                <a href="{$chapter['url']}" class="chapter-li-a" data-chapter-id="{$key}">
+                    <span class="chapter-index">{$chapter['title']}</span>
+                </a>
+            </li>
+            {/chapter}
+        </ol>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>{$web['meta_title']}</title>
+    	<link href="{$user_tplpath}css/style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="header reg-header">
+	        <div class="box-center">
+	            <div class="logo cf"><a href="{$web['url']}"><img src="{$web['logo']}"></a><em></em><span class="lang">找回密码</span></div>
+	        </div>
+	    </div>
+	    <div class="box-center-reg">
+	        <div class="reg-wrap">
+	            <div class="reg-step">
+	                <span class="lang act"><i>1</i>输入账号</span>
+	                <span class="lang {egt name="Request.param.step" value="2"}act{/egt}"><i>2</i>身份验证</span>
+	                <span class="lang {egt name="Request.param.step" value="3"}act{/egt}"><i>3</i>输入新密码</span>
+	                <span class="lang {egt name="Request.param.step" value="4"}act{/egt}"><em class="iconfont">&#xe61e;</em>完成</span>
+	            </div>
+	            {switch name="Request.param.step"}
+				{case value="2"}
+	            <div class="reg-form-wrap">
+	                <form action="{:url('forgetpwd',['step'=>2])}" class="ajax_form" method="post">
+	                    <div class="reg-form-list form-list">
+	                        <dl>
+	                            <dd class="top">
+	                            	<em>验证码</em>
+	                            	<input class="mid" name="pwdcode" type="text" id="txtcode" placeholder="验证码">
+	                            	<button class="blue-btn code_send" send-data='{"email":"{:session('forget_pwd.email')}","type":"passw"}' send-url="{:url('email_code')}" type="button">获取验证码</button>
+	                            </dd>
+	                        </dl>
+	                        <button class="blue-btn go-reg" ajax-post="ajax_form" type="submit">下一步</button>
+	                    </div>
+	                </form>
+	            </div>
+	            {/case}
+				{case value="3"}
+				<div class="reg-form-wrap">
+	                <form action="{:url('forgetpwd',['step'=>3])}" class="ajax_form" method="post">
+	                    <div class="reg-form-list form-list">
+	                        <dl>
+	                            <dd class="top" id="name">
+	                            	<em>密码</em>
+	                            	<input type="password" placeholder="密码" name="newpassword">
+	                            </dd>
+	                            <dd class="top" id="name">
+	                            	<em>重复密码</em>
+	                            	<input type="password" placeholder="重复密码" name="confirmpassword">
+	                            </dd>
+	                            <dd id="code"> <em>验证码</em>
+	                            	<input class="mid" name="code" type="text" id="txtcode" placeholder="验证码">
+	                            	<img class="code-img" id="imgrnd" src="{:url('user/user/verify')}" alt="这里是验证码">           
+	                            	<a href="javascript:" id="refresh_code" class="stat">换一张</a>
+	                            </dd>
+	                        </dl>
+	                        <button class="blue-btn go-reg" ajax-post="ajax_form" type="submit">下一步</button>
+	                    </div>
+	                </form>
+	            </div>
+				{/case}
+				{case value="4"}
+				<div class="reg-form-wrap">
+					<div class="reg-success">
+						<h3>密码修改成</h3>
+						<div class="sprite ok"></div>
+						<p>
+							<a class="blue" href="{:url('login')}">立即登录</a>
+						</p>
+					</div>
+				</div>
+				{/case}
+				{default /}
+				<div class="reg-form-wrap">
+	                <form action="{:url('forgetpwd',['step'=>1])}" class="ajax_form" method="post">
+	                    <div class="reg-form-list form-list">
+	                        <dl>
+	                            <dd class="top" id="name">
+	                            	<em>用户名</em>
+	                            	<input type="text" placeholder="输入用户名" name="username" id="txtname">
+	                            </dd>
+	                            <dd id="code"> <em>验证码</em>
+	                            	<input class="mid" name="code" type="text" id="txtcode" placeholder="验证码">
+	                            	<img class="code-img" id="imgrnd" src="{:url('user/user/verify')}" alt="这里是验证码">           
+	                            	<a href="javascript:" id="refresh_code" class="stat">换一张</a>
+	                            </dd>
+	                        </dl>
+	                        <button class="blue-btn go-reg" ajax-post="ajax_form" type="submit">下一步</button>
+	                    </div>
+	                </form>
+	            </div>
+				{/switch}
+	        </div>
+	    </div>
+	    <div class="footer-wrap">
+	    	<div class="footer">
+	    		<div class="copy-right">
+	    			<p>{$web['icp']}</p>
+	    			<p>
+	    				Copyright © 2018 All Rights Reserved
+	    				<a href="{$web['url']}" target="_blank">{$web['meta_title']}</a>版权所有
+	    			</p>
+	    		</div>
+	    	</div>
+	    </div>
+	</body>
+	<script type="text/javascript" src="{$user_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/ajax.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/forgetpwd.js"></script>
+</html>

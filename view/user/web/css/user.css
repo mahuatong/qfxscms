@@ -1,0 +1,2403 @@
+@charset "UTF-8";
+@font-face {font-family: "user_iconfont";
+  src: url('../font/iconfont.eot');
+  src: url('../font/iconfont.eot#iefix') format('embedded-opentype'),
+  url('../font/iconfont.woff') format('woff'),
+  url('../font/iconfont.ttf') format('truetype'),
+  url('../font/iconfont.svg#iconfont') format('svg');
+}
+.iconfont {
+    font-family: "user_iconfont" !important;
+    font-size: 24px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.1px;
+    -moz-osx-font-smoothing: grayscale;
+}
+body,html {
+	font-family: 'PingFang SC','Myriad Pro','Hiragino Sans GB','microsoft yahei'!important;
+	color: #333;
+	margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	background: #fafafa!important
+}
+
+blockquote, figure, form, h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+em,i {
+	font-style: normal
+}
+
+b {
+	font-weight: 400!important
+}
+a,body {
+	color: #333;
+}
+
+a,a:active,a:hover {
+	outline: 0
+}
+dd, dl, li, ol, ul {
+    margin: 0;
+    padding: 0;
+}
+ol,ul {
+	list-style: none
+}
+img {
+	border: 0;
+	vertical-align: middle;
+	-ms-interpolation-mode: bicubic
+}
+input {
+	line-height: normal;
+	outline: 0;
+}
+
+input[type=checkbox],input[type=radio] {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0
+}
+
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button {
+	height: auto
+}
+
+input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box
+}
+
+input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration {
+	-webkit-appearance: none
+}
+
+textarea {
+	resize: vertical;
+	outline: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+	background: 0 0;
+	text-decoration: none;
+	font-size: 12px
+}
+
+a:hover {
+	color: #f5546f!important
+}
+
+.hide {
+	display: none
+}
+
+.fr {
+	float: right
+}
+
+.ibody, .pho-tabs {
+    background: #fff;
+    margin-bottom:10px;
+}
+.wrap1200 {
+	position: relative;
+	margin: 0 auto;
+	width: 1200px;
+	zoom: 1
+}
+
+.wrap1200:after {
+	display: block;
+	content: '';
+	clear: both
+}
+
+.mod-header .logo {
+	height: 50px;
+	position: relative
+}
+
+.mod-header .logo .logoImage {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%)
+}
+
+.iMod {
+	height: 72px!important;
+	clear: both
+}
+
+.iMod .mybookshelf,.iMod .search-top {
+	margin-top: 20px!important
+}
+
+.iMod .imotie {
+	width: 170px;
+	font-size: 24px;
+	font-weight: 700;
+	float: left;
+	line-height: 72px
+}
+
+.iMod .iUl {
+	padding-top: 13px;
+	width: 400px;
+	float: left
+}
+
+.iMod .iUl li {
+	float: left;
+	margin-right: 50px;
+	font-size: 16px;
+	height: 56px;
+	line-height: 54px;
+	border-bottom: solid 3px transparent
+}
+
+.iMod .iUl li a {
+	font-size: 16px;
+	color: #666
+}
+
+.iMod .iUl li, .iMod .iUl li.accounts {
+    position: relative;
+}
+
+.iMod .iUl li.on,.iMod .iUl li:hover {
+	border-bottom: solid 3px #ff4c2f
+}
+
+.iMod .iUl li.accounts p {
+    padding: 10px 0;
+    position: absolute;
+    top: 60px;
+    left: -40px;
+    z-index: 99999;
+    display: none;
+    width: 140px;
+    background: #fff;
+    text-align: center;
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+    box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+}
+
+.iMod .iUl li.accounts p a {
+    display: block;
+    color: #333;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.iMod .iUl li.accounts p a:hover{color:#fff!important;background:#ff4c2f}
+
+.searchbox {
+	width: 247px;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 10px;
+	top: 10px;
+	right: 150px;
+	position: absolute
+}
+
+.searchbox .searchbox-inner {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2
+}
+
+.searchbox .searchbox-inner .searchinput {
+	border: 0;
+	padding: 0 0 0 30px;
+	font-size: 12px;
+	width: 217px;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 0;
+	display: block;
+	background: #faf9f4;
+	border-radius: 16px;
+	outline: 0
+}
+
+.searchbox .searchbox-inner .searchinput::-webkit-input-placeholder {
+	color: #7e7e7e
+}
+
+.searchbox .searchbox-inner .searchbtn {
+	display: block;
+	background: #333;
+	border: 0;
+	cursor: pointer;
+	position: absolute;
+	right: 0;
+	top: 1px;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px
+}
+
+.searchbox .searchbox-inner .search-icon {
+	position: absolute;
+	right: 4px;
+	top: 6px;
+	z-index: 2;
+	pointer-events: none;
+	background-image: url(../images/sprite.png);
+	background-position: -28px -50px;
+	width: 20px;
+	height: 21px
+}
+
+.mod-header .login {
+    float: right;
+    position: relative;
+    background: #fff;
+    padding-top: 22px;
+}
+.mod-header .login .login_after{position: relative;}
+.mod-header .login .login_after img{width: 30px; height: 30px; border-radius: 50%;}
+.mod-header .login .login_after a{ font-size: 12px; color: #6a6a6a; max-width: 84px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.mod-header .login .login_after .yh{ padding: 0 10px 0 10px; position: relative; z-index: 100;}
+.mod-header .login .login_after .yh a{margin: 2px 0 0 0;}
+.mod-header .login a:hover{color: #f26552;} 
+.mod-header .login_after:hover .xiala{display: block;}
+.mod-header .login_after .xiala{width: 146px; height: 126px; background:#fff; box-shadow: 0 0 5px rgba(0,0,0,0.1); border-radius: 4px; position: absolute; left: 0; top: -14px; z-index: 99; padding-top: 50px; display: none;}
+.mod-header .login_after .xiala li{height: 42px; line-height: 42px; padding: 0 0 0 15px; cursor: pointer;}
+.mod-header .login_after .xiala li:hover{background: #fafafa;}
+.mod-header .login_after .xiala .on{background: #fafafa;}
+.mod-header .login_after .xiala i{font-size: 16px;width: 14px; height: 14px; margin: 15px 14px 0 5px;}
+
+.i-right .bookshelfMod table tr td img,.i-right .myReview .divBd .myBookList li .bookCover img,.i-right .myReview .divBd .reviewList li .bookCover,.img {
+	-webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+	box-shadow: 1px 1px 2px rgba(0,0,0,.3)
+}
+
+.i-right .doneList table tr td.t4 p,.i-right .i-bot .l-botMod .myMod .bookUl li p .bookStatus .authorSt em.none,.i-right .i-bot .l-botMod .myMod .hotBookBd li a.bookName,.i-right .i-bot .l-botMod .myMod .hotBookBd li span.bookName,.i-right .myReview .divBd .fabList li a.reviewTit,.i-right .rewardList table tr td.t3 p,.i-right .subList table tr td.t3 p,.myWorks ul li p .bookName.other,.textStatus {
+	white-space: nowrap;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	overflow: hidden
+}
+
+.anormal,.del_Layer_yes,.i-right .bookshelfMod table tr a.goon:hover,.i-right .bookshelfMod table tr td.t7 a.goon:hover,.i-right .i-bot .l-botMod .myMod .bookUl li .addShelf:hover,.i-right .i-bot .l-botMod .myMod .bookUl li p i.goon:hover,.i-right .i-bot .l-botMod .myMod .bookUl li p i.hover,.more:hover,.my_Post_content_del:hover,.my_Post_content_edit:hover,.my_Post_content_look:hover,.my_Post_content_stop:hover {
+	color: #fff!important;
+	background: #ff4c2f;
+	border: 1px solid #ff4c2f!important
+}
+
+.ahover,.i-right .moneyBg a.m4:hover,.i-right .myReview .divBd .myBookList li .reviewDetail i a.on:hover {
+	color: #fff!important;
+	background: #9e3521;
+	border: 1px solid #9e3521
+}
+
+#main {
+	padding-top: 0!important
+}
+
+.iw-left {
+	float: left;
+	width: 240px!important;
+	background: #fff;
+	overflow: hidden
+}
+
+.iw-left .homeFans {
+	padding: 30px 0 20px;
+	border-bottom: solid 1px #f2f2f2;
+	overflow: hidden
+}
+
+.iw-left .homeFans li {
+	float: left;
+	width: 120px;
+	text-align: center;
+	font-size: 12px;
+	color: #999
+}
+
+.iw-left .homeFans li span {
+	display: block;
+	margin: 15px auto;
+	width: 15px;
+	height: 2px;
+	background: #f2f2f2
+}
+
+.iw-left .homeFans li b {
+	display: block;
+	color: #333;
+	font-size: 14px
+}
+
+.iw-left .homeGray {
+	height: 10px;
+	background: #fafafa
+}
+
+.iw-left .homeBadge {
+	padding: 0 0 20px 12px;
+	overflow: hidden
+}
+
+.iw-left .homeBadge span {
+	margin: 20px 0 0 10px;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	border: 1px solid #f2f2f2
+}
+
+.i-left,.i-right {
+	margin-bottom: 50px
+}
+
+.iw-right {
+	width: 950px!important
+}
+
+.i-left {
+	width: 200px;
+	float: left;
+	font-size: 14px;
+	background: #fff;
+	overflow: hidden
+}
+
+.i-left .title {
+	padding-left: 30px;
+	height: 40px;
+	line-height: 40px;
+	color: #999;
+	border-bottom: solid 1px #f2f2f2
+}
+
+.i-left .title i {
+	display: inline-block;
+    margin-right: 10px;
+    width: 18px;
+    height: 15px;
+    font-size: 18px;
+}
+
+.i-left ul {
+	padding: 0 0 15px 30px;
+	border-bottom: solid 5px #fafafa;
+	overflow: hidden
+}
+
+.i-left ul li {
+	margin-top: 15px;
+	border-right: solid 2px transparent
+}
+
+.i-left ul li a:hover,.i-left ul li.on {
+	border-right: solid 2px #ff4c2f
+}
+
+.i-left ul li a {
+	display: block;
+	color: #333;
+	font-size: 14px
+}
+
+.i-left ul li i {
+	display: inline-block;
+    margin-right: 10px;
+    width: 18px;
+    height: 15px;
+    font-size: 18px;
+}
+
+.i-left ul li a:hover i {
+	
+}
+
+.i-left ul li.on a {
+	color: #ff4c2f
+}
+
+.i-left ul li.on a:hover {
+	border-right: solid 2px transparent
+}
+
+.i-left ul li.on i {
+	
+}
+
+.i-left .user_block{
+	border-bottom: solid 5px #fafafa;
+	background: url(../images/user-bg.png);
+	/*background-color: #ec4137;*/
+}
+.i-left .user_block .header {
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.i-left .user_block .header span {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 0 auto;
+    background-color: #e1e1e1;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.i-left .user_block .header img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.i-left .user_block .name {
+    width: 100%;
+    padding: 15px 0 0 0;
+    text-align: center;
+    font-size: 16px;
+    color: #fafafa;
+}
+.i-left .user_block .group {
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+    font-size: 12px;
+    color: #f2f2f2;
+}
+.i-left .user_block .group i{
+	font-size: 12px;
+	margin-right: 5px;
+	color: #ff4c2f;
+}
+.i-left .user_block_list2 {
+    width: 100%;
+    background-color: #fff
+}
+.i-left .user_block_list2 ul {
+    width: 100%;
+    display: block;
+    padding: 0px;
+}
+.i-left .user_block_list2 ul li {
+	display: block;
+    width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 0px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.i-left .user_block_list2 ul li .borderBottom {
+	display: inline-block;
+    width: 140px;
+    border-bottom: 1px dashed #e9e9e9;
+    height: 35px;
+    line-height: 35px;
+    position: relative;
+    padding-left: 10px;
+}
+.i-left .user_block_list2 ul li:last-child .borderBottom, .i-left .user_block_list2 ul li.last .borderBottom {
+    border-bottom: #fff;
+}
+
+.i-right {
+	float: right;
+	width: 990px;
+	overflow: hidden
+}
+
+.i-right .i-top,.i-right .i-top .iDetail dl {
+	margin-bottom: 10px;
+	overflow: hidden
+}
+
+.i-right .i-top {
+	padding: 15px 30px;
+	height: 150px;
+	background: #fff
+}
+
+.i-right .i-top .iDetail {
+	width: 195px;
+	height: 150px;
+	float: left;
+	padding-right: 30px;
+	border-right: solid 1px #e6e6e6
+}
+
+.i-right .i-top .iDetail dl dt {
+	margin-right: 15px;
+	float: left;
+	width: 60px
+}
+
+.i-right .i-top .iDetail dl dt a {
+	display: block
+}
+
+.i-right .i-top .iDetail dl dt img {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	display: block
+}
+
+.i-right .i-top .iDetail dl dd {
+	float: left;
+	width: 120px
+}
+
+.i-right .i-top .iDetail dl dd a {
+	display: inline-block;
+	line-height: 18px;
+	color: #000;
+	font-size: 14px
+}
+
+.i-right .i-top .iDetail dl dd cite {
+	height: 14px;
+	width: 14px;
+	display: inline-block;
+	margin: 0 0 0 10px
+}
+
+.i-right .i-top .iDetail dl dd cite.v0 {
+	background-position: -60px 0
+}
+
+.i-right .i-top .iDetail dl dd cite.v1 {
+	background-position: -60px -30px
+}
+
+.i-right .i-top .iDetail dl dd cite.v2 {
+	background-position: -60px -62px
+}
+
+.i-right .i-top .iDetail dl dd cite.v3 {
+	background-position: -60px -92px
+}
+
+.i-right .i-top .iDetail dl dd cite.v4 {
+	background-position: -60px -131px
+}
+
+.i-right .i-top .iDetail dl dd cite.v5 {
+	background-position: -60px -161px
+}
+
+.i-right .i-top .iDetail dl dd span {
+	padding: 0 12px;
+	height: 20px;
+	line-height: 20px;
+	color: #fff;
+	display: inline-block;
+	margin-top: 10px;
+	border-radius: 12px;
+	background: #ff4c2f
+}
+
+.i-right .i-top .iDetail dl dd span.nosign {
+	background: #999
+}
+
+.i-right .i-top .iDetail .medal {
+	overflow: hidden
+}
+
+.i-right .i-top .iDetail .medal img {
+	display: inline-block;
+	margin: 10px 10px 0 0;
+	width: 24px;
+	height: 24px
+}
+
+.i-right .i-top .iAttend {
+	padding-top: 45px;
+	float: left;
+	width: 230px;
+	height: 105px;
+	text-align: center;
+	border-right: solid 1px #e6e6e6;
+	overflow: hidden
+}
+
+.i-right .i-top .iAttend a {
+	width: 115px;
+	display: block;
+	float: left;
+	color: grey;
+	font-size: 14px
+}
+
+.i-right .i-top .iAttend a em {
+	display: block;
+	margin: 15px auto;
+	width: 15px;
+	height: 2px;
+	background: #ccc
+}
+
+.i-right .i-top .iAttend a b {
+	color: #000
+}
+
+.i-right .i-top .iBookshelf {
+	padding-top: 25px;
+	width: 135px;
+	height: 125px;
+	float: left;
+	padding-left: 40px;
+	border-right: solid 1px #e6e6e6;
+	overflow: hidden
+}
+
+.i-right .i-top .iBookshelf a {
+	display: block;
+	color: #000;
+	font-size: 14px;
+	line-height: 40px
+}
+
+.i-right .i-top .iBookshelf a em {
+	display: inline-block;
+	margin-right: 20px;
+	width: 40px;
+	height: 40px;
+	color: #fff;
+	text-align: center;
+	background: #ff4c2f;
+	border-radius: 50%
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li a,.i-right .i-bot .l-botMod .myMod .bookUl li p i,.i-right .i-bot .l-botMod .myMod .bookUl li p span {
+	display: block
+}
+
+.i-right .i-top .iBookshelf a.readed {
+	margin-top: 15px
+}
+
+.i-right .i-top .iBookshelf a.readed em {
+	background: #6cd
+}
+
+.i-right .i-top .iTicket {
+	width: 336px;
+	border: none
+}
+
+.i-right .i-top .iTicket a {
+	width: 112px
+}
+
+.i-right .i-top .iTicket a .red {
+	font-weight: 700!important;
+	color: #ff4c2f
+}
+
+.i-right .i-bot {
+	overflow: hidden
+}
+
+.i-right .i-bot .l-botMod {
+	float: left;
+	width: 740px;
+	overflow: hidden
+}
+
+.i-right .i-bot .l-botMod .myMod {
+	margin-bottom: 10px;
+	padding-left: 30px;
+	background: #fff;
+	overflow: hidden
+}
+
+.i-right .i-bot .l-botMod .myMod .bookNone {
+	padding: 50px 0;
+	text-align: center;
+	font-size: 16px;
+	color: #666
+}
+
+.i-right .i-bot .l-botMod .myMod .bookNone a {
+	font-weight: 700;
+	color: #ff4c2f;
+	font-size: 16px
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl {
+	width: 690px;
+	padding: 0 20px 10px 0;
+	overflow: hidden
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li {
+	position: relative;
+	padding: 20px 0;
+	border-bottom: solid 1px #f2f2f2;
+	overflow: hidden
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li:last-child {
+	border-bottom: none
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li .addShelf {
+	position: absolute;
+	top: 80px;
+	right: 25px;
+	z-index: 999;
+	width: 98px;
+	height: 28px;
+	line-height: 28px;
+	font-size: 16px;
+	color: #666;
+	text-align: center;
+	border: 1px solid #333;
+	border-radius: 3px
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li img {
+	margin-right: 15px;
+	display: block;
+	float: left;
+	width: 74px;
+	height: 100px;
+	-webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+	box-shadow: 1px 1px 2px rgba(0,0,0,.3)
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li p {
+	position: relative;
+	width: 575px;
+	float: left
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li p i {
+	position: absolute;
+	top: 10px;
+	right: 0;
+	width: 98px;
+	height: 28px;
+	line-height: 28px;
+	font-size: 16px;
+	color: #666;
+	text-align: center;
+	border: 1px solid #333;
+	border-radius: 3px
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li p i.goon,.i-right .i-bot .l-botMod .myMod .bookUl li p i.hover {
+	top: 55px
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li p .bookName {
+	padding: 15px 0;
+	font-size: 16px;
+	color: #333;
+	font-weight: 700
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li p .bookStatus {
+	color: #999;
+	font-size: 12px
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li p .bookStatus .authorSt {
+	display: inline-block;
+	margin-right: 75px
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li p .bookStatus .authorSt.chapterSt {
+	margin-right: 0
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li p .bookStatus .authorSt em {
+	line-height: 12px;
+	display: block;
+	margin-bottom: 10px
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li p .bookStatus .authorSt em.none {
+	margin-bottom: 0
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li p .bookStatus .authorSt em.ct {
+	color: #333
+}
+
+.i-right .i-bot .l-botMod .myMod .bookUl li p .bookStatus .authorSt em.time {
+	color: #666
+}
+
+.i-right .i-bot .l-botMod .myMod .hotBookBd {
+	padding: 20px 0;
+	overflow: hidden
+}
+
+.i-right .i-bot .l-botMod .myMod .hotBookBd li {
+	margin-right: 43px;
+	float: left;
+	width: 140px;
+	text-align: center;
+	overflow: hidden
+}
+
+.i-right .i-bot .l-botMod .myMod .hotBookBd li:last-child {
+	margin: 0
+}
+
+.i-right .i-bot .l-botMod .myMod .hotBookBd li img {
+	width: 110px;
+	height: 150px;
+	display: inline-block;
+	-webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+	box-shadow: 1px 1px 2px rgba(0,0,0,.3)
+}
+
+.i-right .i-bot .l-botMod .myMod .hotBookBd li a,.i-right .i-bot .l-botMod .myMod .hotBookBd li span {
+	display: block
+}
+
+.i-right .i-bot .l-botMod .myMod .hotBookBd li a.bookName,.i-right .i-bot .l-botMod .myMod .hotBookBd li span.bookName {
+	font-size: 16px;
+	line-height: 16px;
+	padding: 10px 0 5px;
+	color: #333
+}
+
+.i-right .i-bot .l-botMod .myMod .hotBookBd li a.bookAuthor,.i-right .i-bot .l-botMod .myMod .hotBookBd li span.bookAuthor {
+	font-size: 14px;
+	color: #999
+}
+
+.i-right .i-bot .r-botMod {
+	float: right;
+	width: 240px;
+	overflow: hidden
+}
+
+.i-right .i-level {
+	margin-bottom: 10px;
+	padding: 0 0 10px 30px;
+	background: #fff;
+	overflow: hidden
+}
+
+.i-right .i-level p span,.i-right .i-level p span.v0 {
+	background-position: -78px 0
+}
+
+.i-right .i-level p {
+	padding-top: 10px;
+	line-height: 36px;
+	color: #666;
+	font-size: 14px
+}
+
+.i-right .i-level p span {
+	width: 38px;
+	height: 14px
+}
+
+.i-right .i-level p span.v1 {
+	background-position: -78px -30px
+}
+
+.i-right .i-level p span.v2 {
+	background-position: -78px -62px
+}
+
+.i-right .i-level p span.v3 {
+	background-position: -78px -92px
+}
+
+.i-right .i-level p span.v4 {
+	background-position: -78px -131px
+}
+
+.i-right .i-level p span.v5 {
+	background-position: -78px -161px
+}
+
+.i-right .i-level p a {
+	font-size: 14px;
+	display: inline-block;
+	color: #ff4c2f
+}
+
+.i-right .i-level p b {
+	font-weight: 700!important;
+	color: #ff4c2f
+}
+
+.i-right .i-vip {
+	padding-left: 30px;
+	background: #fff;
+	overflow: hidden
+}
+
+.i-right .i-vip p {
+	padding-bottom: 25px;
+	color: grey;
+	font-size: 12px;
+	line-height: 24px;
+	border-bottom: solid 1px #f2f2f2
+}
+
+.i-right .i-vip p.record {
+	font-size: 14px
+}
+
+.i-right .i-vip p:last-child {
+	border-bottom: none
+}
+
+.i-right .i-vip p span {
+	padding: 25px 0 15px;
+	display: block;
+	color: #333;
+	font-size: 16px
+}
+
+.i-right .i-vip p b {
+	padding-bottom: 15px
+}
+
+.i-right .i-vip p b em {
+	display: inline-block
+}
+
+.i-right .i-vip p b em.arrow {
+	width: 33px;
+	height: 10px;
+	margin-right: 20px;
+	background-position: -60px -193px;
+	vertical-align: 40px
+}
+
+.i-right .i-vip p b em cite {
+	margin-right: 0;
+	width: 38px;
+	height: 14px;
+	background-position: -78px 0
+}
+
+.i-right .i-vip p b em cite.v1 {
+	background-position: -78px -30px
+}
+
+.i-right .i-vip p b em cite.v2 {
+	background-position: -78px -62px
+}
+
+.i-right .i-vip p b em cite.v3 {
+	background-position: -78px -92px
+}
+
+.i-right .i-vip p b em cite.v4 {
+	background-position: -78px -131px
+}
+
+.i-right .i-vip p b em cite.v5 {
+	background-position: -78px -161px
+}
+
+.i-right .bookshelfMod,.i-right .i-integal,.i-right .myReview {
+	background: #fff;
+	overflow: hidden
+}
+
+.i-right .i-vip p b em i {
+	padding-top: 15px;
+	display: block;
+	color: grey;
+	font-size: 12px
+}
+
+.i-right .i-integal {
+	margin-bottom: 50px;
+	padding-left: 30px
+}
+
+.i-right .i-integal table {
+	display: block;
+	width: 100%
+}
+
+.i-right .i-integal table tr {
+	color: #333;
+	font-size: 12px;
+	line-height: 42px;
+	border-bottom: solid 1px #f2f2f2
+}
+
+.i-right .i-integal table tr.head {
+	color: #999;
+	font-size: 14px
+}
+
+.i-right .i-integal table tr td {
+	padding-right: 20px;
+	min-width: 150px
+}
+
+.i-right .i-integal table tr td.last {
+	width: 450px
+}
+
+.i-right .i-integal p {
+	margin-right: 20px;
+	font-size: 12px;
+	color: grey;
+	line-height: 42px;
+	text-align: right
+}
+
+.i-right .bookshelfMod {
+	padding-left: 15px;
+    padding-right: 15px;
+	margin-top: 5px
+}
+
+.i-right .bookshelfMod table {
+	display: block;
+	width: 100%
+}
+
+.i-right .bookshelfMod table tr {
+	color: #333;
+	font-size: 12px;
+	border-top: solid 1px #f2f2f2
+}
+
+.i-right .bookshelfMod table tr td {
+	padding: 20px 15px 20px 0;
+	width: 110px
+}
+
+.i-right .bookshelfMod table tr td img {
+	width: 74px;
+	height: 100px;
+	display: block
+}
+
+.i-right .bookshelfMod table tr td.t2 {
+	width: 125px
+}
+
+.i-right .bookshelfMod table tr td.t2 a {
+	font-size: 14px;
+	color: #333;
+	line-height: 20px
+}
+.i-right .bookshelfMod table tr td.t3 {
+	width: 230px
+}
+
+.i-right .bookshelfMod table tr td.t4 {
+	width: 120px
+}
+
+.i-right .bookshelfMod table tr td.t5 {
+	width: 145px
+}
+
+.i-right .bookshelfMod table tr td.t5 em {
+	display: block;
+	color: #ff4c2f
+}
+
+.i-right .bookshelfMod table tr td.t6 {
+	width: 70px
+}
+
+.i-right .bookshelfMod table tr td.t7 {
+	text-align: center;
+	width: 130px
+}
+
+.i-right .bookshelfMod table tr td.t7 a.goon {
+	margin: 0 auto 10px;
+	display: block;
+	width: 98px;
+	height: 28px;
+	line-height: 28px;
+	font-size: 16px;
+	color: #666;
+	text-align: center;
+	border: 1px solid #333;
+	border-radius: 3px
+}
+
+.i-right .bookshelfMod table tr td.t7 i {
+	display: block
+}
+
+.i-right .bookshelfMod table tr td.t7 i .Collection,.i-right .bookshelfMod table tr td.t7 i .autoSub,.i-right .bookshelfMod table tr td.t7 i .del,.i-right .bookshelfMod table tr td.t7 i .havaSub {
+	cursor: pointer;
+	line-height: 22px;
+	padding: 0 5px
+}
+
+.i-right .bookshelfMod table tr td.t7 i a.donshelf:hover {
+	color: #333!important;
+	cursor: text
+}
+
+.i-right .bookshelfMod table tr.head {
+	padding: 0;
+	height: 42px;
+	line-height: 42px;
+	color: #999;
+	font-size: 14px
+}
+
+.i-right .bookshelfMod table tr.head td {
+	padding: 0 15px 0 0
+}
+
+.i-right .bookshelfMod table tr a {
+	color: #666;
+	line-height: 18px
+}
+
+.i-right .bookshelfMod table .on {
+	border: none
+}
+
+.i-right .page-box {
+	width: 100%;
+	border-top: solid 1px #f2f2f2
+}
+
+.i-right .page-box .page-content {
+	float: right;
+	margin: 15px
+}
+
+.i-right .myReview .divBd .reviewList li .reviewDetail .bookAuthor,.i-right .myReview .divBd .reviewList li .reviewDetail .reviewCont {
+	margin-bottom: 10px
+}
+
+.i-right .myReview {
+	padding: 0 30px
+}
+
+.i-right .myReview .divBd {
+	overflow: hidden
+}
+
+.i-right .myReview .divBd .reviewList li {
+	padding: 20px 0;
+	width: 960px;
+	margin-right: 40px;
+	border-bottom: solid 1px #f2f2f2;
+	overflow: hidden
+}
+
+.i-right .myReview .divBd .reviewList li:last-child{
+	border-bottom:none;
+}
+
+.i-right .myReview .divBd .reviewList li .bookCover {
+	float: left;
+	display: block;
+	width: 74px;
+	height: 100px
+}
+
+.i-right .myReview .divBd .reviewList li .bookCover img {
+	width: 74px;
+	height: 100px
+}
+
+.i-right .myReview .divBd .reviewList li .reviewDetail {
+	margin-left: 20px;
+	width: 860px;
+	float: left;
+	color: #666;
+	font-size: 12px;
+	overflow: hidden
+}
+
+.i-right .myReview .divBd .reviewList li .reviewDetail span {
+	display: block
+}
+
+.i-right .myReview .divBd .reviewList li .reviewDetail span.title {
+	font-size: 14px;
+	margin-bottom: 10px
+}
+
+.i-right .myReview .divBd .reviewList li .reviewDetail span.title a{
+	font-size: 14px;
+}
+
+.i-right .myReview .divBd .reviewList li .reviewDetail .time {
+	color: #999;
+	font-family: Arial
+}
+
+.i-right .myReview .divBd .reviewList li .reviewDetail i {
+	display: block;
+	float: right
+}
+
+.i-right .myReview .divBd .reviewList li .reviewDetail i a {
+	color: #999;
+	margin-right: 5px
+}
+
+.i-right .myReview .divBd .replyList li {
+	padding: 20px 0;
+	font-size: 12px;
+	color: #666;
+	line-height: 24px;
+	border-bottom: solid 1px #f2f2f2;
+	overflow: hidden
+}
+
+.i-right .myReview .divBd .replyList li .person {
+	float: left;
+	margin-right: 10px;
+	font-size: 14px
+}
+
+.i-right .myReview .divBd .replyList li .person a {
+	color: #ff4c2f;
+	font-size: 14px
+}
+
+.i-right .myReview .divBd .replyList li .text {
+	margin-right: 30px;
+	float: left;
+	width: 750px
+}
+
+.i-right .myReview .divBd .replyList li span {
+	clear: both;
+	padding-right: 30px;
+	margin-top: 5px;
+	display: block;
+	text-align: right;
+	color: #999;
+	font-family: Arial
+}
+
+.i-right .myReview .divBd .fabList {
+	padding: 10px 0;
+	overflow: hidden
+}
+
+.i-right .myReview .divBd .fabList li {
+	font-size: 12px;
+	line-height: 40px;
+	color: #666;
+	border-bottom: solid 1px #f2f2f2
+}
+
+.i-right .myReview .divBd .fabList li a {
+	color: #ff4c2f;
+	display: inline-block;
+	margin: 0 5px
+}
+
+.i-right .myReview .divBd .fabList li a.reviewTit {
+	max-width: 160px;
+	vertical-align: middle
+}
+
+.i-right .noActive {
+	margin: 10px 0;
+	padding: 20px 30px;
+	color: #333;
+	font-size: 14px;
+	line-height: 24px;
+	background: #fff;
+	overflow: hidden
+}
+
+.i-right .noActive a {
+	font-size: 14px;
+	color: #ff4c2f
+}
+
+.i-right .noActive cite {
+	margin-top: 20px;
+	display: block;
+	font-size: 12px;
+	color: #b2b2b2
+}
+
+.i-right .noActive cite a {
+	font-size: 12px
+}
+
+.i-right .noActive cite em {
+	font-family: Arial
+}
+
+.i-right .doneList,.i-right .rechangeList,.i-right .rewardList,.i-right .subList {
+	position: relative;
+	background: #fff
+}
+
+.i-right .doneList table,.i-right .rechangeList table,.i-right .rewardList table,.i-right .subList table {
+	display: block;
+	width: 100%
+}
+
+.i-right .doneList table tr,.i-right .rechangeList table tr,.i-right .rewardList table tr,.i-right .subList table tr {
+	line-height: 40px;
+	height: 40px;
+	font-size: 12px
+}
+
+.i-right .doneList table tr.head,.i-right .rechangeList table tr.head,.i-right .rewardList table tr.head,.i-right .subList table tr.head {
+	color: #999;
+	font-size: 14px;
+	background: #f2f2f2
+}
+
+.i-right .doneList table tr td,.i-right .rechangeList table tr td,.i-right .rewardList table tr td,.i-right .subList table tr td {
+	width: 194px;
+	border-bottom: solid 1px #f2f2f2
+}
+
+.i-right .doneList table tr td.t1,.i-right .rechangeList table tr td.t1,.i-right .rewardList table tr td.t1,.i-right .subList table tr td.t1 {
+	width: 280px;
+	padding-left: 30px
+}
+
+.i-right .doneList table tr td.t4,.i-right .rechangeList table tr td.t4,.i-right .rewardList table tr td.t4,.i-right .subList table tr td.t4 {
+	width: 224px
+}
+
+.i-right .doneList table tr td.t5,.i-right .rechangeList table tr td.t5,.i-right .rewardList table tr td.t5,.i-right .subList table tr td.t5 {
+	width: 124px;
+	padding-right: 30px
+}
+
+.i-right .rewardList table tr td,.i-right .subList table tr td {
+	width: 220px
+}
+
+.i-right .rewardList table tr td.t3,.i-right .subList table tr td.t3 {
+	padding-right: 0;
+	width: 400px
+}
+
+.i-right .rewardList table tr td.t3 p,.i-right .subList table tr td.t3 p {
+	width: 300px
+}
+
+.i-right .rewardList table tr td.t4,.i-right .subList table tr td.t4 {
+	width: 160px
+}
+
+.i-right .doneList table tr td {
+	width: 170px
+}
+
+.i-right .doneList table tr td.t4 {
+	padding-right: 0;
+	margin-right: 0;
+	width: 380px!important
+}
+
+.i-right .doneList table tr td.t4 p {
+	width: 330px
+}
+
+.i-right .systemMod {
+	padding: 0 30px;
+	background: #fff;
+	overflow: hidden
+}
+
+.i-right .systemMod .systemUl {
+	overflow: hidden
+}
+
+.i-right .systemMod .systemUl li {
+	padding: 20px 0 15px;
+	color: #999;
+	font-size: 14px;
+	line-height: 24px;
+	border-bottom: solid 1px #f2f2f2
+}
+
+.i-right .systemMod .systemUl li span {
+	position: relative;
+	display: block;
+	font-size: 14px;
+	margin-bottom: 10px;
+	color: #333;
+	line-height: 16px
+}
+
+.i-right .systemMod .systemUl li span i {
+	display: block;
+	position: absolute;
+	top: -8px;
+	right: 0;
+	font-size: 12px;
+	color: #999
+}
+
+.i-right .systemMod .systemUl li span b {
+	color: #ff4c2f
+}
+
+.i-right .systemMod .systemUl li a {
+	color: #ff4c2f;
+	font-size: 14px
+}
+
+.i-right .myReview .divBd .myBookList li .reviewDetail .bookName {
+	font-weight: 700
+}
+
+.i-right .myReview .divBd .myBookList li .bookCover,.i-right .myReview .divBd .myBookList li .bookCover img {
+	width: 110px;
+	height: 150px
+}
+
+.i-right .myReview .divBd .myBookList li .reviewDetail {
+	position: relative;
+	margin-left: 30px;
+	width: 690px;
+	overflow: visible
+}
+
+.i-right .myReview .divBd .myBookList li .reviewDetail .reviewCont {
+	height: 48px;
+	line-height: 24px;
+	overflow: hidden
+}
+
+.i-right .myReview .divBd .myBookList li .reviewDetail i {
+	display: block;
+	position: absolute;
+	top: 15px;
+	right: -130px
+}
+
+.i-right .myReview .divBd .myBookList li .reviewDetail i a {
+	margin-top: 20px;
+	display: block;
+	font-size: 16px;
+	height: 32px;
+	line-height: 32px;
+	width: 100px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 4px
+}
+
+.i-right .myReview .divBd .myBookList li .reviewDetail i a.on {
+	color: #fff;
+	background: #ff4c2f;
+	border: 1px solid #ff4c2f
+}
+
+.i-title {
+	position: relative;
+	height: 46px;
+	line-height: 46px;
+	font-size: 18px;
+	color: #333;
+	border-bottom: solid 1px #f2f2f2;
+	background: #fff
+}
+
+.i-title .screenMod {
+	position: absolute;
+	top: 11px;
+	right: 30px;
+	text-align: center;
+	color: #666;
+	font-size: 12px
+}
+
+.i-title .screenMod .screenSelect {
+	margin-right: 10px;
+	float: left;
+	width: 150px;
+	height: 24px;
+	line-height: 24px;
+	border: 1px solid #ccc;
+	border-radius: 5px
+}
+
+.i-title .screenMod .screenBtn {
+	float: left;
+	height: 22px;
+	line-height: 22px;
+	display: block;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	width: 40px;
+	cursor: pointer
+}
+
+.i-title .clickMore,.i-title .goLevel {
+	margin-right: 20px;
+	color: #999;
+	font-size: 14px;
+	float: right;
+	display: block
+}
+
+.i-title .goLevel {
+	padding: 0 10px;
+	margin-top: 10px;
+	color: #ff4c2f;
+	font-size: 12px;
+	border: 1px solid #ff4c2f;
+	border-radius: 15px;
+	height: 24px;
+	line-height: 24px
+}
+
+.i-title .ulHd {
+	overflow: hidden
+}
+
+.i-title .ulHd li {
+	margin-right: 45px;
+	font-size: 18px;
+	position: relative;
+	float: left;
+	cursor: pointer
+}
+
+.i-title .ulHd li span {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin: 0 auto 0 -20px;
+	width: 40px;
+	height: 2px;
+	background: 0 0
+}
+
+.i-title .ulHd li.on,.i-title .ulHd li.on a {
+	color: #ff4c2f
+}
+
+.i-title .ulHd li.on span {
+	background: #ff4c2f
+}
+.i-title .ulHd li a{
+	font-size: 18px;
+}
+.i-title .ulType {
+	position: absolute;
+	right: 0;
+	top: 0
+}
+
+.i-title .ulType li {
+	line-height: 18px;
+	height: 18px;
+	float: left;
+	color: #999;
+	font-size: 14px;
+	text-align: center;
+	border-radius: 9px;
+	border: 1px solid transparent;
+	padding: 0 10px;
+	margin-right: 10px;
+	margin-top: 14px;
+	cursor: pointer
+}
+
+.i-title .ulType li.on {
+	border-color: #ff4c2f;
+	color: #ff4c2f
+}
+
+.i-title .tabHd {
+	position: absolute;
+	top: 20px;
+	right: 20px
+}
+
+.i-title .tabHd li {
+	margin-left: 10px;
+	float: left;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #ccc
+}
+
+.i-title .tabHd li.on {
+	background: #ff4c2f
+}
+
+.i-title .writeBook {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 20px;
+	font-size: 14px;
+	color: #333
+}
+
+.i-title .writeBook i {
+	width: 20px;
+	height: 20px;
+	background-position: -106px -214px;
+	vertical-align: -4px
+}
+
+.bookNone {
+	padding: 100px 0;
+	text-align: center;
+	color: #666;
+	font-size: 16px
+}
+
+.bookNone a {
+	font-weight: 700;
+	color: #ff4c2f;
+	font-size: 16px
+}
+
+.myWorks {
+	margin-bottom: 10px;
+	padding-left: 20px;
+	background: #fff;
+	overflow: hidden
+}
+
+.myWorks ul {
+	margin: 0 30px 20px 0;
+	overflow: hidden
+}
+
+.myWorks ul li {
+	margin-top: 15px;
+	overflow: hidden
+}
+
+.myWorks ul li a {
+	display: block
+}
+
+.myWorks ul li img {
+	display: block;
+	float: left;
+	width: 60px;
+	height: 84px;
+	-webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+	box-shadow: 1px 1px 2px rgba(0,0,0,.3)
+}
+
+.myWorks ul li p {
+	margin-left: 15px;
+	float: left;
+	width: 115px
+}
+
+.myWorks ul li p span {
+	display: block
+}
+
+.myWorks ul li p .bookName {
+	padding: 10px 0;
+	color: #000;
+	font-size: 14px
+}
+
+.myWorks ul li p .bookName.other {
+	padding: 2px 0 6px
+}
+
+.myWorks ul li p .bookStatus {
+	font-size: 12px;
+	color: #999
+}
+
+.myWorks ul li p .bookStatus.other {
+	margin-bottom: 5px
+}
+
+.myWorks ul li p .bookBrief {
+	font-size: 12px;
+	color: #999;
+	line-height: 14px;
+	height: 28px;
+	overflow: hidden
+}
+
+.iw-right .myReview .divBd .fabList li a,.more,.nomore {
+	font-size: 14px
+}
+
+.more {
+	margin: 15px auto 20px;
+	display: block;
+	width: 150px;
+	height: 28px;
+	line-height: 28px;
+	color: #999;
+	text-align: center;
+	border: 1px solid #b5b5b5;
+	border-radius: 20px
+}
+
+.nomore {
+	margin: 20px 0;
+	display: block;
+	text-align: center;
+	color: #999
+}
+
+.iw-right .myReview .divBd .reviewList li .reviewDetail {
+	width: 800px
+}
+
+.iw-right .myReview .divBd .fabList li {
+	color: #999;
+	font-size: 14px;
+	position: relative
+}
+
+.iw-right .myReview .divBd .fabList li b {
+	color: #333
+}
+
+.iw-right .myReview .divBd .fabList li span {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 30px;
+	font-size: 12px;
+	font-family: Arial
+}
+
+.iHomeBanner {
+	margin-bottom: 10px;
+	clear: both;
+	padding-top: 50px;
+	height: 230px;
+	color: #333;
+	font-size: 14px;
+	background: url(../../img/ihomeBg.jpg);
+	text-align: center
+}
+
+.iHomeBanner .personMod {
+	position: relative;
+	margin: 0 auto 20px;
+	width: 80px
+}
+
+.iHomeBanner .personMod img {
+	display: block;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%
+}
+
+.iHomeBanner .personMod span {
+	padding: 0 10px;
+	position: absolute;
+	bottom: -10px;
+	left: -6px;
+	display: block;
+	font-size: 14px;
+	color: #fff;
+	height: 20px;
+	line-height: 20px;
+	border-radius: 12px;
+	background: #ff4c2f;
+	width: 100%
+}
+
+.iHomeBanner p a {
+	display: inline-block
+}
+
+.iHomeBanner p cite {
+	margin: 0 0 0 10px;
+	background-position: -136px -214px;
+	width: 16px;
+	height: 16px
+}
+
+.iHomeBanner p.name {
+	margin-bottom: 5px;
+	font-weight: 700;
+	font-size: 18px
+}
+
+.iHomeBanner p.name cite {
+	width: 14px;
+	height: 14px
+}
+
+.iHomeBanner p.name cite.v0 {
+	background-position: -60px 0
+}
+
+.iHomeBanner p.name cite.v1 {
+	background-position: -60px -30px
+}
+
+.iHomeBanner p.name cite.v2 {
+	background-position: -60px -62px
+}
+
+.iHomeBanner p.name cite.v3 {
+	background-position: -60px -92px
+}
+
+.iHomeBanner p.name cite.v4 {
+	background-position: -60px -131px
+}
+
+.iHomeBanner p.name cite.v5 {
+	background-position: -60px -161px
+}
+
+.attendDoneMod,.attendHxMod,.attendMod {
+	width: 120px;
+	margin: 15px auto 0;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 4px;
+	background: #ff4c2f;
+	color: #fff;
+	cursor: pointer
+}
+
+.attendDoneMod,.attendHxMod {
+	padding-left: 10px;
+	width: 110px;
+	position: relative;
+	background: #999;
+	text-align: left
+}
+
+.attendDoneMod p,.attendHxMod p {
+	position: absolute;
+	top: 30px;
+	left: 0;
+	width: 120px;
+	line-height: 30px;
+	text-align: center;
+	color: #ff4c2f;
+	background: #fff;
+	display: none;
+	cursor: pointer
+}
+
+.attendDoneMod span,.attendHxMod span {
+	display: inline-block
+}
+
+.attendDoneMod span.arrow,.attendHxMod span.arrow {
+	position: absolute;
+	top: 13px;
+	right: -5px;
+	width: 12px;
+	height: 7px;
+	background-position: -128px -186px
+}
+
+.attendDoneMod span.qx,.attendHxMod span.qx {
+	width: 20px;
+	height: 17px;
+	background-position: -162px -214px
+}
+
+.attendDoneMod span.hx,.attendHxMod span.hx {
+	width: 18px;
+	height: 20px;
+	background-position: -100px -186px;
+	vertical-align: -4px
+}
+
+.iAttend {
+	margin-bottom: 50px;
+	background: #fff;
+	overflow: hidden
+}
+
+.iAttend .attendBd {
+	overflow: hidden
+}
+
+.iAttend .attendBd .attendUl {
+	margin-bottom: 30px;
+	overflow: hidden
+}
+
+.iAttend .attendBd .attendUl li {
+	position: relative;
+	margin-top: 20px;
+	float: left;
+	padding: 20px 30px;
+	margin-left: 30px;
+	width: 298px;
+	border: 1px solid #f2f2f2
+}
+
+.iAttend .attendBd .attendUl li cite {
+	display: block;
+	background: url(../../img/sprite/i_icon.png) no-repeat
+}
+
+.iAttend .attendBd .attendUl li .redBg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 48px;
+	height: 48px;
+	background-position: -60px -417px
+}
+
+.iAttend .attendBd .attendUl li .hg {
+	position: absolute;
+	top: 5px;
+	right: 3px;
+	width: 18px;
+	height: 20px;
+	background-position: -100px -186px
+}
+
+.iAttend .attendBd .attendUl li .gz {
+	position: absolute;
+	top: 7px;
+	right: 4px;
+	width: 18px;
+	height: 20px;
+	background-position: -162px -214px
+}
+
+.iAttend .attendBd .attendUl li img {
+	float: left;
+	display: block;
+	margin-right: 20px;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%
+}
+
+.iAttend .attendBd .attendUl li p {
+	float: left;
+	width: 218px
+}
+
+.iAttend .attendBd .attendUl li p .name {
+	margin-bottom: 10px;
+	display: block;
+	color: #ff4c2f;
+	font-size: 16px
+}
+
+.iAttend .attendBd .attendUl li p .name i {
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	margin-left: 10px
+}
+
+.iAttend .attendBd .attendUl li p .name i.v0 {
+	background-position: -78px 0
+}
+
+.iAttend .attendBd .attendUl li p .name i.v1 {
+	background-position: -78px -30px
+}
+
+.iAttend .attendBd .attendUl li p .name i.v2 {
+	background-position: -78px -62px
+}
+
+.iAttend .attendBd .attendUl li p .name i.v3 {
+	background-position: -78px -92px
+}
+
+.iAttend .attendBd .attendUl li p .name i.v4 {
+	background-position: -78px -131px
+}
+
+.iAttend .attendBd .attendUl li p .name i.v5 {
+	background-position: -78px -161px
+}
+
+.iAttend .attendBd .attendUl li p .attendNum {
+	display: block;
+	height: 37px;
+	overflow: hidden
+}
+
+.iAttend .attendBd .attendUl li p .attendSpan {
+	overflow: hidden;
+	display: block
+}
+
+.iAttend .attendBd .attendUl li p .attendSpan i {
+	display: inline-block;
+	margin: 20px 20px 0 0;
+	height: 28px;
+	line-height: 28px;
+	color: #666;
+	width: 85px;
+	font-size: 14px;
+	text-align: center;
+	border: 1px solid #999;
+	border-radius: 4px;
+	cursor: pointer
+}
+
+.iAttend .attendBd .attendUl li p .attendSpan i:last-child {
+	margin-right: 0
+}
+
+.iAttend .attendBd .attendUl li p .attendSpan i.r {
+	background: #ff4c2f;
+	border: 1px solid #ff4c2f;
+	color: #fff
+}
+
+.iAttend .attendBd .attendUl li p .attendSpan i cite {
+	width: 20px;
+	height: 17px;
+	margin-right: 5px;
+	background-position: -162px -186px;
+	vertical-align: -3px
+}
+
+#sendStatus,.nonactived p.send-text * {
+	vertical-align: middle
+}
+
+.iAttend .attendBd .attendUl li p .attendSpan i.done {
+	cursor: default
+}
+
+.basicAccounts {
+	padding: 20px 0 50px;
+	overflow: hidden
+}
+
+.basicAccounts .basicError {
+	margin-bottom: 10px;
+	color: #ff4c2f;
+	font-size: 14px
+}
+
+.basicAccounts table {
+	width: 100%;
+	display: block;
+	border: none;
+	font-size: 14px;
+	color: #333;
+	line-height: 40px
+}
+
+.basicAccounts img,.basicAccounts table td input,.basicAccounts table td textarea {
+	border: 1px solid #f2f2f2
+}
+
+.basicAccounts table td.label {
+	width: 100px
+}
+
+.basicAccounts table td .text,.basicAccounts table td .textError {
+	padding-left: 10px;
+	color: #999;
+	font-size: 12px
+}
+
+.basicAccounts table td .textError {
+	color: #ff4c2f
+}
+
+.basicAccounts table td input.name {
+	padding-left: 10px;
+	width: 270px;
+	height: 28px;
+	line-height: 28px
+}
+
+.basicAccounts table td .textarea {
+	padding: 10px 10px 0;
+	margin-top: 10px;
+	width: 798px;
+	height: 58px;
+	line-height: 22px
+}
+
+.basicAccounts table td cite {
+	width: 38px;
+	height: 14px
+}
+
+.basicAccounts table td cite.v0 {
+	background-position: -78px 0
+}
+
+.basicAccounts table td cite.v1 {
+	background-position: -78px -30px
+}
+
+.basicAccounts table td cite.v2 {
+	background-position: -78px -62px
+}
+
+.basicAccounts table td cite.v3 {
+	background-position: -78px -92px
+}
+
+.basicAccounts table td cite.v4 {
+	background-position: -78px -131px
+}
+
+.basicAccounts table td cite.v5 {
+	background-position: -78px -161px
+}
+
+
+.basicAccounts .accountsBtn,.basicAccounts .imgBtn {
+	height: 40px;
+	line-height: 40px;
+	background: #ff4c2f;
+	text-align: center;
+}
+
+.basicAccounts .c1,.basicAccounts .c2 {
+	margin-left: 30px
+}
+
+.basicAccounts .accountsBtn,.basicAccounts .imgBtn {
+	margin: 50px auto 0;
+	width: 200px;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 4px;
+	border: none;
+	outline: 0
+}
+
+.webuploader-pick {
+	position: relative;
+    display: inline-block;
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	color: #fff!important;
+	font-size: 16px!important;
+	background: #ff4c2f;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 4px;
+	border:none;
+}
+
+#errorMessage,.mod-basic-form .desc {
+	font-size: 12px;
+	color: #999
+}
+
+#jcropSeticon {
+	padding: 20px 0;
+	overflow: hidden
+}
+
+.fl {
+	float: left
+}
+
+.mod-basic-form .bd {
+	padding: 20px;
+	background: #fff
+}
+
+.mod-basic-form .desc {
+	text-align: center
+}
+
+.uploader-list{
+	width: 100%;
+    overflow: hidden;
+}
+
+.uploader-list .error{
+	color: #ff4c2f;
+}
+
+.loading {
+	padding: 100px 0;
+	text-align: center
+}
+
+.i-right .rechangeList table tr td.t5 {
+	width: 150px
+}
+
+.i-right .rewardList table tr td.t1,.i-right .subList table tr td.t1 {
+	width: 380px
+}
+
+#sendStatus {
+	margin: 1px 3px 0 0
+}
+
+#p-grid input {
+	color: #09C;
+	background: 0 0;
+	border: none;
+	cursor: pointer
+}
+
+#endTime {
+	color: #f60
+}
+
+.mailSending {
+	background: #fbf6e8;
+	border-color: #ebca64
+}
+
+.ui_bg_bdcolor,.ui_hoverbgbd:hover {
+	border-color: #ff4c2f!important;
+	background-color: #ff4c2f!important
+}
+
+.password-modi-zsy .title {
+    line-height: 48px;
+    border-bottom: 1px solid #f2f2f2;
+    color: #333;
+    font-size: 18px;
+    background: #fff;
+    padding-left: 29px;
+}
+
+.password-modi-zsy .password-modi-content {
+    height: 600px;
+    background: #fff;
+    padding: 100px 0 0 300px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.password-modi-zsy .password-modi-content li {
+    margin-bottom: 20px;
+}
+
+.password-modi-zsy .password-modi-content .label {
+    width: 70px;
+    text-align: right;
+    margin-right: 20px;
+    color: #666;
+    font-size: 14px;
+    line-height: 40px;
+    display: inline-block;
+}
+
+.password-modi-zsy .password-modi-content input {
+    width: 260px;
+    height: 40px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: 0;
+    border: 1px solid #e6e6e6;
+    padding-left: 17px;
+    line-height: 40px;
+}
+
+.password-modi-zsy .password-modi-content input {
+    width: 260px;
+    height: 40px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: 0;
+    border: 1px solid #e6e6e6;
+    padding-left: 17px;
+    line-height: 40px;
+}
+
+.password-modi-zsy .password-modi-content #submit-pass {
+    width: 240px;
+    height: 40px;
+    border-radius: 18px;
+    background: #ff4c2f;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    margin-left: 91px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.ui-pagination li {
+    float: left;
+    margin: 0 5px;
+}
+.ui-pagination li a, .ui-pagination li span {
+    float: left;
+    margin: 0 5px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+}
+.ui-pagination li a {
+    padding: 0 10px;
+    background: #fff;
+    border: 1px solid #c8c8c8;
+    color: #333;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.ui-pagination li span {
+    padding: 0 10px;
+    color: #333;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #c8c8c8;
+}
+.ui-pagination li.active span {
+    background: #ff4c2f;
+    border-color: #ff4c2f;
+    color: #fff;
+}
+.ui-pagination li.disabled span{
+    color: #999;
+    background: #f0f4f8;
+    cursor: text;
+}

@@ -1,0 +1,629 @@
+@charset "UTF-8";
+@font-face {font-family: "user_iconfont";
+  src: url('../font/iconfont.eot');
+  src: url('../font/iconfont.eot#iefix') format('embedded-opentype'),
+  url('../font/iconfont.woff') format('woff'),
+  url('../font/iconfont.ttf') format('truetype'),
+  url('../font/iconfont.svg#iconfont') format('svg');
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, a, blockquote, th, textarea, th, td {
+  margin: 0;
+  padding: 0; }
+body {
+  height: 100%;
+  font-family: "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+  text-align: left;
+  color: #1A1A1A;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased; 
+}
+i, em, cite {
+    font-style: normal;
+}
+label {
+    cursor: pointer;
+}
+input, button {
+    border: none;
+    outline: none;
+    font-family: "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+input[type=checkbox] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+a {
+  outline: none;
+  text-decoration: none;
+  color: #262626;
+  transition: color .3s, background-color .3s; 
+}
+a:hover {
+  color: #2972CC;
+}
+p {
+    word-break: break-all;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.red {
+    color: #BF2C24;
+}
+.error {
+    color: #ED4259;
+}
+.hidden {
+    display: none;
+}
+.header {
+    height: 99px;
+    border-bottom: 1px solid #DFDFDF;
+}
+.reg-header {
+    border-bottom: none;
+    margin-bottom: 32px;
+}
+.header .logo {
+    float: left;
+    padding-top: 30px;
+}
+.header .logo a {
+    float: left;
+    width: 186px;
+    height: 40px;
+}
+.header em, .header span {
+    margin-top: 15px;
+    float: left;
+}
+.header em {
+    height: 24px;
+    margin: 15px 24px 0;
+    border-right: 1px solid #D8D8D8;
+}
+.header span {
+    font-size: 24px;
+    line-height: 1;
+}
+.cf {
+    zoom: 1;
+}
+.cf:before, .cf:after {
+    display: table;
+    content: '';
+}
+.box-center-reg {
+    width: 980px;
+    margin: 0 auto;
+}
+.box-center {
+    width: 1200px;
+    margin: 0 auto;
+}
+.pact_area {
+    padding: 24px;
+    margin-bottom: 30px;
+    background-color: #F5F5F5;
+    color: #555;
+    overflow: hidden;
+}
+.pact_area h1 {
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+.pact_area h3 {
+    font-size: 16px;
+    margin-bottom: 26px;
+}
+.pact_area p, blockquote {
+    margin-bottom: 20px;
+    padding: 0;
+    line-height: 24px;
+}
+.pact_area ol {
+    margin-bottom: 20px;
+    padding: 0;
+}
+.pact_area ol li {
+    margin-bottom: 14px;
+    line-height: 24px;
+    list-style-type: none;
+}
+
+.reg-step {
+    height: 39px;
+    border-bottom: 1px solid #D8D8D8;
+    text-align: center;
+    font-size: 0;
+}
+.lang {
+    font-weight: 400;
+}
+.reg-step span {
+    color: #BFBFBF;
+    padding: 0 30px 10px;
+    font-size: 18px;
+    line-height: 34px;
+}
+.reg-step span i {
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    margin: -4px 7px 0 0;
+    border-radius: 100%;
+    color: white;
+    font: 16px/24px Microsoft YaHei;
+    background: #BFBFBF;
+}
+.reg-step span.act {
+    color: #1A1A1A;
+    border-bottom: 2px solid #2E9DE7;
+}
+.reg-step span.act i {
+    background: #2E9DE7;
+}
+.reg-step span .iconfont {
+    display: inline-block;
+    vertical-align: middle;
+    margin: -2px 7px 0 0;
+    min-width: 24px;
+    font-size: 24px;
+    color: #BFBFBF;
+}
+.iconfont {
+    font-family: "user_iconfont" !important;
+    font-size: 24px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.1px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.sprite {
+    background-image: url(../images/sprite.png);
+}
+.icon-pass {
+    width: 24px;
+    height: 24px;
+    background-position: 0 -72px;
+}
+.icon-error {
+    width: 24px;
+    height: 24px;
+    background-position: 0 -48px;
+}
+.reg-form-wrap {
+    padding: 40px 0 60px;
+}
+.reg-form-wrap .reg-form-list {
+    padding-left: 250px;
+}
+.reg-form-wrap .reg-form-list dd {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 32px;
+}
+.reg-form-wrap .reg-form-list dd em {
+    min-width: 60px;
+    font: 14px/44px "PingFangSC-Regular", "-apple-system", Simsun;
+    float: left;
+    margin-right: 24px;
+    text-align: right;
+}
+.reg-form-wrap .reg-form-list dd i {
+    float: left;
+    margin: 10px 0 0 12px;
+}
+.reg-form-wrap .reg-form-list .error-tip {
+    position: absolute;
+    z-index: 1;
+    left: 84px;
+    top: 100%;
+    font: 12px/30px "PingFangSC-Regular", "-apple-system", Simsun;
+}
+.reg-form-wrap .reg-form-list dd input[type=text], .reg-form-wrap .reg-form-list dd input[type=password] {
+    float: left;
+    padding: 0 16px;
+    width: 308px;
+    border: 1px solid #E6E6E6;
+    height: 40px;
+    font: 14px/42px "PingFangSC-Regular", "-apple-system", Simsun;
+}
+.reg-form-wrap .reg-form-list dd input[type=text].mid, .reg-form-wrap .reg-form-list dd input[type=password].mid {
+    width: 149px;
+}
+.reg-form-wrap .reg-form-list dd.error em {
+    color: #1A1A1A;
+}
+.reg-form-wrap .reg-form-list dd.error input[type=text], .reg-form-wrap .reg-form-list dd.error input[type=password] {
+    border: 1px solid #ED4259;
+}
+.reg-form-wrap .reg-form-list dd:before, .reg-form-wrap .reg-form-list dd:after {
+    display: table;
+    content: '';
+}
+.reg-form-wrap .reg-form-list .code-img {
+    float: left;
+    margin: 0 14px 0 16px;
+    width: 108px;
+    height: 44px;
+}
+.reg-form-wrap .reg-form-list .code-img + a {
+    float: left;
+    font: 12px/40px "PingFangSC-Regular", "-apple-system", Simsun;
+}
+.reg-form-wrap .reg-form-list dd .password-tip {
+    position: absolute;
+    top: 0;
+    left: 444px;
+    z-index: 1;
+    border: 1px solid #FFDC95;
+    background: #FFF7E7;
+    font: 12px/24px "PingFangSC-Regular", "-apple-system", Simsun;
+    color: #6B3612;
+    padding: 6px 12px 8px 8px;
+}
+.reg-form-wrap .reg-form-list dd .password-tip span {
+    position: absolute;
+    top: 5px;
+    left: -7px;
+    border-top: 7px solid transparent;
+    border-right: 7px solid #FFDC95;
+    border-bottom: 7px solid transparent;
+    border-left: 0 none;
+    width: 0;
+    height: 0;
+}
+.reg-form-wrap .reg-form-list dd .password-tip span cite {
+    position: absolute;
+    top: -7px;
+    left: 2px;
+    border-top: 7px solid transparent;
+    border-right: 7px solid #FFF7E7;
+    border-bottom: 7px solid transparent;
+    border-left: 0 none;
+    width: 0;
+    height: 0;
+}
+.blue-btn {
+    position: relative;
+    z-index: 1;
+    border-color: #2A8CCD;
+    color: #FFF !important;
+    background: #2E9DE7;
+    text-align: center;
+    cursor:pointer;
+}
+.blue-btn[disabled] {
+    border-color: #A6A6A6 !important;
+    background: #A6A6A6 !important;
+    cursor: default;
+}
+.code_send{
+    background: #fc6c28;
+    display: block;
+    width: 100px;
+    height: 40px;
+    margin-left: 280px;
+    font: 14px/40px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+.reg-form-wrap .reg-form-list .go-reg {
+    display: block;
+    width: 340px;
+    height: 40px;
+    margin: 0 0 30px 84px;
+    font: 16px/40px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+.reg-form-wrap .reg-form-list dd:after {
+    clear: both;
+}
+.reg-form-wrap .reg-form-list .deal {
+    padding-left: 80px;
+    margin-bottom: 30px;
+}
+.ui-checkbox {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 4px solid transparent;
+    border-radius: 6px;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px, inset 1px 0, inset -1px 0, inset 0 -1px, inset 0 0 1px;
+    background-color: #FFF;
+    background-clip: content-box;
+    color: #BFBFBF;
+    -webkit-transition: color .2s, background-color .1s;
+    transition: color .2s, background-color .1s;
+    vertical-align: -5px;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.ui-checkbox::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNDcuNTY3LDY3LjU3NWMtMy45NzgtMy4yNDEtNC4zNTYtMy4zMzctOC45LTUuNjM5Yy0yLjA0NC0xLjA0NC01LjA1NywxLjY0NS02LjUzLDMuNjM1TDkyLDExNy43MjgNCglMNjUuODUxLDgzLjk3M2MtMS40NzktMS45ODgtNC4yMDYtMi43Mi02LjI1MS0xLjc4MmMtNC42NTgsMi40MDctNC4xODksMi4zMjYtOC4xNjgsNS40NjZjLTEuODE3LDEuNDY2LTEuOTMyLDQuMDgyLTAuNDU2LDYuMDY1DQoJYzAsMCwyOC4xODMsMzYuNDk5LDMxLjU5Miw0MC44OTZjNC45OTksNi4yNzUsMTQuMDksNS45NjUsMTguODY0LDBjMy41Mi00LjQ5OCw0Ni41OS02MS4wNzgsNDYuNTktNjEuMDc4DQoJQzE0OS40OTksNzEuNTQ5LDE0OS4zODUsNjguOTM3LDE0Ny41NjcsNjcuNTc1eiIvPg0KPC9zdmc+DQo=) no-repeat center;
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+  background-size: 20px 20px;
+  visibility: hidden; 
+}
+:checked + .ui-checkbox, :checked + .ui-checkbox:hover {
+    color: #2E9DE7;
+    background-color: #2E9DE7;
+}
+:checked + .ui-checkbox::after {
+    visibility: visible;
+    -webkit-animation: bounceIn .2s;
+    animation: bounceIn .2s;
+}
+.reg-form-wrap .reg-form-list .deal a, .reg-form-wrap .reg-form-list .deal label {
+    display: inline-block;
+    vertical-align: middle;
+    font: 12px/16px "PingFangSC-Regular", "-apple-system", Simsun;
+}
+
+.reg-form-wrap .reg-form-list .password-strong {
+    float: left;
+    padding-left: 12px;
+}
+.reg-form-wrap .reg-form-list .password-strong p {
+    font: 14px/44px "PingFangSC-Regular", "-apple-system", Simsun;
+}
+.reg-form-wrap .reg-form-list .password-strong p span {
+    position: relative;
+    display: inline-block;
+    height: 6px;
+    margin-right: 8px;
+    width: 118px;
+}
+.reg-form-wrap .reg-form-list .password-strong p span b {
+    position: absolute;
+    left: 0;
+    height: 6px; 
+}
+.reg-form-wrap .reg-form-list .password-strong p span.level-1 {
+    border: 1px solid #FC6C28;
+}
+.reg-form-wrap .reg-form-list .password-strong p span.level-1 b {
+    width: 38px;
+    background: #FC6C28; 
+}
+.reg-form-wrap .reg-form-list .password-strong p span.level-2 {
+    border: 1px solid #FFCB00;
+}
+.reg-form-wrap .reg-form-list .password-strong p span.level-2 b {
+    width: 78px;
+    background: #FFCB00;
+}
+.reg-form-wrap .reg-form-list .password-strong p span.level-3 {
+    border: 1px solid #8CCD0A; 
+}
+.reg-form-wrap .reg-form-list .password-strong p span.level-3 b {
+    width: 118px;
+    background: #8CCD0A; 
+}
+.reg-success {
+    text-align: center;
+}
+.reg-success h3 {
+    font: 22px/30px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+.reg-success .ok {
+    width: 60px;
+    height: 60px;
+    margin: 32px auto;
+    background-position: 0 -96px;
+}
+.reg-success p {
+    margin-bottom: 16px;
+    font: 14px/20px "PingFangSC-Regular", "-apple-system", Simsun;
+}
+.blue {
+    color: #2E9DE7;
+}
+.login-area-wrap {
+    position: relative;
+    z-index: 1;
+    padding: 100px 0;
+    min-height: 430px;
+}
+.login-op-img {
+    position: relative;
+    z-index: 1;
+    width: 534px;
+    height: 400px;
+    padding-left: 110px;
+    margin-right: 78px;
+}
+.login-op-img img {
+    display: block;
+    width: 534px;
+    height: 400px;
+}
+.login-wrap {
+    position: relative;
+    z-index: 1;
+    width: 398px;
+    background: white;
+    border: 1px solid #E6E6E6;
+}
+.login-wrap .login-box {
+    position: relative;
+    z-index: 1;
+    padding: 40px 38px 0;
+    width: 322px;
+    padding-bottom: 18px;
+    display: block;
+}
+.login-wrap .login-box .error-tip {
+    position: absolute;
+    top: 20px;
+    width: 324px;
+    height: 24px;
+    font: 12px/24px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    background: #FFE4E8;
+    text-align: center;
+    color: #ED4259;
+}
+.login-wrap .login-box dd {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 42px;
+    border: 1px solid #E6E6E6;
+    margin-top: 16px;
+}
+.login-wrap .login-box dd.error {
+    border: 1px solid #FF3955;
+    color: #FF3955;
+}
+.login-wrap .login-box .input-mode dd em {
+    float: left;
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+    line-height: 42px;
+    text-align: center;
+    color: #A6A6A6;
+}
+.login-wrap .login-box dd input {
+    float: left;
+    height: 28px;
+    padding: 7px 0;
+    font: 14px/28px "PingFangSC-Regular", "-apple-system", Simsun;
+}
+.login-wrap .login-box .input-mode dd input {
+    width: 280px;
+}
+.login-wrap .login-box dd.code-input {
+    z-index: 2;
+}
+.login-wrap .login-box dd.code-input input {
+    width: 160px !important;
+}
+.login-wrap .login-box dd.code-input img {
+    float: right;
+    width: 120px;
+    height: 42px;
+    cursor: pointer;
+}
+.login-wrap .login-box dd.code-input img:hover + .code-tip {
+    display: block; 
+}
+.login-wrap .login-box dd.code-input .code-tip {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    top: 110%;
+    right: 0;
+    width: 100px;
+    height: 28px;
+    background: #1A1A1A;
+    border-radius: 2px;
+    text-align: center;
+}
+.login-wrap .login-box dd.code-input .code-tip cite {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    margin-left: -5px;
+    border-top: 0 none;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #1A1A1A;
+    border-left: 5px solid transparent;
+    width: 0;
+    height: 0;
+}
+.login-wrap .login-box dd.code-input .code-tip p {
+    color: #FFF;
+    font: 14px/28px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+.login-wrap .login-box dd:after {
+    clear: both;
+}
+.login-wrap .login-box dd:before, .login-wrap .login-box dd:after {
+    display: table;
+    content: '';
+}
+.login-common-wrap {
+    padding-top: 10px;
+}
+.login-common-wrap .auto-login-box {
+    margin-bottom: 14px;
+    margin-left: -4px;
+}
+.login-common-wrap .auto-login-box label {
+    font: 12px/16px "PingFangSC-Regular", "-apple-system", Simsun;
+    vertical-align: middle;
+}
+.login-common-wrap .auto-login-box label + label {
+    color: #666;
+}
+.login-common-wrap .go-login {
+    display: block;
+    border-radius: 2px;
+    margin-bottom: 6px;
+    height: 40px;
+    line-height: 38px;
+    width: 100%;
+}
+.login-common-wrap .auto-login-box .link a {
+    font: 12px/16px "PingFangSC-Regular", "-apple-system", Simsun;
+}
+.login-common-wrap .auto-login-box .link em {
+    font: 12px/16px "PingFangSC-Regular", "-apple-system", Simsun;
+    margin: -1px 2px 0;
+}
+.common-html-wrap .reg-wrap {
+    text-align: center;
+    margin-top: 20px;
+}
+.common-html-wrap .reg-wrap p {
+    font: 12px/16px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+.common-html-wrap .reg-wrap a{
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    text-align: center; 
+    display: inline-block;
+    vertical-align: middle;
+}
+.common-html-wrap .reg-wrap img{
+    width: 40px;
+    height: 40px;
+}
+.footer-wrap {
+    background-color: #FFF;
+    height: 159px;
+    border-top: 1px solid #DFDFDF;
+}
+.footer-wrap .footer {
+    position: absolute;
+    width: 980px;
+    left: 50%;
+    margin-left: -490px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: inherit;
+    outline: #FFF solid 1500px;
+    clip: rect(0 3000px 3000px -3000px);
+    text-align: center;
+}
+.footer-wrap .footer .copy-right {
+    color: #A6A6A6;
+}
+.footer-wrap .footer .copy-right p {
+    font: 12px/24px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+.footer-wrap .footer a {
+    color: #A6A6A6;
+}

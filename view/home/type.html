@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	    <meta name="keywords" content="{$list_keywords}">
+	    <meta name="description" content="{$list_description}">
+	    <title>{$list_title}</title>
+	    <link rel="stylesheet" href="{$home_tplpath}css/style.css" type="text/css"/>
+    </head>
+	<body>
+		{include file="/header" /}
+		<div class="body-bg">
+		    <div class="wrap">
+		        <!-- start main -->
+		        <div class="containerbox">
+		            <div class="block10"></div>
+		            <div class="wrap1200">
+		            	<div class="goodbookbox">
+		            		<span class="titmenu">好书推荐</span>
+		            		<div class="goodbook-tabcont">
+		            			<div>
+		            				<ul class="goodbook-b">
+		            				{novel id="novel" cid="$cid" limit="8" newbook="1"}
+		            					<dl class="book-block">
+		            						<dt>
+		            							<a href="{$novel['url']}" target="_blank">
+		            								<img class="lazyimg" data-original="{$novel['pic']}" src=""></a>
+		            						</dt>
+		            						<dd>
+		            							<a href="{$novel['url']}" class="book-name" target="_blank">{$novel['title']}</a>
+		            							<span class="book-info">
+		            								{$novel['content']|raw|strip_tags}
+		            							</span>
+		            							<span class="book-author">
+		            								作者：
+		            								<a href="{$novel['author_url']}" target="_blank">{$novel['author']}</a>
+		            							</span>
+		            						</dd>
+		            					</dl>
+			            				{if $i%4 == 0 }
+			            				</ul>
+			            				<ul class="goodbook-b">
+			            				{/if}
+				            		{/novel}
+				            		</ul>
+		            			</div>
+		            		</div>
+		            	</div>
+		            </div>
+		            <div class="block10"></div>
+		            <div class="wrap1200">
+		            	<div class="nbook-l">
+							{nav id="nav" cid="$cid"}
+		            		<div class="booklist-l">
+		            			<div class="titmenu-2">
+			            			{$nav['title']}
+			            			<a href="{$nav['url']}" class="more" target="_blank">更多&gt;&gt;</a>
+		            			</div>
+
+		            			<dl class="book-block">
+		            				{novel id="novel" cid="$nav['id']" limit="1"}
+		            				<dt>
+		            					<a href="{$novel['url']}" target="_blank">
+		            						<img class="lazyimg" data-original="{$novel['pic']}" src=""></a>
+		            				</dt>
+		            				<dd>
+		            					<a href="{$novel['url']}" class="book-name" target="_blank">{$novel['title']}</a>
+		            					<span class="book-info">
+		            						{$novel['content']|raw|strip_tags}
+		            					</span>
+		            					<span class="book-author">
+		            						作者：
+		            						<a href="{$novel['author_url']}" target="_blank">{$novel['author']}</a>
+		            					</span>
+		            				</dd>
+		            				{/novel}
+		            			</dl>
+		            			<ul class="n-book-list">
+		            				{novel id="novel" cid="$nav['id']" limit="4"}
+		            				{if $i>1}
+		            				<li>
+		            					<a class="n-tags">{$novel['ctitle']}</a>
+		            					<a class="f-1" href="{$novel['url']}" target="_blank">{$novel['title']}</a>
+		            				</li>
+		            				{/if}
+		            				{/novel}
+		            			</ul>
+		            		</div>
+		            		{/nav}		      
+		            	</div>
+		            </div>
+		            <div class="wrap1200 page-ad">
+		            	<div class="slideBox">
+		            		<a href="#" target="_blank" class="slider-film">
+		            			<img class="lazyimg" data-original="{$home_tplpath}images/1120x100.png" src="">
+		            		</a>
+		            	</div>
+		            </div>
+		            <div class="block10"></div>
+		            <div class="rank-box">
+		            	<div class="rank-list">
+		            		<span class="titmenu">日排行榜</span>
+		            		<ul class="rank-1">
+		            			{novel id="novel" cid="$cid" limit="10" order="hits_day desc"}
+		            			{if $i==1}
+		            			<li class="top topred">
+		            				<span class="num">{$i}</span>
+		            				<dl class="book-block">
+		            					<dt>
+		            						<a href="{$novel['url']}" target="_blank">
+		            							<img class="lazyimg" data-original="{$novel['pic']}" src=""></a>
+		            					</dt>
+		            					<dd>
+		            						<a href="{$novel['url']}" target="_blank" class="book-name">{$novel['title']}</a>
+		            					</dd>
+		            				</dl>
+		            			</li>
+		            			{else/}
+		            			<li class="topred">
+		            				<span class="num">{$i}</span>
+		            				<a class="book-list-f" href="{$novel['url']}" target="_blank">{$novel['title']}</a>
+		            			</li>
+		            			{/if}
+		            			{/novel}
+		            		</ul>
+		            		<a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_day'])}" target="_blank" class="more">查看更多&gt;&gt;</a>
+		            	</div>
+		            	<div class="rank-list">
+		            		<span class="titmenu">周排行榜</span>
+		            		<ul class="rank-1">
+		            			{novel id="novel" cid="$cid" limit="10" order="hits_week desc"}
+		            			{if $i==1}
+		            			<li class="top topred">
+		            				<span class="num">{$i}</span>
+		            				<dl class="book-block">
+		            					<dt>
+		            						<a href="{$novel['url']}" target="_blank">
+		            							<img class="lazyimg" data-original="{$novel['pic']}" src=""></a>
+		            					</dt>
+		            					<dd>
+		            						<a href="{$novel['url']}" target="_blank" class="book-name">{$novel['title']}</a>
+		            					</dd>
+		            				</dl>
+		            			</li>
+		            			{else/}
+		            			<li class="topred">
+		            				<span class="num">{$i}</span>
+		            				<a class="book-list-f" href="{$novel['url']}" target="_blank">{$novel['title']}</a>
+		            			</li>
+		            			{/if}
+		            			{/novel}
+		            		</ul>
+		            		<a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_week'])}" target="_blank" class="more">查看更多&gt;&gt;</a>
+		            	</div>
+		            	<div class="rank-list">
+		            		<span class="titmenu">月排行榜</span>
+		            		<ul class="rank-1">
+		            			{novel id="novel" cid="$cid" limit="10" order="hits_month desc"}
+		            			{if $i==1}
+		            			<li class="top topred">
+		            				<span class="num">{$i}</span>
+		            				<dl class="book-block">
+		            					<dt>
+		            						<a href="{$novel['url']}" target="_blank">
+		            							<img class="lazyimg" data-original="{$novel['pic']}" src=""></a>
+		            					</dt>
+		            					<dd>
+		            						<a href="{$novel['url']}" target="_blank" class="book-name">{$novel['title']}</a>
+		            					</dd>
+		            				</dl>
+		            			</li>
+		            			{else/}
+		            			<li class="topred">
+		            				<span class="num">{$i}</span>
+		            				<a class="book-list-f" href="{$novel['url']}" target="_blank">{$novel['title']}</a>
+		            			</li>
+		            			{/if}
+		            			{/novel}
+		            		</ul>
+		            		<a href="{:url('home/other/index',['tpl'=>'rank_hits','order'=>'hits_month'])}" target="_blank" class="more">查看更多&gt;&gt;</a>
+		            	</div>
+		            	<div class="rank-list">
+		            		<span class="titmenu">完结榜</span>
+		            		<ul class="rank-1">
+		            			{novel id="novel" cid="$cid" limit="10" over="1" order="hits desc"}
+		            			{if $i==1}
+		            			<li class="top topred">
+		            				<span class="num">{$i}</span>
+		            				<dl class="book-block">
+		            					<dt>
+		            						<a href="{$novel['url']}" target="_blank">
+		            							<img class="lazyimg" data-original="{$novel['pic']}" src=""></a>
+		            					</dt>
+		            					<dd>
+		            						<a href="{$novel['url']}" target="_blank" class="book-name">{$novel['title']}</a>
+		            					</dd>
+		            				</dl>
+		            			</li>
+		            			{else/}
+		            			<li class="topred">
+		            				<span class="num">{$i}</span>
+		            				<a class="book-list-f" href="{$novel['url']}" target="_blank">{$novel['title']}</a>
+		            			</li>
+		            			{/if}
+		            			{/novel}
+		            		</ul>
+		            		<a href="{:url('home/other/index',['tpl'=>'rank_hits','over'=>1])}" target="_blank" class="more">查看更多&gt;&gt;</a>
+		            	</div>
+		            </div>
+		            <div class="block10"></div>
+		            <div class="wrap1200 botnews">
+		            	<div class="mod-chapter-update">
+		            		<div class="hd mod-title">
+		            			<div class="title-bd">
+		            				<h2>最近更新</h2>
+		            				<a href="{:url('home/lists/lists',['id'=>$cid,'order'=>'update_time desc'])}" class="more" target="_blank">更多&gt;&gt;</a>
+		            			</div>
+		            		</div>
+		            		<div class="bd">
+		            			<div class="list update-chapter-list" style="display: block;">
+		            				<table>
+		            					<thead>
+		            						<tr>
+		            							<th width="105">分类</th>
+		            							<th width="170">书名</th>
+		            							<th width="320">最新章节</th>
+		            							<th width="160">作者</th>
+		            							<th class="col4" align="right" width="100">更新时间</th>
+		            						</tr>
+		            					</thead>
+		            					<tbody>
+		            						{novel id="novel" cid="$cid" limit="20" order="update_time desc"}
+		            						<tr>
+		            							<td>
+		            								<div>
+		            									<a href="{$novel['curl']}" class="cat-name" target="_blank">{$novel['ctitle']}</a>
+		            								</div>
+		            							</td>
+		            							<td>
+		            								<div>
+		            									<a href="{$novel['url']}" target="_blank" class="book-name"> <b>{$novel['title']}</b>
+		            									</a>
+		            								</div>
+		            							</td>
+		            							<td>
+		            								<div>
+		            									<a href="{$novel['chapter_url']}" class="chapter-name" target="_blank">{$novel['chapter_title']}</a>
+		            								</div>
+		            							</td>
+		            							<td>
+		            								<div>
+		            									<a href="{$novel['author_url']}" target="_blank" class="author">{$novel['author']}</a>
+		            								</div>
+		            							</td>
+		            							<td class="col4">
+		            								<div>{$novel['update_time']|time_format="m-d H:i"}</div>
+		            							</td>
+		            						</tr>
+		            						{/novel}
+		            					</tbody>
+		            				</table>
+		            			</div>
+		            		</div>
+		            	</div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div class="block20"></div>
+		{include file="/footer" /}
+	</body>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.lazyload.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.mouseDelay.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/global.js"></script>
+</html>

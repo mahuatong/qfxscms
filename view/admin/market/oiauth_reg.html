@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>{$meta_title}</title>
+        <link href="__ADMIN__/css/admin.css" rel="stylesheet">
+    	<link href="__ADMIN__/css/reg_style.css" rel="stylesheet">
+	</head>
+	<body>
+        <!-- start 注册模块 -->
+        <div class="reg-wrap">
+            <div class="reg-main">
+            <div class="layui-card">
+                <div class="layui-card-header">{$meta_title}</div>
+                <div class="layui-card-body">
+                    <div class="reg-form-wrap">
+                        <form action="{:url('oiauth_reg')}" method="post">
+                            <div class="reg-form-list form-list">
+                                <dl>
+                                    <dd class="top" id="name">
+                                        <em>用户名</em>
+                                        <input type="text" placeholder="输入用户名" name="username" id="txtname">
+                                    </dd>
+                                    <dd id="email">
+                                        <em>邮箱</em>
+                                        <input type="text" placeholder="输入邮箱" name="email" id="txtemail">
+                                    </dd>
+                                    <dd id="pwd">
+                                        <em>密码</em>
+                                        <input type="password" name="password" id="txtpwd" placeholder="6-18位大小写字母、符号或数字">
+                                        <div class="password-tip" style="display:none">
+                                            <span><cite></cite></span>
+                                            <p id="pwdrule1">长度为6-18个字符</p>
+                                            <p id="pwdrule2">不能是9位以下的纯数字</p>
+                                            <p id="pwdrule3">不能包含空格</p>
+                                        </div>
+                                        <div class="password-strong" style="display:none">
+                                            <p style="display:none"><span class="level-1" ><b></b></span>弱</p>
+                                            <p style="display:none"><span class="level-2" ><b></b></span>中</p>
+                                            <p style="display:none"><span class="level-3" ><b></b></span>强</p>
+                                        </div>
+                                    </dd>
+                                    <dd id="password2">
+                                        <em>确认密码</em>
+                                        <input type="password" name="repassword" id="txtpwd2" placeholder="再次输入密码">
+                                    </dd>
+                                    <dd id="code"> <em>验证码</em>
+                                        <input class="mid" name="code" type="text" id="txtcode" placeholder="验证码">
+                                        <img class="code-img" id="imgrnd" src="{:url('user/user/verify','','',config('web.official_url'))}" alt="这里是验证码">           
+                                        <a href="javascript:" id="refresh_code" class="stat">换一张</a>
+                                    </dd>
+                                </dl>
+                                <div class="deal">
+                                    <input type="checkbox" name="protocol" id="deal" name="checkbox" checked="">
+                                    <label for="deal" class="ui-checkbox"></label>
+                                    <label for="deal">我已阅读并同意</label>
+                                    <a href="{:url('pact')}" target="_blank">《用户服务协议》</a>
+                                </div>
+                                <div class="login_link"><a href="{:url('oiauth_login')}">已有帐号登录</a></div>
+                                <input type="hidden" name="cookie">
+                                <a class="blue-btn go-reg" href="javascript:" id="btnRegister">立即注册</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end 注册模块 -->
+	</body>
+	<script type="text/javascript" src="__STATIC__/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="__ADMIN__/js/register.js"></script>
+    <script type="text/javascript">
+        var register = new register();
+        register.url='{:config('web.official_url')}';
+    </script>
+</html>

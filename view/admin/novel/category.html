@@ -1,0 +1,20 @@
+<div class="layui-card layui-card-open">
+    <div class="layui-card-body">
+      <form class="layui-form" action="{:url()}">
+        <div class="layui-form-item">
+            <select name="category">
+                <option value="">所有栏目</option>
+                {volist name="category" id="vo"}
+                    <option value="{$vo['id']}">{$vo.html}{$vo.title}</option>
+                {/volist}
+            </select>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <input name="id" type="hidden" value="{$Request.param.id}" />
+            <button class="layui-btn" lay-submit lay-filter="ajax" lay-current="1" type="submit">提交</button>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>

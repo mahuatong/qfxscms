@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	    <meta name="keywords" content="{$list_keywords}">
+	    <meta name="description" content="{$list_description}">
+	    <title>{$list_title}</title>
+	    <link rel="stylesheet" href="{$home_tplpath}css/style.css" type="text/css"/>
+    </head>
+	<body>
+		{include file="/header" /}
+		<div class="body-bg">
+			<div class="wrap">
+				<div class="block20"></div>
+				<div class="wrap1200 ranklist">
+					<div class="right-cont-box fl rankdata">
+						<div class="comment-r-menu">
+							<span class="titmenu">文章</span>
+						</div>
+						<div class="rankdatacont news-list">
+							<ul>
+							{news id="news" limit="10" order="update_time desc" page="1"}
+								<li>
+					                <a class="pic" href="{$news['url']}" target="_blank">
+					                	<img src="" class="lazyimg" data-original="{$news['pic']}">
+					                </a>
+									<h5 class="tit"><a href="{$news['url']}" target="_blank">{$news['title']}</a></h5>
+									<p class="info"><span>发布时间：<em>{$news['time']|time_format="Y-m-d H:i"}</em></span></p>
+									<p class="text">{$news['content']|raw|strip_tags|mb_substr=0,300}</p>
+								</li>
+							{/news}
+							</ul>
+							<div class="pages_bottom" style="display: block;">
+	        					<ul>
+	        						{news_page /}
+	        					</ul>
+	        				</div>
+						</div>
+					</div>
+					<div class="search-result-r fr">
+				        <div class="titmenu">大家都看</div>
+				        {novel id="novel" limit="5" order="hits desc"}
+				        <dl class="book-block">
+			                <dt>
+			                	<a href="{$novel['url']}" target="_blank">
+			                		<img src="" class="lazyimg" data-original="{$novel['pic']}">
+			                	</a>
+			                </dt>
+			                <dd>
+			                    <a href="{$novel['url']}" class="book-name" target="_blank">{$novel['title']}</a>
+			                    <span class="book-author"><a href="{$novel['author_url']}" target="_blank">{$novel['author']}</a> | <a href="{$novel['curl']}" target="_blank">{$novel['ctitle']}</a>
+
+			                    </span>
+			                    <a href="{$novel['url']}" class="book-info" target="_blank">{$novel['content']}</a>
+
+			                </dd>
+			            </dl>
+				        {/novel}
+				    </div>
+				</div>
+			</div>
+		</div>
+		<div class="block20"></div>
+		{include file="/footer" /}
+	</body>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.lazyload.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/jquery.mouseDelay.min.js"></script>
+	<script type="text/javascript" src="{$home_tplpath}js/global.js"></script>
+</html>

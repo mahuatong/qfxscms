@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>{$web['meta_title']}</title>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="{$user_tplpath}css/style.css">
+    <script type="text/javascript" src="{$user_tplpath}js/flexible.min.js"></script>
+</head>
+<body>
+	<div class="app_meskSection"></div>
+	<div class="container">
+		<div class="app_header_section2  app_scrollerHeader" id="header">
+			<div class="app_header_detail2">
+				<div class="app_header_back"></div>
+				<div class="app_header_h1">
+					书架
+					<a href="{:url('user/bookshelf/index')}"> <i class="shujiaIco"></i>
+					</a> <i class="moreIco"></i>
+				</div>
+			</div>
+			<div class="app_header_second" style="display: none;">
+				<ul>
+					<li class="icon1">
+						<a href="/">首页</a>
+					</li>
+					<li class="icon2">
+						<a href="{:url('home/lists/lists')}">书库</a>
+					</li>
+					<li class="icon3">
+						<a href="{:url('user/bookshelf/index')}">书架</a>
+					</li>
+					<li class="icon4">
+						<a href="{:url('user/index/index')}">账户</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="app_body">
+			<div class="app_topTabBlock">
+				<span class="public_AddFloatRight rightButton" id="success" style="display: none;">完成</span>
+				<span class="public_AddFloatRight rightButton" id="administration">管理</span>
+			</div>
+			{notempty name="list"}
+			<div class="app_listBlock app_deleteMargin" id="content">
+				<div class="app_listBlock_con">
+					<ul class="app_deletePaddingBottom" id="list">
+						{volist name='list' id='novel'}
+						<li class="li2" {eq name="novel['book']['serialize']" value="0"}data-upid="{$novel['book']['id']}"{/eq}>
+							<a href="{$novel['book']['url']}">
+								<div class="leftImage2"><img src="{$novel['book']['pic']}"></div>
+								<div class="rightBlock">
+									<span class="rightBlock_title">{$novel['book']['title']}</span>
+									<span class="rightBlock_name">{$novel['book']['ctitle']}</span>
+									<span class="rightBlock_con  rightBlock_con2">
+										<span class="con">
+											<span class="spanLi">{$novel['book']['chapter_title']}</span>
+										</span>
+										<span class="spanLi Time">{$novel['book']['chapter_time']|time_format="m-d H:i",1}</span>
+										<span class="rightJustTime" onclick="javascript:window.location.href='{$novel['reader_url']}';return false;">继续阅读</span>
+									</span>
+								</div>
+							</a>
+							<span class="deleteBlock" ajax-get url="{:url('user/bookshelf/del',['id'=>$novel['id']])}"></span>
+						</li>
+						{/volist}
+					</ul>
+				</div>
+			</div>
+			<div class="app_pageBlock">
+		        {$list|raw}
+		    </div>
+			{else /}
+			<div class="app_noBookDataBlock" id="noData">
+				书架空空如也, 去挑本好书看吧
+				<div class="app_listBlockButton">
+					<button onclick="javascript: window.location.href='{:url('home/index/index')}'">去找本好书</button>
+				</div>
+			</div>
+			{/notempty}
+		</div>
+	</div>
+	<script type="text/javascript" src="{$user_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer_mobile/layer.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/ajax.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/user.js"></script>
+</body>
+</html>

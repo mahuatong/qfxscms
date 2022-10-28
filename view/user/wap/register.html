@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>{$web['meta_title']}</title>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="{$user_tplpath}css/style.css">
+    <script type="text/javascript" src="{$user_tplpath}js/flexible.min.js"></script>
+</head>
+<body>
+	<div class="app_meskSection"></div>
+	<div class="container">
+		<div class="app_header_section2  app_scrollerHeader" id="header">
+			<div class="app_header_detail2">
+				<div class="app_header_back"></div>
+				<div class="app_header_h1">
+					注册
+					<i class="moreIco"></i>
+				</div>
+			</div>
+			<div class="app_header_second" style="display: none;">
+				<ul>
+					<li class="icon1">
+						<a href="/">首页</a>
+					</li>
+					<li class="icon2">
+						<a href="{:url('home/lists/lists')}">书库</a>
+					</li>
+					<li class="icon3">
+						<a href="{:url('user/bookshelf/index')}">书架</a>
+					</li>
+					<li class="icon4">
+						<a href="{:url('user/index/index')}">账户</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="app_body">
+			<div class="app_bindPhoneBlock">
+				<div class="app_lisLoinSpan app_addPaddingStyle">
+					<ul>
+						<li class="username">
+							<input type="text" name="username" placeholder="请输入用户名">	
+						</li>
+						<li class="email">
+							<input type="text" name="email" placeholder="请输入邮箱地址">	
+						</li>
+						<li class="password">
+							<input type="password" name="password" placeholder="请输入密码">
+						</li>
+						<li class="password">
+							<input type="password" name="repassword" placeholder="再次输入密码">
+						</li>
+						{eq name="Think.config.web.user_reg_verify" value="1"}
+						<li class="code">
+							<input id="code" type="text" name="code" placeholder="请输入验证码">
+							<img src="{:url('user/user/verify')}" id="imgCode" alt="验证码">
+						</li>
+						{/eq}
+					</ul>
+				</div>
+				<div class="app_listBlockButton" style="padding-top: 0.36rem">
+					<button id="loginbtn" ajax-post='app_lisLoinSpan' url="{:url('')}" errorback="newcode()">立即注册</button>
+				</div>
+				<div class="app_dengLu_bottom">
+		            注册即表示您同意<a href="{:url('user/user/pact')}" class="blue">《服务条款和隐私政策》</a>
+		        </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="{$user_tplpath}js/jquery.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer_mobile/layer.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/ajax.js"></script>
+	<script type="text/javascript" src="{$user_tplpath}js/user.js"></script>
+</body>
+</html>
