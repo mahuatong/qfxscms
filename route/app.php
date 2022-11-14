@@ -14,3 +14,13 @@ use think\facade\Route;
 //    $filename = public_path() . $path;
 //    return new \think\swoole\response\File($filename);
 //})->pattern(['path' => '.*\.\w+$']);
+
+Route::group('api',function (){
+    Route::get('getNewChapter','Index/getNewChapter');
+    Route::get('getCateGory','Index/getCateGory');
+    Route::get('getBookDetails','Index/getBookDetails');
+    Route::get('getBookChapter','Index/getBookChapter');
+    Route::get('getBookChapterDetails','Index/getBookChapterDetails');
+    Route::get('getBookList','Index/getBookList');
+    Route::get('newBook','Index/newBook');
+})->middleware(\app\middleware\AllowOriginMiddleware::class);

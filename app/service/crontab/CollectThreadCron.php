@@ -18,7 +18,12 @@ class CollectThreadCron extends Cron
 {
     public function handle($event){
         $this->tick(3000, function (){
-            (new CollectThread())->handle(1);
+            Log::error('运行了');
+            try{
+                (new CollectThread())->handle(1);
+            }catch (\Throwable $e){
+                Log::error('运行错误：'.$e->getMessage().'-'.$e->getFile().'-'.$e->getLine());
+            }
         });
     }
 }

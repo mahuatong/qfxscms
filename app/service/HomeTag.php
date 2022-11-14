@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 
 namespace app\service;
+use think\facade\Log;
 use think\template\TagLib;
 use think\facade\Request;
 
@@ -108,7 +109,8 @@ class HomeTag extends TagLib{
 
     public function tagNovel_page($tag, $content){
         if(strtolower(Request::controller()."/".Request::action())=='search/index'){
-            $parse = '{$__NOVEL__->appends("keyword",Request::param("keyword"))|raw}';
+            $parse = '{$__NOVEL__|raw}';
+
         }else{
             $parse = '{$__NOVEL__|raw}';
         }
@@ -119,10 +121,10 @@ class HomeTag extends TagLib{
         $nid  = empty($tag['nid']) ? '$id' : $tag['nid'];
         $limit    = empty($tag['limit']) ? '""' : $tag['limit'];
         $order  = empty($tag['order']) ? '"id asc"' : '"'.$tag['order'].'"';
+
         $page  = empty($tag['page']) ? 0 : $tag['page'];
         $empty   = isset($tag['empty']) ? $tag['empty'] : '';
         $parse  = '<?php ';
-    
         $parse .= '$__CHAPTER__ = (new \app\model\CommonApi())->get_chapter_list('.$nid.','.$order.','.$limit.','.$page.');?>';
         $parse .= '{volist name="__CHAPTER__" id="'. $tag['id'] .'" empty="'.$empty.'"}';
         $parse .= $content;

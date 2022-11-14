@@ -33,17 +33,21 @@ class CollectThread
         foreach ($collcet as $v){
             $id = $v['id'];
             Db::name('collect')->where('id',$id)->update(['collect_time'=>time()]);
+
             $info = $v;
             Cache::set('collect_info_'.$id,$info);
             $source=Gather::convert_source_url($info['source_url']);
             Cache::set('collect_source_url_'.$id,$source);
-//            $current=Cache::get('collect_log_'.$id);
+            $source_num = Cache::get('collect_log_'.$id);
+            $this->collect_list_set($id,$source_num);
+
             $cache_key = $this->cache_keys.$v['id'];
             if(Cache::has($cache_key)){
                 continue;
             }
             // 根据线程数量配置
             for ($i=0;$i<intval($collect_thread_num);$i++){
+                Log::error('爬取中...');
                 Queue::push('CollectJob', ['id'=>$id],'my_queue');
             }
 //            $this->collect_list_set($id);
@@ -55,34 +59,33 @@ class CollectThread
     public function threads($id){
         $cache_key = $this->cache_keys.$id;
         $is_stop = false;
-
         Cache::set($cache_key,1,10);
+
         $data=$this->collect_list_get($id);
-        $this->collect_list_rm($id,$data['url']);
+
         if($data===false){
             $this->collect_rm($id);
             return true;
         }
+        $this->collect_list_rm($id,$data['url']);
         $info=Cache::get('collect_info_'.$id);
         $return=Gather::field_content($info,$data['url']);
         if(isset($return['error'])){
-            // 采集错误
             Log::error('爬取错误：'.$return['error']);
             return true;
         }
         if(empty($return['code'])){
-            Log::error("保存数据了");
             (new \app\model\CollectModel())->sever_data($info,$return);
-        }
-        if($data['current']>=$data['count']){
-            Log::error('爬取完成');
-            return true;
         }
         return $is_stop;
 
     }
     public function collect_list_get($id){
         $list=Cache::get('collect_list_'.$id);
+        if(empty($list)){
+//            Cache::set('collect_log_'.$id,1);
+            return false;
+        }
         foreach ($list['data'] as $key => $value) {
             if($value['lock']==0){
                 $list['data'][$key]['lock']=1;
@@ -93,10 +96,7 @@ class CollectThread
             }
         }
         if($list['current']+1<$list['count']){
-            $res = $this->collect_list_set($id,$list['current']+1);
-            if(!$res){
-                return  false;
-            }
+            $this->collect_list_set($id,$list['current']+1);
             Cache::set('collect_log_'.$id,$list['current']+1);
             return $this->collect_list_get($id);
         }
@@ -105,6 +105,9 @@ class CollectThread
     public function collect_list_set($id,$source_num){
         $info=Cache::get('collect_info_'.$id);
         $source_url=Cache::get('collect_source_url_'.$id);
+        if(empty($source_num)){
+            $source_num = 0;
+        }
         $list['current']=$source_num;
         $list['count']=count($source_url);
         $list_content_html=Gather::get_html($source_url[$source_num],$info['charset'],$info['url_complete']);
@@ -137,17 +140,18 @@ class CollectThread
         Cache::set('collect_list_'.$id,$list);
         return $list;
     }
+
+    public function collect_list_rm($id,$url){
+        $queue_list=Cache::get('collect_list_'.$id);
+        unset($queue_list['data'][$url]);
+        Cache::set('collect_list_'.$id,$queue_list);
+    }
+
     public function collect_rm($id){
         Cache::delete('collect_info_'.$id);
         Cache::delete('collect_source_url_'.$id);
         Cache::delete('collect_list_'.$id);
         Cache::delete('collect_log_'.$id);
-    }
-
-    private function collect_list_rm($id,$url){
-        $queue_list=Cache::get('collect_list_'.$id);
-        unset($queue_list['data'][$url]);
-        Cache::set('collect_list_'.$id,$queue_list);
     }
 
 }

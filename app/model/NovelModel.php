@@ -26,7 +26,9 @@ class NovelModel extends Model{
         $serialize = [0=>'连载',1=>'完结'];
         return $serialize[$data['serialize']];
     }
-
+    public function getWordAttr($v){
+        return bcdiv($v,10000,0).'万';
+    }
     public function getCollectAttr($value,$data){
         $chapter=Db::name('novel_chapter')->where(['novel_id'=>$data['id']])->field('collect_id')->find();
         return (new CollectModel())->info($chapter['collect_id']);

@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 namespace net;
 
+use app\admin\controller\Log;
 use think\facade\Db;
 use think\facade\Request;
 use think\facade\Config;

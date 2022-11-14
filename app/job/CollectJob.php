@@ -16,12 +16,14 @@ use think\queue\Job;
 class CollectJob
 {
     public function fire(Job $job, $data){
-        Log::error('队列开始进来了>>>>>');
-        Log::error('获取的参数:'.json_encode($data));
-
         $id = $data['id'];
-        $r = (new CollectThread())->threads($id);
-        if(!$r){
+        $r = null;
+        try{
+            $r = (new CollectThread())->threads($id);
+        }catch (\Throwable $e){
+            Log::error('爬取错误：'.$e->getMessage().'--'.$e->getLine());
+        }
+        if($r === false){
             // 可以继续获取，则重新发布
             $job->release();
         }

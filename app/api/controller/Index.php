@@ -15,10 +15,26 @@ use app\model\CategoryModel;
 use app\model\NovelChapterModel;
 use app\model\NovelModel;
 use app\Request;
+use app\service\listener\CollectThread;
+use net\Gather;
+use think\facade\Cache;
+use think\facade\Db;
 
 class Index extends BaseController
 {
+    public function test(){
+        $id = 10041;
+        Db::name('collect')->where('id',$id)->update(['collect_time'=>time()]);
 
+        $info = Db::name('collect')->where('id',$id)->find();
+        Cache::set('collect_info_'.$id,$info);
+        $source=Gather::convert_source_url($info['source_url']);
+        Cache::set('collect_source_url_'.$id,$source);
+        $source_num = Cache::get('collect_log_'.$id);
+        (new CollectThread())->collect_list_set($id,$source_num);
+
+        (new CollectThread())->threads(10041);
+    }
     // 获取最新章节
     public function getNewChapter(Request $request){
         $id = $request->param('id');
@@ -39,26 +55,29 @@ class Index extends BaseController
     // 获取章节列表
     public function getBookChapter(Request $request){
         $book_id = $request->param('id');
-        $page = $request->param('page',1);
-        $res = (new \app\model\CommonApi())->get_chapter_list($book_id,'id desc',20,$page);
+        $res = (new \app\model\CommonApi())->get_chapter_list($book_id,'id asc',0,0);
         if(!$res){
             return  $this->error('没有更多了');
         }
-        return $this->success('ok',$res->toArray());
+        $new_ = [];
+        foreach ($res as $v){
+            array_push($new_,$v);
+        }
+        return $this->success('ok',$new_);
     }
 
     // 章节详情
     public function getBookChapterDetails(Request $request){
         $id = $request->param('id');
         $key = $request->param('key');
-        $chapter=(new \app\model\CommonApi())->get_chapter($id,$key);
+        $chapter=(new \app\model\CommonApi())->get_chapter($id,$key,true);
         return $this->success('ok',$chapter);
     }
 
     // 分类列表
     public function getCateGory(Request $request){
-        $res = CategoryModel::where('status','=',1)->field(['id','title','pid','icon'])->select()->toArray();
-        $res = list_to_tree($res);
+        $pid = $request->param('pid',0);
+        $res = CategoryModel::where('status','=',1)->where('pid','=',$pid)->field(['id','title','pid','icon'])->select()->toArray();
         return $this->success('ok',$res);
     }
 
@@ -75,7 +94,7 @@ class Index extends BaseController
         if(!empty($data['search_key'])){
             $where [] = ['title|author|content','like',"%{$data['search_key']}%"];
         }
-        if(isset($data['size'])){
+        if(isset($data['size']) && $data['size']!=''){
             // 字数
             switch ($data['size']){
                 case 0:
@@ -114,15 +133,15 @@ class Index extends BaseController
         }
         $order = 'id desc';
 
-        if(!empty($data['order'])){
-            $order_dta = explode("+",$data['order']);
-            if(!empty($order_dta[0]) && !empty($order_dta[1]) && in_array($order_dta[0],['id','update_time','word']) && in_array($order_dta[1],['desc','asc'])){
-                $order = $order_dta[0]." ".$order_dta[1];
+        if(!empty($data['order_field'])){
+            $order_field = $data['order_field'];
+            if(in_array($order_field,['id','update_time','word','hits'])){
+                $order = $order_field." desc";
             }
         }
         $res = NovelModel::where($where)
             ->field(['id','title','author','pic','content','tag','hits','rating','serialize','update_time','word'])
-            ->order($order)->limit(0,10)->paginate()->toArray();
+            ->order($order)->paginate()->toArray();
         return $this->success('ok',$res);
 
     }

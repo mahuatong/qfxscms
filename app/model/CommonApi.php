@@ -142,6 +142,7 @@ class CommonApi
 
     public function get_novel($category, $order, $limit, $pos, $time, $newbook, $over, $author, $page, $id=null){
         $cache_name=__FUNCTION__."_".implode('_',func_get_args());
+        $keyword = \request()->param('keyword','');
         if(isset($this->cache_data[$cache_name]) && !$page){
             return $this->cache_data[$cache_name];
         }
@@ -183,7 +184,9 @@ class CommonApi
         $limit = intval($limit);
         if($page){
             $simple = Request::isMobile()?true:false;
-            $data=$novel->paginate($limit,$simple);
+            $data=$novel->paginate(['list_rows'=>$limit,'query'=>[
+                'keyword'=>$keyword
+            ]],$simple);
         }else{
             $data=$novel->limit($limit)->select();
         }
@@ -260,7 +263,7 @@ class CommonApi
         }
     }
 
-    public function get_chapter($id,$key){
+    public function get_chapter($id,$key,$is_api = false){
         $map[] = ['status','=',1];
         $map[] = ['id','=',$id];
         $chapter_data=Db::name('novel_chapter')->field('id,chapter,novel_id,collect_id')->where($map)->find();
@@ -271,26 +274,28 @@ class CommonApi
             if($chapter){
                 $chapter['id']=$key;
                 $chapter['novel_id']=$chapter_data['novel_id'];
-                $chapter['source_id']=$chapter_data['id'];
-                $chapter_data_keys = array_keys($chapter_data['chapter']);
-                $chapter_data_keys_num = array_search($key,$chapter_data_keys);
-                if($chapter_data_keys_num<=0){
-                    $chapter['prev']=null;
-                }else{
-                    $chapter_data_prev_keys=$chapter_data_keys[$chapter_data_keys_num-1];
-                    $chapter['prev']=$chapter_data['chapter'][$chapter_data_prev_keys];
-                    $chapter['prev']['id']=$chapter_data_prev_keys;
+                if(!$is_api){
+                    $chapter['source_id']=$chapter_data['id'];
+                    $chapter_data_keys = array_keys($chapter_data['chapter']);
+                    $chapter_data_keys_num = array_search($key,$chapter_data_keys);
+                    if($chapter_data_keys_num<=0){
+                        $chapter['prev']=null;
+                    }else{
+                        $chapter_data_prev_keys=$chapter_data_keys[$chapter_data_keys_num-1];
+                        $chapter['prev']=$chapter_data['chapter'][$chapter_data_prev_keys];
+                        $chapter['prev']['id']=$chapter_data_prev_keys;
+                    }
+                    if($chapter_data_keys_num>=(count($chapter_data_keys)-1)){
+                        $chapter['next']=null;
+                    }else{
+                        $chapter_data_next_keys=$chapter_data_keys[$chapter_data_keys_num+1];
+                        $chapter['next']=$chapter_data['chapter'][$chapter_data_next_keys];
+                        $chapter['next']['id']=$chapter_data_next_keys;
+                    }
+                    $chapter['time']=time_format($chapter['update_time']);
+                    $chapter['prev']['url']=$chapter['prev']?url('home/chapter/index',['id'=>$id,'key'=>$chapter_data_prev_keys]):'javascript:void(0);';
+                    $chapter['next']['url']=$chapter['next']?url('home/chapter/index',['id'=>$id,'key'=>$chapter_data_next_keys]):'javascript:void(0);';
                 }
-                if($chapter_data_keys_num>=(count($chapter_data_keys)-1)){
-                    $chapter['next']=null;
-                }else{
-                    $chapter_data_next_keys=$chapter_data_keys[$chapter_data_keys_num+1];
-                    $chapter['next']=$chapter_data['chapter'][$chapter_data_next_keys];
-                    $chapter['next']['id']=$chapter_data_next_keys;
-                }
-                $chapter['time']=time_format($chapter['update_time']);
-                $chapter['prev']['url']=$chapter['prev']?url('home/chapter/index',['id'=>$id,'key'=>$chapter_data_prev_keys]):'javascript:void(0);';
-                $chapter['next']['url']=$chapter['next']?url('home/chapter/index',['id'=>$id,'key'=>$chapter_data_next_keys]):'javascript:void(0);';
                 if($chapter['auto']==1){
                     $getchapter=(new CommonUnionChapter())->get_chapter($chapter['reurl']);
                     if(!empty($getchapter['content'])){
@@ -316,16 +321,17 @@ class CommonApi
                         $word=mb_strlen($getchapter['chapter_content']);
                         if($word>500 && Config::get('web.chapter_txt')){
                             $this->set_chapter_content($chapter['path'],$getchapter['chapter_content']);
-                            $chapter_data['chapter'][$key]['auto']=0;
-                            $chapter_data['chapter'][$key]['word']=$word;
-                            if(!empty($getchapter['chapter_title'])){
-                                $chapter_data['chapter'][$key]['title']=$getchapter['chapter_title'];
-                            }
-                            $chapter_data['chapter']=json_encode($chapter_data['chapter']);
-                            $chapter_data['chapter']=$this->compress_chapter($chapter_data['chapter']);
-                            Db::name('novel_chapter')->update($chapter_data);
-                            $novel_data=['word'=>Db::raw('word+'.($word-$chapter['word']))];
-                            Db::name('novel')->where(['id'=>$chapter['novel_id']])->update($novel_data);
+                                $chapter_data['chapter'][$key]['auto']=0;
+                                $chapter_data['chapter'][$key]['word']=$word;
+                                if(!empty($getchapter['chapter_title'])){
+                                    $chapter_data['chapter'][$key]['title']=$getchapter['chapter_title'];
+                                }
+                                $chapter_data['chapter']=json_encode($chapter_data['chapter']);
+                                $chapter_data['chapter']=$this->compress_chapter($chapter_data['chapter']);
+                                $novel_data=['word'=>Db::raw('word+'.($word-$chapter['word']))];
+
+                                Db::name('novel_chapter')->update($chapter_data);
+                                Db::name('novel')->where(['id'=>$chapter['novel_id']])->update($novel_data);
                         }
                         $chapter['word']=$word;
                         $chapter['title']=empty($getchapter['chapter_title'])?'':$getchapter['chapter_title'];
